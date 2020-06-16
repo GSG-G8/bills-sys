@@ -1,0 +1,38 @@
+{
+  "name": "bills-sys",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd server && cross-env NODE_ENV=development npm run dev",
+    "client": "cd client && npm start",
+    "init": "cd client && npm i && cd ../server && npm i",
+    "lint-fix": "cd client && npm run lint-fix && cd ../server && npm run lint-fix",
+    "test": "cd server && cross-env NODE_ENV=test npm t",
+    "start": "cross-env NODE_ENV=production node ./server/src",
+    "heroku-postbuild": "NODE_ENV=production cd client && npm install && npm run build",
+    "build:db": "NODE_ENV=test node server/src/database/config/build.js",
+    "install": "npm run init",
+    "kill": "fuser -k 5000/tcp",
+    "kill-run": "npm run kill && npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GSG-G8/bills-sys.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GSG-G8/bills-sys/issues"
+  },
+  "homepage": "https://github.com/GSG-G8/bills-sys#readme",
+  "devDependencies": {
+      "pre-commit": "^1.2.2"
+    },
+    "pre-commit": [
+      "lint-fix",
+      "test"
+    ],
+  "dependencies": {}
+}
