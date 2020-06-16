@@ -3,7 +3,7 @@ module.exports = {
   // babel-eslint parser is used to support experimental features not supported in ESLint itself yet
   parser: "babel-eslint",
   parserOptions: {
-    ecmaVersion: 8,
+    ecmaVersion: 11,
     ecmaFeatures: {
       impliedStrict: true //enable global strict mode (if ecmaVersion is 5 or greater)
     }
