@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/GSG-G8/bills-sys/issues"
   },
-  "homepage": "https://github.com/GSG-G8/bills-sys#readme"
+  "homepage": "https://github.com/GSG-G8/bills-sys#readme",
+  "devDependencies": {
+      "pre-commit": "^1.2.2"
+    },
+    "pre-commit": [
+      "lint-fix",
+      "test"
+    ],
+  "dependencies": {}
 }
