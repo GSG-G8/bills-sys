@@ -1,15 +1,15 @@
 const Bill = require('./Bill');
-const Type = require('./BillType');
+const Type = require('./Type');
 const User = require('./User');
 const { sequelize } = require('./connection');
 
 sequelize.sync();
-// Type.bulkCreate([{ type_name: 'water' }]);
+// Type.bulkCreate([{ name: 'water' }]);
 
 // User.bulkCreate([
 //   {
-//     firstname: 'Abeer',
-//     lastname: 'Karam',
+//     first_name: 'Abeer',
+//     last_name: 'Karam',
 //     password: 'ak',
 //     email: 'abeer@gmail.com',
 //     is_married: true,

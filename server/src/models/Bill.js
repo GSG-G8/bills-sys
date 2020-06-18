@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const User = require('./User');
-const Type = require('./BillType');
+const Type = require('./Type');
 const { sequelize } = require('./connection');
 
 const Bill = sequelize.define('bills', {
