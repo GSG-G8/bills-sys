@@ -28,11 +28,13 @@
   },
   "homepage": "https://github.com/GSG-G8/bills-sys#readme",
   "devDependencies": {
-      "pre-commit": "^1.2.2"
-    },
-    "pre-commit": [
-      "lint-fix",
-      "test"
-    ],
-  "dependencies": {}
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": [
+    "lint-fix",
+    "test"
+  ],
+  "dependencies": {
+    "cross-env": "^7.0.2"
+  }
 }
