@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --runInBand",
-    "lint-fix": "eslint ./src --fix",
+    "lint-fix": "eslint ./src --fix --max-warnings 0",
     "dev": "nodemon ./src",
     "start": "node ./src"
   },

@@ -3,8 +3,7 @@ const Type = require('./BillType');
 const User = require('./User');
 const { sequelize } = require('./connection');
 
-sequelize.sync().then(() => console.log('table is created'));
-
+sequelize.sync();
 // Type.bulkCreate([{ type_name: 'water' }]);
 
 // User.bulkCreate([

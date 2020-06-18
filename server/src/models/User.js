@@ -4,8 +4,8 @@ const { sequelize } = require('./connection');
 
 const User = sequelize.define('users', {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-  firstname: { type: DataTypes.STRING, allowNull: false },
-  lastname: { type: DataTypes.STRING },
+  firs_tname: { type: DataTypes.STRING, allowNull: false },
+  last_name: { type: DataTypes.STRING },
   password: { type: DataTypes.STRING, allowNull: false },
   email: { type: DataTypes.STRING, allowNull: false },
   is_married: { type: DataTypes.STRING, allowNull: false },
