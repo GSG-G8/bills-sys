@@ -5,7 +5,7 @@ const router = require('./router');
 const app = express();
 
 app.use(compression());
-app.disable('x-powerd-by');
+app.disable('x-powered-by');
 app.set('port', process.env.PORT || 5000);
 
 app.use(express.json());

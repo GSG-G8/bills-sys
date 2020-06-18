@@ -3,7 +3,7 @@ const { sequelize } = require('./connection');
 
 const User = sequelize.define('users', {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-  firs_tname: { type: DataTypes.STRING, allowNull: false },
+  first_name: { type: DataTypes.STRING, allowNull: false },
   last_name: { type: DataTypes.STRING },
   password: { type: DataTypes.STRING, allowNull: false },
   email: { type: DataTypes.STRING, allowNull: false },
