@@ -1,5 +1,4 @@
 const { DataTypes } = require('sequelize');
-const Bill = require('./Bill');
 const { sequelize } = require('./connection');
 
 const User = sequelize.define('users', {
@@ -12,7 +11,4 @@ const User = sequelize.define('users', {
   mobile_num: { type: DataTypes.STRING, allowNull: false },
   family_count: { type: DataTypes.INTEGER, allowNull: false },
 });
-
-User.hasOne(Bill);
-
 module.exports = User;
