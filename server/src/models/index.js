@@ -3,7 +3,8 @@ const Type = require('./Type');
 const User = require('./User');
 const { sequelize } = require('./connection');
 
-sequelize.sync();
+// only enable when changing database, then run the dbBuild script to get back the fake data
+// sequelize.sync({ force: true });
 // Type.bulkCreate([{ name: 'water' }]);
 
 // User.bulkCreate([
