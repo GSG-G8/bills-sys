@@ -1,7 +1,7 @@
 const Bill = require('./Bill');
 const Type = require('./Type');
 const User = require('./User');
-const { sequelize } = require('./connection');
+// const { sequelize } = require('./connection');
 
 // only enable when changing database, then run the dbBuild script to get back the fake data
 // sequelize.sync({ force: true });
