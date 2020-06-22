@@ -8,12 +8,14 @@ const { checkEmail } = require('../queries');
 // eslint-disable-next-line no-unused-vars
 const checkUserEmail = async (req, res, next) => {
   const { email } = req.body;
-  const { rows } = await checkEmail(email);
-  if (rows[0]) {
-    [req.userData] = rows;
+  const [users] = await checkEmail(email);
+  const { dataValues } = users;
+  if (dataValues) {
+    req.userData = dataValues;
     next();
+  } else {
+    throw Boom.unauthorized('Email does not exist, signup first');
   }
-  throw Boom.unauthorized('Email does not exist, signup first');
 };
 
 const signIn = async (req, res, next) => {

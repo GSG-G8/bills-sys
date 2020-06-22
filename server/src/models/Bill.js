@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const User = require('./User');
 const Type = require('./Type');
-const { sequelize } = require('./connection');
+const sequelize = require('./connection');
 
 const Bill = sequelize.define('bills', {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
