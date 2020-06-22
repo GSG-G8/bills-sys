@@ -1,4 +1,4 @@
 const { loginValidation } = require('./validation/loginValidation');
-const { checkUserEmail } = require('./auth');
+const { checkUserEmail, signIn } = require('./auth');
 
-module.exports = { loginValidation, checkUserEmail };
+module.exports = { loginValidation, checkUserEmail, signIn };

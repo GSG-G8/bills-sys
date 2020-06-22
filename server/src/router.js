@@ -1,6 +1,9 @@
-const express = require('express');
+const router = require('express').Router();
 
-const router = express.Router();
 require('./models');
+
+const { loginValidation, checkUserEmail, signIn } = require('./controller');
+
+router.post('/login', loginValidation, checkUserEmail, signIn);
 
 module.exports = router;
