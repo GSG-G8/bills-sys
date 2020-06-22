@@ -2,7 +2,6 @@ const Joi = require('@hapi/joi');
 const Boom = require('@hapi/boom');
 
 exports.loginValidation = async (req, res, next) => {
-  const { email, password } = req.body;
   const schema = Joi.object({
     email: Joi.string().email().required().messages({
       'string.empty': `email is a required field`,
@@ -17,9 +16,11 @@ exports.loginValidation = async (req, res, next) => {
       }),
   });
   try {
-    await schema.validate({ email, password }, { abortEarly: false });
+    const { error } = await schema.validate(req.body, { abortEarly: false });
+    if (error) throw error;
+    next();
   } catch (error) {
-    if (error === 'ValidationError')
+    if (error.name === 'ValidationError')
       throw Boom.badRequest(error.details.map((e) => e.message).join('\n'));
     next(error);
   }
