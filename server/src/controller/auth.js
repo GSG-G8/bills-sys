@@ -9,8 +9,8 @@ const { checkEmail } = require('../queries');
 const checkUserEmail = async (req, res, next) => {
   const { email } = req.body;
   const [users] = await checkEmail(email);
-  const { dataValues } = users;
-  if (dataValues) {
+  if (users) {
+    const { dataValues } = users;
     req.userData = dataValues;
     next();
   } else {
@@ -20,9 +20,9 @@ const checkUserEmail = async (req, res, next) => {
 
 const signIn = async (req, res, next) => {
   const hashedPassword = req.userData.password;
-  const { insertedPassword } = req.body;
+  const { password } = req.body;
   try {
-    const result = await bcrypt.compare(insertedPassword, hashedPassword);
+    const result = await bcrypt.compare(password, hashedPassword);
     if (result === false) {
       throw Boom.unauthorized('invalid password');
     } else {
