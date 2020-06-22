@@ -6,12 +6,12 @@ describe('test queries related to bill types', () => {
   describe('test getAllBillTypes', () => {
     it('return all bill types', async () => {
       expect.assertions(5);
-      const billTypes = await getAllBillTypes().map((e) => e.get('name'));
+      const billTypes = await getAllBillTypes().map((e) => e.get());
       expect(billTypes).toHaveLength(4);
-      expect(billTypes).toContain('water');
-      expect(billTypes).toContain('electricity');
-      expect(billTypes).toContain('internet');
-      expect(billTypes).toContain('mobile');
+      expect(billTypes).toContainEqual({ id: 1, name: 'water' });
+      expect(billTypes).toContainEqual({ id: 2, name: 'electricity' });
+      expect(billTypes).toContainEqual({ id: 3, name: 'internet' });
+      expect(billTypes).toContainEqual({ id: 4, name: 'mobile' });
     });
   });
 });
