@@ -1,9 +1,12 @@
 const getAllBillTypes = require('../../queries/getAllBillTypes');
 
-const getTypes = (req, res, next) => {
-  getAllBillTypes()
-    .then((data) => res.json(data))
-    .catch(next);
+const getTypes = async (req, res, next) => {
+  try {
+    const data = await getAllBillTypes();
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = getTypes;
