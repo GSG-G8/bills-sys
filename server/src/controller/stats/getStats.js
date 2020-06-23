@@ -20,9 +20,10 @@ const getStats = async (req, res, next) => {
     const userData = await User.findByPk(userId);
     const { is_married: isMarried, family_count: familyCount } = userData;
     const data = await User.findAll({
+      attributes: ['id'],
       where: { is_married: isMarried, family_count: familyCount },
     });
-    const usersId = data.map((user) => user.id);
+    const usersId = data.map((user) => user.get('id'));
     const statsPromises = usersId.map((id) =>
       getBill(id, typeId, billingMonth, billingYear)
     );
