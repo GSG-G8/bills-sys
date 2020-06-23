@@ -9,8 +9,6 @@ const {
   getStats,
 } = require('./controller');
 
-// require('./models');
-
 router.get('/bills/:userId/stats', getStats);
 
 router.get('/types', getTypes);
