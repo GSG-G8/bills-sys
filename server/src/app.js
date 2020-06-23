@@ -5,6 +5,7 @@ const router = require('./router');
 
 const app = express();
 
+app.use(cookieParser());
 app.use(compression());
 app.disable('x-powered-by');
 app.set('port', process.env.PORT || 5000);
