@@ -1,0 +1,1 @@
+exports.protectedRoute = require('./protectedRoute');
