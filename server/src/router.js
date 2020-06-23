@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const { loginValidation, checkUserEmail, signIn } = require('./controller');
+const { login } = require('./controller');
 const { protectedRoute } = require('./middleware/protectedRoute');
 
-router.post('/login', loginValidation, checkUserEmail, signIn);
+router.post('/login', login);
 
 router.use(protectedRoute);
 router.get('/private', (req, res) => {

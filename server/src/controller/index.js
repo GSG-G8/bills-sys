@@ -1,4 +1,3 @@
-const { loginValidation } = require('./validation/loginValidation');
-const { checkUserEmail, signIn } = require('./auth');
+const login = require('./auth');
 
-module.exports = { loginValidation, checkUserEmail, signIn };
+module.exports = { login };
