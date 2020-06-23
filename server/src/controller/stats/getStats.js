@@ -1,4 +1,4 @@
-const getBillsStats = require('../../queries/getBillsStats');
+const getBill = require('../../queries/getBill');
 const { User } = require('../../models');
 
 const getStats = async (req, res, next) => {
@@ -12,7 +12,7 @@ const getStats = async (req, res, next) => {
     });
     const usersId = data.map((user) => user.id);
     const statsPromises = usersId.map((id) =>
-      getBillsStats(id, typeId, billingMonth, billingYear)
+      getBill(id, typeId, billingMonth, billingYear)
     );
 
     const stats = await Promise.all(statsPromises);
