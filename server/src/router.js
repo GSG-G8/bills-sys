@@ -1,7 +1,14 @@
 const router = require('express').Router();
 
-const { login } = require('./controller');
-const { clientError, serverError, getTypes } = require('./controller');
+const {
+  clientError,
+  serverError,
+  getTypes,
+  getStats,
+  login,
+} = require('./controller');
+
+router.get('/bills/:userId/stats', getStats);
 
 router.post('/login', login);
 router.get('/types', getTypes);
