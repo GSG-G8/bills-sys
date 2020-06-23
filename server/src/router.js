@@ -10,7 +10,7 @@ const {
 } = require('./controller');
 
 router.get('/types', getTypes);
-router.get('/bills', getBills);
+router.get('/bills/me', getBills);
 
 router.use(clientError);
 router.use(serverError);

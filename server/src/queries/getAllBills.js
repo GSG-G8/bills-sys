@@ -1,6 +1,6 @@
-const { Bill } = require('../models');
+const { Bill, Type } = require('../models');
 
-const getAllBills = () =>
+const getAllBills = (id) =>
   Bill.findAll({
     attributes: [
       'id',
@@ -10,7 +10,13 @@ const getAllBills = () =>
       'user_id',
       'type_id',
     ],
-    where: { user_id: 2 },
+    where: { user_id: id },
+    include: [
+      {
+        model: Type,
+        attributes: ['name'],
+      },
+    ],
   });
 
 module.exports = getAllBills;
