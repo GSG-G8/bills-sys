@@ -17,11 +17,9 @@ exports.loginValidation = async (req, res, next) => {
   });
   try {
     const { error } = await schema.validate(req.body, { abortEarly: false });
-    if (error) throw error;
+    if (error) throw Boom.badRequest(error.details.map((e) => e.message));
     next();
   } catch (error) {
-    if (error.name === 'ValidationError')
-      throw Boom.badRequest(error.details.map((e) => e.message).join('\n'));
     next(error);
   }
 };
