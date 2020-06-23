@@ -1,4 +1,4 @@
-const { sequelize } = require('../../src/models/connection');
+const sequelize = require('../../src/models/connection');
 const getAllBillTypes = require('../../src/queries/getAllBillTypes');
 
 describe('test queries related to bill types', () => {

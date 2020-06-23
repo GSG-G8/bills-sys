@@ -1,8 +1,14 @@
 const { Sequelize } = require('sequelize');
 require('env2')('./.env');
 
-const sequelize = new Sequelize(process.env.DB_URL);
+let dbUrl;
 
-sequelize.authenticate();
+if (dbUrl === 'test') {
+  dbUrl = process.env.DATABASE_TEST_URL;
+} else {
+  dbUrl = process.env.DATABASE_URL;
+}
 
-module.exports = { sequelize };
+const sequelize = new Sequelize(dbUrl);
+
+module.exports = sequelize;

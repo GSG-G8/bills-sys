@@ -1,6 +1,6 @@
 const request = require('supertest');
 const app = require('../../src/app');
-const { sequelize } = require('../../src/models/connection');
+const sequelize = require('../../src/models/connection');
 
 describe('test requests related to bill types', () => {
   afterAll(() => sequelize.close());
