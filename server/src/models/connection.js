@@ -3,7 +3,7 @@ require('env2')('./.env');
 
 let dbUrl;
 
-if (dbUrl === 'test') {
+if (process.env.NODE_ENV === 'test') {
   dbUrl = process.env.DATABASE_TEST_URL;
 } else {
   dbUrl = process.env.DATABASE_URL;

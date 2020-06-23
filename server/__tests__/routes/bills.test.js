@@ -10,43 +10,46 @@ describe('test requests related to bills', () => {
       const response = await request(app)
         .get('/api/v1/bills/me')
         .set('Accept', 'application/json')
+        .set('Cookie', [
+          'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTkyOTE5MDYyfQ._F05iYLeXg92JUAA11A3rtxaj5nAt1dk_Lhxt6f6FCk',
+        ])
         .expect(200);
       expect(response.body).toHaveLength(48);
       expect(response.body).toContainEqual({
+        amount: 97,
+        billing_month: 1,
+        billing_year: 2020,
         id: 49,
-        billing_year: 2020,
-        billing_month: 1,
-        amount: 74,
-        user_id: 2,
-        type_id: 1,
         type: { name: 'water' },
+        type_id: 1,
+        user_id: 2,
       });
       expect(response.body).toContainEqual({
+        amount: 223,
+        billing_month: 1,
+        billing_year: 2020,
         id: 50,
-        billing_year: 2020,
-        billing_month: 1,
-        amount: 86,
-        user_id: 2,
-        type_id: 2,
         type: { name: 'electricity' },
+        type_id: 2,
+        user_id: 2,
       });
       expect(response.body).toContainEqual({
+        amount: 113,
+        billing_month: 1,
+        billing_year: 2020,
         id: 51,
-        billing_year: 2020,
-        billing_month: 1,
-        amount: 176,
-        user_id: 2,
-        type_id: 3,
         type: { name: 'internet' },
+        type_id: 3,
+        user_id: 2,
       });
       expect(response.body).toContainEqual({
-        id: 52,
-        billing_year: 2020,
+        amount: 63,
         billing_month: 1,
-        amount: 47,
-        user_id: 2,
-        type_id: 4,
+        billing_year: 2020,
+        id: 52,
         type: { name: 'mobile' },
+        type_id: 4,
+        user_id: 2,
       });
     });
   });
