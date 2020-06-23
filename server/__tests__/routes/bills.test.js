@@ -3,7 +3,6 @@ const app = require('../../src/app');
 const sequelize = require('../../src/models/connection');
 
 describe('test requests related to bills', () => {
-  // eslint-disable-next-line jest/no-hooks
   afterAll(() => sequelize.close());
   describe('test get request to /bills', () => {
     it('should return all bills with status of 200', async () => {

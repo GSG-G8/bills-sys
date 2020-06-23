@@ -2,7 +2,6 @@ const sequelize = require('../../src/models/connection');
 const getAllBills = require('../../src/queries/getAllBills');
 
 describe('test queries related to bills', () => {
-  // eslint-disable-next-line jest/no-hooks
   afterAll(() => sequelize.close());
   describe('test getAllBills', () => {
     it('return all bills', async () => {

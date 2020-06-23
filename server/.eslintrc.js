@@ -25,6 +25,12 @@ module.exports = {
         singleQuote: true,
       },
     ],
+    'jest/no-hooks': [
+      'error',
+      {
+        allow: ['beforeAll', 'afterAll'],
+      },
+    ],
   },
   plugins: ['prettier', 'jest'],
 };
