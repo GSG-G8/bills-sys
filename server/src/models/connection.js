@@ -9,6 +9,6 @@ if (dbUrl === 'test') {
   dbUrl = process.env.DATABASE_URL;
 }
 
-const sequelize = new Sequelize(dbUrl);
+const sequelize = new Sequelize(dbUrl, { logging: false });
 
 module.exports = sequelize;
