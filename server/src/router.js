@@ -1,9 +1,9 @@
-const express = require('express');
+const router = require('express').Router();
 
-const router = express.Router();
-
+const { login } = require('./controller');
 const { clientError, serverError, getTypes } = require('./controller');
 
+router.post('/login', login);
 router.get('/types', getTypes);
 
 router.use(clientError);
