@@ -5,16 +5,17 @@ const app = require('../../src/app');
 describe('test users route', () => {
   afterAll(() => sequelize.close());
   it('return status 200 for success login', async () => {
-    expect.assertions(0);
+    expect.assertions(1);
     const reqBody = {
       email: 'Conrad_Rosenbaum38@gmail.com',
       password: '123456',
     };
-    await request(app)
+    const res = await request(app)
       .post('/api/v1/login')
       .send(reqBody)
       .set('Accept', 'application/json')
       .expect(200);
+    expect(res.header['set-cookie'][0].split('=')[0]).toStrictEqual('token');
   });
 
   it('return status 400 for bad request', async () => {
@@ -33,7 +34,7 @@ describe('test users route', () => {
     );
   });
 
-  it('return status 401 for Not existed email', async () => {
+  it('return status 400 for Not existed email', async () => {
     expect.assertions(1);
     const reqBody = {
       email: 'Conrad_Rosenbaum8@gmail.com',
@@ -43,13 +44,13 @@ describe('test users route', () => {
       .post('/api/v1/login')
       .send(reqBody)
       .set('Accept', 'application/json')
-      .expect(401);
+      .expect(400);
     expect(res.body.message).toStrictEqual(
       'Email does not exist, signup first'
     );
   });
 
-  it('return status 401 for in valid password', async () => {
+  it('return status 400 for invalid password', async () => {
     expect.assertions(1);
     const reqBody = {
       email: 'Conrad_Rosenbaum38@gmail.com',
@@ -59,7 +60,7 @@ describe('test users route', () => {
       .post('/api/v1/login')
       .send(reqBody)
       .set('Accept', 'application/json')
-      .expect(401);
+      .expect(400);
     expect(res.body.message).toStrictEqual('invalid password');
   });
 });
