@@ -1,5 +1,5 @@
+require('env2')('.env');
 const { Sequelize } = require('sequelize');
-require('env2')('./.env');
 
 let dbUrl;
 

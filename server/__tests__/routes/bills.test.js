@@ -2,6 +2,7 @@ const request = require('supertest');
 const app = require('../../src/app');
 const sequelize = require('../../src/models/connection');
 
+console.log(process.env.SECRET_KEY);
 describe('test requests related to bills', () => {
   afterAll(() => sequelize.close());
   describe('test get request to /bills/me', () => {
@@ -11,7 +12,7 @@ describe('test requests related to bills', () => {
         .get('/api/v1/bills/me')
         .set('Accept', 'application/json')
         .set('Cookie', [
-          'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTkyOTE5MDYyfQ._F05iYLeXg92JUAA11A3rtxaj5nAt1dk_Lhxt6f6FCk',
+          'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTkyOTI5NDU0fQ.6djnNEyhspmE43z7dHufLeUnWHU0ndaldeBxG9d2p1E; Path=/',
         ])
         .expect(200);
       expect(response.body).toHaveLength(48);
@@ -28,7 +29,7 @@ describe('test requests related to bills', () => {
         amount: 223,
         billing_month: 1,
         billing_year: 2020,
-        id: 50,
+        id: 51,
         type: { name: 'electricity' },
         type_id: 2,
         user_id: 2,
@@ -37,7 +38,7 @@ describe('test requests related to bills', () => {
         amount: 113,
         billing_month: 1,
         billing_year: 2020,
-        id: 51,
+        id: 53,
         type: { name: 'internet' },
         type_id: 3,
         user_id: 2,

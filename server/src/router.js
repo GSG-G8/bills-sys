@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { protectedRoute } = require('./middleware/protectedRoute');
 const {
   clientError,
   serverError,
   getTypes,
   getBills,
+  login,
 } = require('./controller');
-const { login } = require('./controller');
+const { protectedRoute } = require('./middleware');
 
 router.post('/login', login);
 router.get('/types', getTypes);
