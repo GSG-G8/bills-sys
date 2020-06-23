@@ -15,7 +15,6 @@ describe('test users route', () => {
       .send(reqBody)
       .set('Accept', 'application/json')
       .expect(200);
-    console.log(res.header['set-cookie']);
     expect(res.header['set-cookie'][0].split('=')[0]).toStrictEqual('token');
   });
 

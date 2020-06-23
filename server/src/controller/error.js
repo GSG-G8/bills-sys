@@ -13,7 +13,7 @@ const serverError = (err, req, res, next) => {
     } = err;
     res.status(statusCode).send(payload);
   } else {
-    res.status(500).json({ msg: 'Something went wrong ' });
+    res.status(500).json({ msg: 'Something went wrong' });
   }
 };
 

@@ -1,8 +1,10 @@
 const sequelize = require('../../src/models/connection');
 const getAllBills = require('../../src/queries/getAllBills');
+const getBillsStats = require('../../src/queries/getBill');
 
 describe('test queries related to bills', () => {
   afterAll(() => sequelize.close());
+
   describe('test getAllBills', () => {
     it('return all bills', async () => {
       expect.assertions(5);
@@ -44,6 +46,15 @@ describe('test queries related to bills', () => {
         type_id: 4,
         user_id: 2,
       });
+    });
+  });
+
+  describe('test get stats query', () => {
+    afterAll(() => sequelize.close());
+    it('get bills stats query', async () => {
+      expect.assertions(1);
+      const stat = await getBillsStats(1, 1, 3, 2020);
+      expect(stat.get('amount')).toBe(80);
     });
   });
 });
