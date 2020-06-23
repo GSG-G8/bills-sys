@@ -1,3 +1,5 @@
+const login = require('./auth');
+
 const { clientError, serverError } = require('./error');
 const getTypes = require('./types/getTypes');
 const getStats = require('./stats/getStats');
@@ -7,4 +9,5 @@ module.exports = {
   serverError,
   getTypes,
   getStats,
+  login,
 };
