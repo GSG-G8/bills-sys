@@ -2,7 +2,6 @@ const sequelize = require('../../src/models/connection');
 const { checkEmail } = require('../../src/queries/checkEmail');
 
 describe('test users queries', () => {
-  // eslint-disable-next-line jest/no-hooks
   afterAll(() => sequelize.close());
   describe('test checked email return the user data', () => {
     it('return user data', async () => {
