@@ -32,7 +32,7 @@ const login = async (req, res, next) => {
       throw Boom.badRequest('Email does not exist, signup first');
     }
   } catch (error) {
-    if (error) next(error);
+    next(error);
   }
 };
 
