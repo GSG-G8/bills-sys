@@ -2,9 +2,13 @@ const express = require('express');
 
 const router = express.Router();
 
-const { clientError, serverError, getTypes } = require('./controller');
+const {
+  clientError,
+  serverError,
+  getTypes,
+  getStats,
+} = require('./controller');
 
-const getStats = require('./controller/stats/getStats');
 // require('./models');
 
 router.get('/bills/:userId/stats', getStats);
