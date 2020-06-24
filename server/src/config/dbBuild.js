@@ -32,13 +32,13 @@ const sequelize = require('../models/connection');
 
   await Promise.all([...usersPromises, ...typesPromises]);
   await Promise.all(
-    bills.map(({ amount, billing_month, billing_year, type, id }) =>
+    bills.map(({ amount, billing_month, billing_year, type, user_id }) =>
       Bill.create({
         amount,
         billing_month,
         billing_year,
         type_id: type,
-        user_id: id,
+        user_id,
       })
     )
   );
