@@ -12,7 +12,7 @@ app.disable('x-powered-by');
 app.set('port', process.env.PORT || 5000);
 
 // eslint-disable-next-line import/no-extraneous-dependencies, global-require
-// if (process.env.NODE_ENV === 'development') app.use(require('morgan')('dev'));
+if (process.env.NODE_ENV === 'development') app.use(require('morgan')('dev'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
