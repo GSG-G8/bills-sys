@@ -3,6 +3,7 @@ const login = require('./auth');
 const { clientError, serverError } = require('./error');
 const { getBills } = require('./bills/getBills');
 const getTypes = require('./types/getTypes');
+const logout = require('./logout');
 const getStats = require('./stats/getStats');
 
 module.exports = {
@@ -12,4 +13,5 @@ module.exports = {
   getBills,
   getStats,
   login,
+  logout,
 };

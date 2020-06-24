@@ -8,12 +8,15 @@ const getStats = async (req, res, next) => {
     const { userId } = req.params;
     const { typeId, billingMonth, billingYear } = req.query;
     try {
-      await statsSchema.validateAsync({
-        userId,
-        typeId,
-        billingMonth,
-        billingYear,
-      });
+      await statsSchema.validateAsync(
+        {
+          userId,
+          typeId,
+          billingMonth,
+          billingYear,
+        },
+        { abortEarly: false }
+      );
     } catch (validationError) {
       throw Boom.badRequest(validationError);
     }

@@ -14,6 +14,8 @@ app.set('port', process.env.PORT || 5000);
 // eslint-disable-next-line import/no-extraneous-dependencies, global-require
 if (process.env.NODE_ENV === 'development') app.use(require('morgan')('dev'));
 
-app.use(express.json());
+const middlewares = [express.json(), cookieParser()];
+app.use(middlewares);
+
 app.use('/api/v1/', router);
 module.exports = app;
