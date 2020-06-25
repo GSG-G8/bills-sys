@@ -4,7 +4,7 @@ import { Layout } from '../components';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
 
 const App = () => {
-  const [logged] = useState(() => false);
+  const [logged, setLogged] = useState(() => false);
   return (
     <div>
       <Router>
@@ -12,7 +12,7 @@ const App = () => {
           <Switch>
             {!logged && (
               <Route>
-                <Login />
+                <Login auth={setLogged} />
               </Route>
             )}
             <Route path="/current">

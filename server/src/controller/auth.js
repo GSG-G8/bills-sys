@@ -22,14 +22,14 @@ const login = async (req, res, next) => {
       const hashedPassword = dataValues.password;
       const result = await bcrypt.compare(password, hashedPassword);
       if (result === false) {
-        throw Boom.badRequest('invalid password');
+        throw Boom.badRequest('Please double check your password or email');
       } else {
         const token = jwt.sign({ id: dataValues.id }, process.env.SECRET_KEY);
         res.cookie('token', token).status(200);
-        res.json({ msg: 'logged in successfully' });
+        res.json({ statusCode: 200, msg: 'logged in successfully' });
       }
     } else {
-      throw Boom.badRequest('Email does not exist, signup first');
+      throw Boom.badRequest('Please double check your password or email');
     }
   } catch (error) {
     next(error);
