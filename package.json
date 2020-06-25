@@ -14,7 +14,7 @@
     "install": "npm run init",
     "kill": "fuser -k 5000/tcp",
     "kill-run": "npm run kill && npm run server",
-    "build:db": "node ./server/src/config/dbBuild.js && NODE_ENV=test node ./server/src/config/dbBuild.js"
+    "build:db": "node ./server/src/config/dbBuild.js && cross-env NODE_ENV=test node ./server/src/config/dbBuild.js"
   },
   "repository": {
     "type": "git",
