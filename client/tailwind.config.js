@@ -19,5 +19,6 @@ module.exports = {
       blue: { default: '#1F7BCA', lighter: '#4c95d5' },
       magenta: { default: '#B76569', lighter: '#c58487' },
     },
+    extend: { width: { '12/25': '48%' } },
   },
 };
