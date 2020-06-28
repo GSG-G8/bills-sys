@@ -26,7 +26,11 @@ const login = async (req, res, next) => {
       } else {
         const token = jwt.sign({ id: dataValues.id }, process.env.SECRET_KEY);
         res.cookie('token', token).status(200);
-        res.json({ statusCode: 200, msg: 'logged in successfully' });
+        res.json({
+          statusCode: 200,
+          msg: 'logged in successfully',
+          userId: dataValues.id,
+        });
       }
     } else {
       throw Boom.badRequest('Please double check your password or email');
