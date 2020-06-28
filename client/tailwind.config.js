@@ -4,6 +4,11 @@ const {
 
 module.exports = {
   theme: {
+    inset: {
+      0: 0,
+      auto: 'auto',
+      center: '25vh',
+    },
     colors: {
       white,
       gray,
