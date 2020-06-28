@@ -46,13 +46,12 @@ const Login = ({ auth }) => {
 
   return (
     <form
-      className="flex flex-col items-center p-4"
+      className="flex flex-col items-center p-4 mt-16"
       onSubmit={handleFormSubmit}
     >
       <input
-        type="email"
         name="email"
-        className="border-b-2 border-black mb-4 mt-20"
+        className="border-b-2 border-gray-700 mb-4 mt-20 w-64 pl-1 outline-none leading-5 transform md:w-1/3 lg:w-1/4 focus:border-primary-dark focus:placeholder-primary-dark focus:scale-105 transition duration-500 ease-in-out"
         placeholder="Email"
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -62,7 +61,7 @@ const Login = ({ auth }) => {
       <input
         type="password"
         name="password"
-        className="border-b-2 border-black mt-12 mb-4"
+        className="border-b-2 border-gray-700 mt-12 mb-4 w-64 pl-1 outline-none leading-5 transform md:w-1/3 lg:w-1/4 focus:border-primary-dark focus:placeholder-primary-dark focus:scale-105 transition duration-500 ease-in-out"
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
       />
@@ -71,7 +70,7 @@ const Login = ({ auth }) => {
       )}
       <button
         type="submit"
-        className="mt-12 pl-16 pr-16 pt-2 pb-2 rounded-full bg-blue-700"
+        className="mt-12 mb-4 pl-16 pr-16 pt-2 pb-2 rounded-full w-64 text-mich-white leading-7 font-medium bg-primary transform md:w-1/3 lg:w-1/4 hover:bg-primary-dark focus:bg-primary-dark focus:outline-none focus:scale-105 transition duration-500 ease-in-out"
       >
         Log In
       </button>
