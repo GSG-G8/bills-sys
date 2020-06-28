@@ -5,7 +5,7 @@ import { ReactComponent as Home } from './Home.svg';
 import { ReactComponent as PastBills } from './past bills.svg';
 import { ReactComponent as Profile } from './profile.svg';
 
-export default () => {
+const NavBar = () => {
   const history = useHistory();
   return (
     <nav className="flex w-full fixed bottom-0 right-0 lg:block lg:top-center lg:w-24 lg:right-auto">
@@ -36,3 +36,5 @@ export default () => {
     </nav>
   );
 };
+
+export default NavBar;
