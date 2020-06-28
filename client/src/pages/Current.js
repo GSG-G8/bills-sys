@@ -1,5 +1,6 @@
 import React from 'react';
+import ToggleContainer from '../components/ToggleContainer';
 
-const Current = () => <h1> Current </h1>;
+const Current = () => <ToggleContainer />;
 
 export default Current;
