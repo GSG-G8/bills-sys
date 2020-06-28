@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout } from '../components';
+import { Layout, Header } from '../components';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
 
 const App = () => {
@@ -8,13 +8,16 @@ const App = () => {
   return (
     <div>
       <Router>
-        <Layout>
-          <Switch>
-            {!logged && (
+        <Switch>
+          {!logged && (
+            <>
+              <Header />
               <Route>
                 <Login auth={setLogged} />
               </Route>
-            )}
+            </>
+          )}
+          <Layout>
             <Route path="/current">
               <Current />
             </Route>
@@ -27,8 +30,8 @@ const App = () => {
             <Route path="/profile">
               <Profile />
             </Route>
-          </Switch>
-        </Layout>
+          </Layout>
+        </Switch>
       </Router>
     </div>
   );
