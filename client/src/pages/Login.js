@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import propTypes from 'prop-types';
+import React, { useState, useContext } from 'react';
+import AuthContext from '../context';
 
 const validateForm = (email, password) => {
   const errors = {};
@@ -12,11 +12,12 @@ const validateForm = (email, password) => {
   return errors;
 };
 
-const Login = ({ auth }) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validationErrors, setValidationErrors] = useState({});
   const [loginError, setLoginError] = useState('');
+  const { auth, user } = useContext(AuthContext);
 
   const handleLogin = () =>
     fetch('/api/v1/login', {
@@ -28,8 +29,10 @@ const Login = ({ auth }) => {
     })
       .then((response) => response.json())
       .then((result) => {
-        if (result.statusCode === 200) auth(true);
-        else {
+        if (result.statusCode === 200) {
+          user.setUserId(result.userId);
+          auth.setLogged(true);
+        } else {
           setLoginError(result.message);
           setValidationErrors({});
         }
@@ -77,10 +80,6 @@ const Login = ({ auth }) => {
       {loginError && <p className="text-red-700">{loginError}</p>}
     </form>
   );
-};
-
-Login.propTypes = {
-  auth: propTypes.func.isRequired,
 };
 
 export default Login;
