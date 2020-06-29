@@ -3,12 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from '../components';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
 
+// this will be here for the mean time just to display the chart till the current page gets ready
+import BarChart from '../components/Charts/BarChart';
+
 const App = () => {
   const [logged] = useState(() => false);
   return (
     <div>
       <Router>
         <Layout>
+          <BarChart />
           <Switch>
             {!logged && (
               <Route>
