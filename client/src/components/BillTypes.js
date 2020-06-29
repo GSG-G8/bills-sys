@@ -13,21 +13,25 @@ const BillsTypes = (props) => {
     fetch('/api/v1/types')
       .then((res) => res.json())
       .then((res) => {
-        if (res.statusCode === 200) setBill(res.data);
-        setError(res.error);
+        if (res.statusCode === 200) {
+          setBill(res.data);
+        } else {
+          setError(res.error);
+        }
       })
       .catch(() => setError('Something went error'));
   }, []);
-  if (!bill?.length)
+  if (error)
     return (
       <div
         className="bg-magenta lg:w-1/2 md:w-2/3 border-l-8 border-kournikova text-mich-white p-4"
         role="alert"
       >
         <p className="font-bold">Error</p>
-        <p>{error}.</p>
+        <p>{error}</p>
       </div>
     );
+  if (!bill.length) return 'loading';
   return (
     <>
       <h1>BillsTypes</h1>
