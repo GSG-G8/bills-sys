@@ -1,26 +1,35 @@
 import React, { useState } from 'react';
-import toggle from '../assets/up-arrow-svgrepo-com.svg';
-import Tips from './Tips';
+import propTypes from 'prop-types';
+import toggleImg from '../assets/up-arrow-svgrepo-com.svg';
 
-const ToggleContainer = () => {
-  const [showTips, setShowTips] = useState(false);
-  const toggleTips = () => setShowTips(!showTips);
+const ToggleContainer = ({ children, title }) => {
+  const [isToggle, setIsToggle] = useState(false);
+  const toggle = () => setIsToggle(!isToggle);
 
   return (
-    <div className="flex justify-between p-10">
-      <h1 className="text-3xl">Tips</h1>
-      {showTips && <Tips />}
-      <button type="button" onClick={toggleTips}>
-        <img
-          className={`w-10 ${showTips ? 'transform rotate-180' : ''}`}
-          src={toggle}
-          alt="toggleContainer"
-        />
-      </button>
+    <div>
+      <div className="flex justify-between p-5 ">
+        <button
+          type="button"
+          onClick={toggle}
+          className="flex focus:outline-none mx-3  justify-between w-full items-center"
+        >
+          <span className="text-3xl">{title}</span>
+          <img
+            className={`w-8 ${isToggle ? 'transform rotate-180' : ''}`}
+            src={toggleImg}
+            alt="toggleContainer"
+          />
+        </button>
+      </div>
+      {isToggle && children}
     </div>
   );
 };
 
-ToggleContainer.propTypes = {};
+ToggleContainer.propTypes = {
+  children: propTypes.element.isRequired,
+  title: propTypes.element.isRequired,
+};
 
 export default ToggleContainer;
