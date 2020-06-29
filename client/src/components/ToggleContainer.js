@@ -29,7 +29,7 @@ const ToggleContainer = ({ children, title }) => {
 
 ToggleContainer.propTypes = {
   children: propTypes.element.isRequired,
-  title: propTypes.element.isRequired,
+  title: propTypes.string.isRequired,
 };
 
 export default ToggleContainer;
