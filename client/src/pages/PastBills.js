@@ -1,5 +1,6 @@
 import React from 'react';
+import { LineChart } from '../components';
 
-const PastBills = () => <h1> PastBills </h1>;
+const PastBills = () => <LineChart />;
 
 export default PastBills;

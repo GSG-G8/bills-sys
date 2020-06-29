@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from '../components';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
+import LineChart from '../components/Charts/BarChart';
 
 const App = () => {
   const [logged] = useState(() => false);
@@ -9,6 +10,7 @@ const App = () => {
     <div>
       <Router>
         <Layout>
+          <LineChart />
           <Switch>
             {!logged && (
               <Route>
