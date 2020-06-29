@@ -22,7 +22,7 @@ const useAuth = () => {
       });
   }, []);
 
-  return [logged, setLogged, userId, setUserId];
+  return { logged, setLogged, userId, setUserId };
 };
 
 export default useAuth;
