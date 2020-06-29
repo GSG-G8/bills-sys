@@ -2,6 +2,12 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { Bar } from 'react-chartjs-2';
 
+const sortValues = (arr) => {
+  const values = [...arr];
+  values.sort((a, b) => a - b);
+  return values;
+};
+
 // this will trim the outliers values from both the start and the end of the data array
 const trimmer = (bound, data) => {
   const values = [...data];
@@ -17,7 +23,7 @@ this will find the outliers values in the dataset and decide the count to trim f
 and find the trimmed mean
 */
 const trimmedMean = (data) => {
-  const values = [...data];
+  const values = sortValues([...data]);
   const valuesCount = values.length;
   // this is the trimming proportion, it mean that we want to trim 10% of the dataset
   const proportionTrimmed = 0.1;
