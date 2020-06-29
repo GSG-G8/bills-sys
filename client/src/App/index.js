@@ -5,6 +5,8 @@ import { Current, Home, Login, PastBills, Profile } from '../pages';
 
 // this will be here for the mean time just to display the chart till the current page gets ready
 import BarChart from '../components/Charts/BarChart';
+// fake data for the BarChart
+const data = [2, 4, 6, 7, 11, 21, 81, 90, 105, 121];
 
 const App = () => {
   const [logged] = useState(() => false);
@@ -12,7 +14,7 @@ const App = () => {
     <div>
       <Router>
         <Layout>
-          <BarChart />
+          <BarChart data={data} />
           <Switch>
             {!logged && (
               <Route>
