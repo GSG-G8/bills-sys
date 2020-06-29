@@ -1,0 +1,6 @@
+{
+  "welcomeMsg": "willkommen",
+  "nested": {
+    "startMsg": "start in german"
+  }
+}
