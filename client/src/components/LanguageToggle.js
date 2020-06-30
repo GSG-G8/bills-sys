@@ -18,12 +18,8 @@ const Toggle = () => {
       }}
       className="bg-transparent hover:bg-white font-bold outline-none rounded"
     >
-      <option value="ar" className="focus:outline-none h-2 bg-transparent">
-        {t('language.ar')}
-      </option>
-      <option value="en" className="focus:outline-none h-2 bg-transparent">
-        {t('language.en')}
-      </option>
+      <option value="ar">{t('language.ar')}</option>
+      <option value="en">{t('language.en')}</option>
     </select>
   );
 };
