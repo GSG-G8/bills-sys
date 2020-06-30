@@ -27,7 +27,7 @@ const TypesColors = {
 };
 
 const BillsTypes = ({ billTypes }) => (
-  <div className="flex flex-wrap justify-between text-2xl text-mich-white">
+  <div className="flex flex-wrap justify-between text-2xl text-mich-white px-6 lg:px-24">
     {billTypes.map((type) => {
       const Icon = TypesColors[type].component;
       return (
