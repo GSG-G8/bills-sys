@@ -10,13 +10,13 @@ const LineChart = ({ bills }) => {
       'March',
       'April',
       'May',
-      'Jun',
+      'June',
       'July',
-      'Aug',
-      'Sept',
-      'Oct',
-      'Nov',
-      'Dec',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
     ],
     datasets: [
       {
@@ -41,6 +41,17 @@ const LineChart = ({ bills }) => {
     ],
   };
   const options = {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            min: 0,
+            max: Math.max(...bills) + 20,
+            stepSize: 20,
+          },
+        },
+      ],
+    },
     maintainAspectRatio: false,
     plugins: {
       datalabels: {
