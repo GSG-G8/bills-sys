@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout, Header } from '../components';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
-import useAuth from '../hooks/useAuth';
+import { useAuth } from '../hooks';
 
 const App = () => {
   const { logged, setLogged, setUserId } = useAuth();
@@ -16,7 +16,7 @@ const App = () => {
             <>
               <Header />
               <Route>
-                <Login auth={setLogged} setId={setUserId} />
+                <Login setLogged={setLogged} setId={setUserId} />
               </Route>
             </>
           )}

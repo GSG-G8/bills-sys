@@ -12,7 +12,7 @@ const validateForm = (email, password) => {
   return errors;
 };
 
-const Login = ({ auth, setId }) => {
+const Login = ({ setLogged, setId }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validationErrors, setValidationErrors] = useState({});
@@ -30,7 +30,7 @@ const Login = ({ auth, setId }) => {
       .then((result) => {
         if (result.statusCode === 200) {
           setId(result.userId);
-          auth(true);
+          setLogged(true);
         } else {
           setLoginError(result.message);
           setValidationErrors({});
@@ -82,7 +82,7 @@ const Login = ({ auth, setId }) => {
 };
 
 Login.propTypes = {
-  auth: propTypes.func.isRequired,
+  setLogged: propTypes.func.isRequired,
   setId: propTypes.func.isRequired,
 };
 
