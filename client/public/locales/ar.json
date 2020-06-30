@@ -1,9 +1,14 @@
 {
-  "logo": "مرحبا",
-  "main.page.title": "{{title}} اللغة العربية",
-  "main.page.section.languages.title": "اللغة",
-  "main.page.section.languages.subtitle": "ابدا من هنا",
-  "login": "تسجيل الدخول",
-  "email": "البريد الإلكتروني",
-  "password": "كلمة السر"
+  "logo": "Bills System",
+  "language": {
+    "ar": "AR",
+    "en": "EN"
+  },
+  "pages": {
+    "login": {
+      "buttonTxt": "تسجيل الدخول",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة السر"
+    }
+  }
 }
