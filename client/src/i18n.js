@@ -18,7 +18,6 @@ i18n
       allowMultiLoading: true,
     },
     react: {
-      wait: true,
       useSuspense: true,
     },
   });
