@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { wifiIcon, waterIcon, electIcon, mobileIcon } from '../assets';
+import { WifiIcon, WaterIcon, ElectIcon, MobileIcon } from '../assets';
 
 const BillsTypes = (props) => {
   const { waterBill, electBill, internetBill, mobileBill } = props;
@@ -42,7 +42,7 @@ const BillsTypes = (props) => {
             className="bg-kournikova hover:bg-kournikova-lighter px-3 py-1 rounded my-2 h-40 w-12/25 sm:w-8/25 md:w-23/100 flex flex-wrap justify-center "
           >
             <div className="h-24 pt-2 flex">
-              <img src={waterIcon} alt="water" />
+              <WaterIcon className="self-center" />
             </div>
             <p className="w-full text-center">{bill[0].name}</p>
           </Link>
@@ -54,7 +54,7 @@ const BillsTypes = (props) => {
             className="bg-blueBell hover:bg-blueBell-lighter px-3 py-1 rounded my-2 h-40 w-12/25 sm:w-8/25 md:w-23/100 flex flex-wrap justify-center"
           >
             <div className="h-24 pt-2 flex">
-              <img src={electIcon} alt="electricity" />
+              <ElectIcon className="self-center" />
             </div>
             <p className="w-full text-center">{bill[1].name}</p>
           </Link>
@@ -66,7 +66,7 @@ const BillsTypes = (props) => {
             className="bg-magenta hover:bg-magenta-lighter px-3 py-1 rounded my-2 h-40 w-12/25 sm:w-8/25 md:w-23/100 flex flex-wrap justify-center"
           >
             <div className="h-24 pt-2 flex">
-              <img src={wifiIcon} alt="wifi" />
+              <WifiIcon className="self-center" />
             </div>
             <p className="w-full text-center">{bill[2].name}</p>
           </Link>
@@ -78,7 +78,7 @@ const BillsTypes = (props) => {
             className="bg-blue hover:bg-blue-lighter px-3 py-1 rounded my-2 h-40 w-12/25 sm:w-8/25 md:w-23/100 flex flex-wrap justify-center"
           >
             <div className="h-24 pt-2 flex">
-              <img src={mobileIcon} alt="gas" />
+              <MobileIcon className="self-center" />
             </div>
             <p className="w-full text-center">{bill[3].name}</p>
           </Link>
