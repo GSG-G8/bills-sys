@@ -1,22 +1,25 @@
 import i18n from 'i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
 import XHR from 'i18next-xhr-backend';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18n
   .use(XHR)
   .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
-    // we init with resources
-    fallbackLng: 'en',
     debug: true,
-
+    keySeparator: false,
     interpolation: {
-      escapeValue: false, // not needed for react!!
+      escapeValue: false,
     },
-
+    backend: {
+      loadPath: '/locales/{{lng}}.json',
+      allowMultiLoading: true,
+    },
     react: {
       wait: true,
+      useSuspense: true,
     },
   });
-
 export default i18n;
