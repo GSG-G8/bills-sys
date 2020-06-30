@@ -1,8 +1,6 @@
-import { ReactComponent as WifiIcon } from './Group 14.svg';
-import { ReactComponent as WaterIcon } from './Group 13.svg';
-import { ReactComponent as ElectIcon } from './Group 7.svg';
-import { ReactComponent as MobileIcon } from './smartphone-iphone.svg';
-
-export { default as expandArrow } from './expandArrow.svg';
+import { ReactComponent as ElectIcon } from './typesIcons/electricity.svg';
+import { ReactComponent as WifiIcon } from './typesIcons/wifi.svg';
+import { ReactComponent as WaterIcon } from './typesIcons/water.svg';
+import { ReactComponent as MobileIcon } from './typesIcons/smartphone-iphone.svg';
 
 export { WifiIcon, WaterIcon, ElectIcon, MobileIcon };
