@@ -17,7 +17,8 @@ const Home = () => {
       }, {});
       setBillTypes(Object.keys(billType));
     } catch (err) {
-      setError('Something went error');
+      if (err.response) setError(err.response.data.message);
+      else setError('Something went error');
     }
   };
   useEffect(() => {

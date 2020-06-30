@@ -1,5 +1,5 @@
 const clientError = (req, res) => {
-  res.status(404).json({ error: 'Page Not Found' });
+  res.status(404).json({ message: 'Page Not Found' });
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -13,7 +13,7 @@ const serverError = (err, req, res, next) => {
     } = err;
     res.status(statusCode).send(payload);
   } else {
-    res.status(500).json({ msg: 'Something went wrong' });
+    res.status(500).json({ message: 'Something went wrong' });
   }
 };
 
