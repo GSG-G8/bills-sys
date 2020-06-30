@@ -1,9 +1,23 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 
-const LineChart = () => {
+const LineChart = ({ bills }) => {
   const data = {
-    labels: ['', 'January', 'February', 'March', 'April', 'May'],
+    labels: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'Jun',
+      'July',
+      'Aug',
+      'Sept',
+      'Oct',
+      'Nov',
+      'Dec',
+    ],
     datasets: [
       {
         label: 'Past Bills $',
@@ -22,18 +36,30 @@ const LineChart = () => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [0, 25, 75, 90, 60, 40, 120, 70],
+        data: bills,
       },
     ],
+  };
+  const options = {
+    maintainAspectRatio: false,
+    plugins: {
+      datalabels: {
+        font: {
+          size: 0,
+        },
+      },
+    },
   };
 
   return (
     <div>
       <h2>Line Chart</h2>
-      <Line data={data} />
+      <Line data={data} options={options} />
     </div>
   );
 };
-LineChart.propTypes = {};
+LineChart.propTypes = {
+  bills: propTypes.arrayOf(propTypes.number).isRequired,
+};
 
 export default LineChart;
