@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
+import axios from 'axios';
 
 const validateForm = (email, password) => {
   const errors = {};
@@ -18,25 +19,22 @@ const Login = ({ setLogged, setId }) => {
   const [validationErrors, setValidationErrors] = useState({});
   const [loginError, setLoginError] = useState('');
 
-  const handleLogin = () =>
-    fetch('/api/v1/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.statusCode === 200) {
-          setId(result.userId);
-          setLogged(true);
-        } else {
-          setLoginError(result.message);
-          setValidationErrors({});
-        }
-      })
-      .catch(() => setLoginError('Something went wrong'));
+  const handleLogin = async () => {
+    try {
+      const { userId } = await axios.post('/api/v1/login', {
+        email,
+        password,
+      });
+      setId(userId);
+      setLogged(true);
+    } catch (err) {
+      let error;
+      if (err.response) error = err.response.data.message;
+      else error = 'Something went wrong';
+      setLoginError(error);
+      setValidationErrors({});
+    }
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();

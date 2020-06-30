@@ -1,25 +1,23 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const useAuth = () => {
   const [logged, setLogged] = useState('loading');
   const [userId, setUserId] = useState('');
 
+  const checkIfLogged = async () => {
+    try {
+      const response = await axios.get('/api/v1/auth');
+      setUserId(response.data.user.id);
+      setLogged(true);
+    } catch (err) {
+      setLogged(false);
+      setUserId('');
+    }
+  };
+
   useEffect(() => {
-    fetch('/api/v1/auth')
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.statusCode === 200) {
-          setLogged(true);
-          setUserId(result.user.id);
-        } else {
-          setLogged(false);
-          setUserId('');
-        }
-      })
-      .catch(() => {
-        setLogged(false);
-        setUserId('');
-      });
+    checkIfLogged();
   }, []);
 
   return { logged, setLogged, userId, setUserId };
