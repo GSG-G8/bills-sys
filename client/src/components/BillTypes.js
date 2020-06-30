@@ -7,22 +7,22 @@ const TypesColors = {
   water: {
     color: 'bg-kournikova',
     hoverColor: 'bg-kournikova-lighter',
-    component: Icons.WaterIcon,
+    component: Icons.Water,
   },
   electricity: {
     hoverColor: 'hover:bg-blueBell-lighter',
     color: 'bg-blueBell',
-    component: Icons.ElectIcon,
+    component: Icons.Electricity,
   },
   internet: {
     hoverColor: 'hover:bg-magenta-lighter',
     color: 'bg-magenta',
-    component: Icons.WifiIcon,
+    component: Icons.Wifi,
   },
   mobile: {
     hoverColor: 'hover:bg-blue-lighter',
     color: 'bg-blue',
-    component: Icons.MobileIcon,
+    component: Icons.Mobile,
   },
 };
 

@@ -1,6 +1,4 @@
-import { ReactComponent as ElectIcon } from './typesIcons/electricity.svg';
-import { ReactComponent as WifiIcon } from './typesIcons/wifi.svg';
-import { ReactComponent as WaterIcon } from './typesIcons/water.svg';
-import { ReactComponent as MobileIcon } from './typesIcons/smartphone-iphone.svg';
-
-export { WifiIcon, WaterIcon, ElectIcon, MobileIcon };
+export { ReactComponent as Electricity } from './typesIcons/electricity.svg';
+export { ReactComponent as Wifi } from './typesIcons/wifi.svg';
+export { ReactComponent as Water } from './typesIcons/water.svg';
+export { ReactComponent as Mobile } from './typesIcons/smartphone-iphone.svg';
