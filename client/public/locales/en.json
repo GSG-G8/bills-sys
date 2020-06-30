@@ -1,3 +1,7 @@
 {
   "logo": "Bills System",
+  "language": {
+    "en": "EN",
+    "ar": "AR"
+  }
 }

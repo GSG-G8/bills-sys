@@ -9,7 +9,6 @@ i18n
   .use(initReactI18next)
   .init({
     debug: true,
-    keySeparator: false,
     interpolation: {
       escapeValue: false,
     },
@@ -17,6 +16,8 @@ i18n
       loadPath: '/locales/{{lng}}.json',
       allowMultiLoading: true,
     },
+    lng: 'en',
+    fallbackLng: 'en',
     react: {
       useSuspense: true,
     },
