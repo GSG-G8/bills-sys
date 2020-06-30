@@ -3,7 +3,7 @@ const getAllBillTypes = require('../../queries/getAllBillTypes');
 const getTypes = async (req, res, next) => {
   try {
     const data = await getAllBillTypes();
-    res.json({ statusCode: 200, data });
+    res.json(data);
   } catch (err) {
     next(err);
   }
