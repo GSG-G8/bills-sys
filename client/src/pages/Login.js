@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 const validateForm = (email, password) => {
   const errors = {};
@@ -18,6 +19,7 @@ const Login = ({ setLogged, setId }) => {
   const [password, setPassword] = useState('');
   const [validationErrors, setValidationErrors] = useState({});
   const [loginError, setLoginError] = useState('');
+  const { t } = useTranslation();
 
   const handleLogin = async () => {
     try {
@@ -52,7 +54,7 @@ const Login = ({ setLogged, setId }) => {
       <input
         name="email"
         className="border-b-2 border-gray-700 mb-4 mt-20 w-64 pl-1 outline-none leading-5 transform md:w-1/3 lg:w-1/4 focus:border-primary-dark focus:placeholder-primary-dark focus:scale-105 transition duration-500 ease-in-out"
-        placeholder="Email"
+        placeholder={t('email')}
         onChange={(e) => setEmail(e.target.value)}
       />
       {validationErrors.email && (
@@ -62,7 +64,7 @@ const Login = ({ setLogged, setId }) => {
         type="password"
         name="password"
         className="border-b-2 border-gray-700 mt-12 mb-4 w-64 pl-1 outline-none leading-5 transform md:w-1/3 lg:w-1/4 focus:border-primary-dark focus:placeholder-primary-dark focus:scale-105 transition duration-500 ease-in-out"
-        placeholder="Password"
+        placeholder={t('password')}
         onChange={(e) => setPassword(e.target.value)}
       />
       {validationErrors.password && (
@@ -72,7 +74,7 @@ const Login = ({ setLogged, setId }) => {
         type="submit"
         className="mt-12 mb-4 pl-16 pr-16 pt-2 pb-2 rounded-full w-64 text-mich-white leading-7 font-medium bg-primary transform md:w-1/3 lg:w-1/4 hover:bg-primary-dark focus:bg-primary-dark focus:outline-none focus:scale-105 transition duration-500 ease-in-out"
       >
-        Log In
+        {t('LogIn')}
       </button>
       {loginError && <p className="text-red-700">{loginError}</p>}
     </form>
