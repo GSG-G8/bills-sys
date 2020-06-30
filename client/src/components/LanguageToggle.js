@@ -4,15 +4,15 @@ import { useTranslation } from 'react-i18next';
 const Toggle = () => {
   const { t, i18n } = useTranslation();
 
-  const [Lang, setLang] = useState(i18n.language);
+  const [lang, setLang] = useState(i18n.language);
 
   useEffect(() => {
-    i18n.changeLanguage(Lang);
-  }, [i18n, Lang]);
+    i18n.changeLanguage(lang);
+  }, [i18n, lang]);
 
   return (
     <select
-      value={Lang}
+      value={lang}
       onChange={({ target: { value } }) => {
         setLang(value);
       }}
