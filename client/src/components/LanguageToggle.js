@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Toggle = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const onLanguageSelect = (e) => i18n.changeLanguage(e.target.value);
+  const [Lang, setLang] = useState(i18n.language);
+
+  useEffect(() => {
+    i18n.changeLanguage(Lang);
+  }, [i18n, Lang]);
 
   return (
     <select
-      onChange={onLanguageSelect}
+      value={Lang}
+      onChange={({ target: { value } }) => {
+        setLang(value);
+      }}
       className="bg-transparent hover:bg-white font-bold outline-none rounded"
     >
-      <option value="ar" className="outline-none h-2 bg-transparent">
-        ar
+      <option value="ar" className="focus:outline-none h-2 bg-transparent">
+        {t('language.ar')}
       </option>
-      <option value="en" className="outline-none h-2 bg-transparent">
-        en
+      <option value="en" className="focus:outline-none h-2 bg-transparent">
+        {t('language.en')}
       </option>
     </select>
   );

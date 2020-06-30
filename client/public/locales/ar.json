@@ -1,6 +1,10 @@
 {
-  "logo": "مرحبا",
+  "logo": "Bills System",
   "main.page.title": "{{title}} اللغة العربية",
   "main.page.section.languages.title": "اللغة",
-  "main.page.section.languages.subtitle": "ابدا من هنا"
+  "main.page.section.languages.subtitle": "ابدا من هنا",
+  "language": {
+    "ar": "AR",
+    "en": "EN"
+  }
 }
