@@ -1,16 +1,18 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout, Header } from '../components';
+import { Layout, Spinner, Header } from '../components';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
 import { useAuth } from '../hooks';
+
+const Loader = () => <Spinner className="w-8 h-8 m-auto spin mt-64" />;
 
 const App = () => {
   const { logged, setLogged, setUserId } = useAuth();
 
-  if (logged === 'loading') return <div />;
+  if (logged === 'loading') return <Loader />;
   return (
     <div>
-      <Suspense fallback={<div />}>
+      <Suspense fallback={<Loader />}>
         <Router>
           <Switch>
             {!logged && (
