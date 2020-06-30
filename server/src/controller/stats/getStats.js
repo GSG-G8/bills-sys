@@ -32,7 +32,7 @@ const getStats = async (req, res, next) => {
     );
 
     const stats = await Promise.all(statsPromises);
-    res.json(stats.map(({ amount }) => amount));
+    res.json({ statusCode: 200, data: stats.map(({ amount }) => amount) });
   } catch (err) {
     next(err);
   }

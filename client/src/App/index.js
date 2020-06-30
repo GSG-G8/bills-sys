@@ -4,7 +4,7 @@ import { Layout } from '../components';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
 
 const App = () => {
-  const [logged] = useState(() => false);
+  const [logged] = useState(() => true);
   return (
     <div>
       <Router>
