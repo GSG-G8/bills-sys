@@ -11,7 +11,14 @@
       "password": "كلمة السر"
     }
   },
+<<<<<<< HEAD
   "tips": "arabicTips",
   "tipsToggleTitle": "ارشادات لتقليل الفاتورة",
   "compareTableTitle": "جدول المقارنة"
+=======
+  "water": "الماء",
+  "electricity": "الكهرباء",
+  "internet": "الإنترنت",
+  "mobile": "الجوال"
+>>>>>>> master
 }
