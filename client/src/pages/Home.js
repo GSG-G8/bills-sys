@@ -17,6 +17,7 @@ const Home = () => {
         if (!tempTypes[name]) allTypes.push({ name, id });
         tempTypes[name] = 'exists';
       }, {});
+      allTypes.sort((a, b) => (a.id > b.id ? 1 : -1));
       setUserBillTypes(allTypes);
     } catch (err) {
       if (err.response) setError(err.response.data.message);
@@ -26,7 +27,6 @@ const Home = () => {
   useEffect(() => {
     getBills();
   }, []);
-
   if (error)
     return (
       <div
