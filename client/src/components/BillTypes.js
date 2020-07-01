@@ -23,8 +23,15 @@ const BillsTypes = ({ userBillTypes }) => (
   </div>
 );
 
+const { shape, arrayOf, number, string } = PropTypes;
+
 BillsTypes.propTypes = {
-  userBillTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  userBillTypes: arrayOf(
+    shape({
+      id: number.isRequired,
+      name: string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default BillsTypes;
