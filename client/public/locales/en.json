@@ -10,5 +10,9 @@
       "email": "Email",
       "password": "Password"
     }
-  }
+  },
+  "water": "Water",
+  "electricity": "Electricity",
+  "internet": "Internet",
+  "mobile": "Mobile"
 }
