@@ -1,30 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import * as Icons from '../assets';
-
-const TypesColors = {
-  water: {
-    color: 'bg-kournikova',
-    hoverColor: 'bg-kournikova-lighter',
-    component: Icons.Water,
-  },
-  electricity: {
-    hoverColor: 'hover:bg-blueBell-lighter',
-    color: 'bg-blueBell',
-    component: Icons.Electricity,
-  },
-  internet: {
-    hoverColor: 'hover:bg-magenta-lighter',
-    color: 'bg-magenta',
-    component: Icons.Wifi,
-  },
-  mobile: {
-    hoverColor: 'hover:bg-blue-lighter',
-    color: 'bg-blue',
-    component: Icons.Mobile,
-  },
-};
+import TypesColors from '../assets/typesIcons';
 
 const BillsTypes = ({ billTypes }) => (
   <div className="flex flex-wrap justify-between text-2xl text-mich-white px-6 lg:px-24">
