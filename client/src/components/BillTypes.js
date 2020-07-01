@@ -1,33 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import * as Icons from '../assets';
-
-const TypesColors = {
-  water: {
-    color: 'bg-kournikova',
-    hoverColor: 'bg-kournikova-lighter',
-    component: Icons.WaterIcon,
-  },
-  electricity: {
-    hoverColor: 'hover:bg-blueBell-lighter',
-    color: 'bg-blueBell',
-    component: Icons.ElectIcon,
-  },
-  internet: {
-    hoverColor: 'hover:bg-magenta-lighter',
-    color: 'bg-magenta',
-    component: Icons.WifiIcon,
-  },
-  mobile: {
-    hoverColor: 'hover:bg-blue-lighter',
-    color: 'bg-blue',
-    component: Icons.MobileIcon,
-  },
-};
+import TypesColors from '../assets/typesIcons';
 
 const BillsTypes = ({ billTypes }) => (
-  <div className="flex flex-wrap justify-between text-2xl text-mich-white">
+  <div className="flex flex-wrap justify-between text-2xl text-mich-white px-6 lg:px-24">
     {billTypes.map((type) => {
       const Icon = TypesColors[type].component;
       return (

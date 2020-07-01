@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BillTypes } from '../components';
+import { BillTypes, PieChart } from '../components';
 
 const Home = () => {
   const [error, setError] = useState('');
@@ -40,6 +40,7 @@ const Home = () => {
     <>
       <h1> Home </h1>
       <BillTypes billTypes={billTypes} />
+      <PieChart billTypes={billTypes} />
     </>
   );
 };
