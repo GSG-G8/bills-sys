@@ -1,29 +1,35 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BillTypes, PieChart } from '../components';
+import React, { useEffect, useState } from 'react';
+import { BillTypes, Loader, PieChart } from '../components';
 
 const Home = () => {
   const [error, setError] = useState('');
-  const [billTypes, setBillTypes] = useState([]);
+  const [userBillTypes, setUserBillTypes] = useState([]);
 
   const getBills = async () => {
     try {
       const res = await axios.get('/api/v1/bills/me');
       const { data: bills } = res;
-      const billType = bills.reduce((types, { type }) => {
-        const tempTypes = { ...types };
-        tempTypes[type.name] = '';
-        return tempTypes;
+      const allTypes = [];
+      const tempTypes = {};
+
+      bills.forEach(({ type: { name }, type_id: id }) => {
+        if (!tempTypes[name]) allTypes.push({ name, id });
+        tempTypes[name] = 'exists';
       }, {});
-      setBillTypes(Object.keys(billType));
+      allTypes.sort((a, b) => (a.id > b.id ? 1 : -1));
+      setUserBillTypes(allTypes);
     } catch (err) {
-      setError('Something went error');
+      if (err.response) setError(err.response.data.message);
+      else setError('Something went error');
     }
   };
+
+  const getMonthBills = async () => {};
   useEffect(() => {
     getBills();
+    getMonthBills();
   }, []);
-
   if (error)
     return (
       <div
@@ -35,12 +41,12 @@ const Home = () => {
       </div>
     );
 
-  if (!billTypes?.length) return 'loading';
+  if (!userBillTypes?.length) return <Loader />;
   return (
     <>
       <h1> Home </h1>
-      <BillTypes billTypes={billTypes} />
-      <PieChart billTypes={billTypes} />
+      <PieChart userBillTypes={userBillTypes} />
+      <BillTypes userBillTypes={userBillTypes} />
     </>
   );
 };

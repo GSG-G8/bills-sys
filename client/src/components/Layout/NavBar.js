@@ -12,7 +12,7 @@ const NavBar = () => {
       <button
         type="button"
         className="w-1/3  px-1 py-2 flex flex-col items-center bg-mich-white text-primary-lighter border-primary-lighter border-t-2 border-r-2 cursor-pointer focus:outline-none lg:px-0 lg:py-4 lg:w-full"
-        onClick={() => history.push('./home')}
+        onClick={() => history.push('/home')}
       >
         <Home />
       </button>

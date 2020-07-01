@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
 
-const PieChart = ({ billTypes }) => {
+const PieChart = ({ userBillTypes }) => {
   const data = {
-    labels: billTypes,
+    labels: userBillTypes,
     datasets: [
       {
         data: [300, 50, 100, 150],
@@ -22,8 +22,15 @@ const PieChart = ({ billTypes }) => {
   );
 };
 
+const { shape, arrayOf, number, string } = PropTypes;
+
 PieChart.propTypes = {
-  billTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  userBillTypes: arrayOf(
+    shape({
+      id: number.isRequired,
+      name: string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default PieChart;
