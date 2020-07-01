@@ -13,5 +13,9 @@
   },
   "tips": "englishTips",
   "tipsToggleTitle": "Tips to reduce your bills",
-  "compareTableTitle": "Comparison table"
+  "compareTableTitle": "Comparison table",
+  "water": "Water",
+  "electricity": "Electricity",
+  "internet": "Internet",
+  "mobile": "Mobile"
 }
