@@ -6,26 +6,28 @@ const Home = () => {
   const [error, setError] = useState('');
   const [userBillTypes, setUserBillTypes] = useState([]);
 
-  const getBills = async () => {
-    try {
-      const res = await axios.get('/api/v1/bills/me');
-      const { data: bills } = res;
-      const allTypes = [];
-      const tempTypes = {};
+  const getBillTypes = (bills) => {
+    const allTypes = [];
+    const tempTypes = {};
 
-      bills.forEach(({ type: { name }, type_id: id }) => {
-        if (!tempTypes[name]) allTypes.push({ name, id });
-        tempTypes[name] = 'exists';
-      }, {});
-      allTypes.sort((a, b) => (a.id > b.id ? 1 : -1));
-      setUserBillTypes(allTypes);
-    } catch (err) {
-      if (err.response) setError(err.response.data.message);
-      else setError('Something went error');
-    }
+    bills.forEach(({ type: { name }, type_id: id }) => {
+      if (!tempTypes[name]) allTypes.push({ name, id });
+      tempTypes[name] = 'exists';
+    }, {});
+    return allTypes.sort((a, b) => (a.id > b.id ? 1 : -1));
   };
+
   useEffect(() => {
-    getBills();
+    (async () => {
+      try {
+        const res = await axios.get('/api/v1/bills/me');
+        const { data: bills } = res;
+        setUserBillTypes(getBillTypes(bills));
+      } catch (err) {
+        if (err.response) setError(err.response.data.message);
+        else setError('Something went error');
+      }
+    })();
   }, []);
   if (error)
     return (
