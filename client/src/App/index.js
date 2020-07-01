@@ -22,7 +22,7 @@ const App = () => {
               </>
             )}
             <Layout>
-              <Route path="/current">
+              <Route path="/current/:billType">
                 <Current />
               </Route>
               <Route path="(/|/home)">
