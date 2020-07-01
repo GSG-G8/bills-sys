@@ -1,21 +1,29 @@
-import React, { useState, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout, Spinner } from '../components';
+import { Layout, Spinner, Header } from '../components';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
+import { useAuth } from '../hooks';
+
+const Loader = () => <Spinner className="w-8 h-8 m-auto spin mt-64" />;
 
 const App = () => {
-  const [logged] = useState(() => true);
+  const { logged, setLogged, setUserId } = useAuth();
+
+  if (logged === 'loading') return <Loader />;
   return (
     <div>
-      <Suspense fallback={<Spinner className="w-8 h-8 m-auto spin mt-64" />}>
+      <Suspense fallback={<Loader />}>
         <Router>
-          <Layout>
-            <Switch>
-              {!logged && (
+          <Switch>
+            {!logged && (
+              <>
+                <Header />
                 <Route>
-                  <Login />
+                  <Login setLogged={setLogged} setId={setUserId} />
                 </Route>
-              )}
+              </>
+            )}
+            <Layout>
               <Route path="/current">
                 <Current />
               </Route>
@@ -28,8 +36,8 @@ const App = () => {
               <Route path="/profile">
                 <Profile />
               </Route>
-            </Switch>
-          </Layout>
+            </Layout>
+          </Switch>
         </Router>
       </Suspense>
     </div>
