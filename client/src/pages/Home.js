@@ -36,8 +36,7 @@ const Home = () => {
       </div>
     );
 
-  if (!billTypes?.length)
-    return <Loader className="w-8 h-8 m-auto spin mt-64" />;
+  if (!billTypes?.length) return <Loader />;
   return (
     <>
       <h1> Home </h1>
