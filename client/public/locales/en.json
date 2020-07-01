@@ -11,5 +11,7 @@
       "password": "Password"
     }
   },
-  "tips": "englishTips"
+  "tips": "englishTips",
+  "tipsToggleTitle": "Tips to reduce your bills",
+  "compareTableTitle": "Comparison table"
 }

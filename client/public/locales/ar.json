@@ -11,5 +11,7 @@
       "password": "كلمة السر"
     }
   },
-  "tips": "arabicTips"
+  "tips": "arabicTips",
+  "tipsToggleTitle": "ارشادات لتقليل الفاتورة",
+  "compareTableTitle": "جدول المقارنة"
 }
