@@ -1,21 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { BillTypes, Loader } from '../components';
+import getBillTypes from '../utils/getBillTypes';
 
 const Home = () => {
   const [error, setError] = useState('');
   const [userBillTypes, setUserBillTypes] = useState([]);
-
-  const getBillTypes = (bills) => {
-    const allTypes = [];
-    const tempTypes = {};
-
-    bills.forEach(({ type: { name }, type_id: id }) => {
-      if (!tempTypes[name]) allTypes.push({ name, id });
-      tempTypes[name] = 'exists';
-    }, {});
-    return allTypes.sort((a, b) => (a.id > b.id ? 1 : -1));
-  };
 
   useEffect(() => {
     (async () => {
