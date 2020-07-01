@@ -2,22 +2,23 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 const LineChart = ({ bills }) => {
   const data = {
-    labels: [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ],
+    labels: months,
     datasets: [
       {
         label: 'Past Bills $',
