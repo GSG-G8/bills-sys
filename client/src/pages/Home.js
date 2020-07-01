@@ -4,18 +4,20 @@ import { BillTypes, Loader } from '../components';
 
 const Home = () => {
   const [error, setError] = useState('');
-  const [billTypes, setBillTypes] = useState([]);
+  const [userBillTypes, setUserBillTypes] = useState([]);
 
   const getBills = async () => {
     try {
       const res = await axios.get('/api/v1/bills/me');
       const { data: bills } = res;
-      const billType = bills.reduce((types, { type }) => {
-        const tempTypes = { ...types };
-        tempTypes[type.name] = '';
-        return tempTypes;
+      const allTypes = [];
+      const tempTypes = {};
+
+      bills.forEach(({ type: { name }, type_id: id }) => {
+        if (!tempTypes[name]) allTypes.push({ name, id });
+        tempTypes[name] = 'exists';
       }, {});
-      setBillTypes(Object.keys(billType));
+      setUserBillTypes(allTypes);
     } catch (err) {
       if (err.response) setError(err.response.data.message);
       else setError('Something went error');
@@ -36,11 +38,11 @@ const Home = () => {
       </div>
     );
 
-  if (!billTypes?.length) return <Loader />;
+  if (!userBillTypes?.length) return <Loader />;
   return (
     <>
       <h1> Home </h1>
-      <BillTypes billTypes={billTypes} />
+      <BillTypes userBillTypes={userBillTypes} />
     </>
   );
 };
