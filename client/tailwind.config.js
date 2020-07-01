@@ -1,13 +1,19 @@
 const {
-  colors: { white, gray, black, transparent },
+  colors: { white, gray, black, red, transparent },
 } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   theme: {
+    inset: {
+      0: 0,
+      auto: 'auto',
+      center: '33.3vh',
+    },
     colors: {
       white,
       gray,
       black,
+      red,
       transparent,
       primary: {
         lighter: '#4dc1a1',
