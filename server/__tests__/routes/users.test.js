@@ -49,7 +49,7 @@ describe('test users route', () => {
       .set('Accept', 'application/json')
       .expect(400);
     expect(res.body.message).toStrictEqual(
-      'Email does not exist, signup first'
+      'Please double check your password or email'
     );
   });
 
@@ -64,7 +64,9 @@ describe('test users route', () => {
       .send(reqBody)
       .set('Accept', 'application/json')
       .expect(400);
-    expect(res.body.message).toStrictEqual('invalid password');
+    expect(res.body.message).toStrictEqual(
+      'Please double check your password or email'
+    );
   });
 
   describe('test logout', () => {

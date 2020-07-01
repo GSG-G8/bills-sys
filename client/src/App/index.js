@@ -1,41 +1,45 @@
-import React, { useState } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout } from '../components';
+import { Layout, Spinner, Header } from '../components';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
+import { useAuth } from '../hooks';
 
-// this will be here for the mean time just to display the chart till the current page gets ready
-import BarChart from '../components/Charts/BarChart';
-// fake data for the BarChart
-const data = [121, 90, 2, 4, 6, 7, 11, 21, 81, 105];
+const Loader = () => <Spinner className="w-8 h-8 m-auto spin mt-64" />;
 
 const App = () => {
-  const [logged] = useState(() => false);
+  const { logged, setLogged, setUserId } = useAuth();
+
+  if (logged === 'loading') return <Loader />;
   return (
     <div>
-      <Router>
-        <Layout>
-          <BarChart data={data} />
+      <Suspense fallback={<Loader />}>
+        <Router>
           <Switch>
             {!logged && (
-              <Route>
-                <Login />
-              </Route>
+              <>
+                <Header />
+                <Route>
+                  <Login setLogged={setLogged} setId={setUserId} />
+                </Route>
+              </>
             )}
-            <Route path="/current">
-              <Current />
-            </Route>
-            <Route path="(/|/home)">
-              <Home />
-            </Route>
-            <Route path="/past-bills">
-              <PastBills />
-            </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
+            <Layout>
+              <Route path="/current">
+                <Current />
+              </Route>
+              <Route path="(/|/home)">
+                <Home />
+              </Route>
+              <Route path="/past-bills">
+                <PastBills />
+              </Route>
+              <Route path="/profile">
+                <Profile />
+              </Route>
+            </Layout>
           </Switch>
-        </Layout>
-      </Router>
+        </Router>
+      </Suspense>
     </div>
   );
 };
