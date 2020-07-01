@@ -3,5 +3,12 @@
   "language": {
     "ar": "AR",
     "en": "EN"
+  },
+  "pages": {
+    "login": {
+      "buttonTxt": "تسجيل الدخول",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة السر"
+    }
   }
 }
