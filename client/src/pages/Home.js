@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BillTypes, Spinner } from '../components';
+import React, { useEffect, useState } from 'react';
+import { BillTypes, Loader } from '../components';
 
 const Home = () => {
   const [error, setError] = useState('');
@@ -37,7 +37,7 @@ const Home = () => {
     );
 
   if (!billTypes?.length)
-    return <Spinner className="w-8 h-8 m-auto spin mt-64" />;
+    return <Loader className="w-8 h-8 m-auto spin mt-64" />;
   return (
     <>
       <h1> Home </h1>

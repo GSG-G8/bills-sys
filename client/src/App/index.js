@@ -1,10 +1,8 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout, Spinner, Header } from '../components';
-import { Current, Home, Login, PastBills, Profile } from '../pages';
+import { Header, Layout, Loader } from '../components';
 import { useAuth } from '../hooks';
-
-const Loader = () => <Spinner className="w-8 h-8 m-auto spin mt-64" />;
+import { Current, Home, Login, PastBills, Profile } from '../pages';
 
 const App = () => {
   const { logged, setLogged, setUserId } = useAuth();
