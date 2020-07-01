@@ -16,7 +16,7 @@ const ToggleContainer = ({ children, title }) => {
         >
           <span className="text-3xl">{title}</span>
           <img
-            className={`w-8 ${isToggle ? 'transform rotate-180' : ''}`}
+            className={`w-8 ${isToggle ? '' : 'transform rotate-180'}`}
             src={toggleImg}
             alt="toggleContainer"
           />

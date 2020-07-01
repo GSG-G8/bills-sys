@@ -1,0 +1,170 @@
+{
+  "electricity": [
+    {
+      "id": 1,
+      "text": "1- Use a programmable thermostat."
+    },
+    {
+      "id": 2,
+      "text": "2- Replace your air filter."
+    },
+    {
+      "id": 3,
+      "text": "3- Lower the temperature on the water heater."
+    },
+    {
+      "id": 4,
+      "text": "4- Balance Electricity use by using appliances strategically."
+    },
+    {
+      "id": 5,
+      "text": "5- Save Electricity by Washing clothes in cold water."
+    },
+    {
+      "id": 6,
+      "text": "6- Reduce Heat Waste by Checking doors and windows for leaks."
+    },
+    {
+      "id": 7,
+      "text": "7- Check that your appliances work properly."
+    },
+    {
+      "id": 8,
+      "text": "8- Consider a prepaid electric bill plan."
+    },
+    {
+      "id": 9,
+      "text": "9- Adjust your fridge and freezer temperature."
+    },
+    {
+      "id": 10,
+      "text": "10- Swap out your light bulbs"
+    }
+  ],
+  "water": [
+    {
+      "id": 1,
+      "text": "1- Replace your showerhead."
+    },
+    {
+      "id": 2,
+      "text": "2- Fix leaky faucets."
+    },
+    {
+      "id": 3,
+      "text": "3- Run full loads of laundry."
+    },
+    {
+      "id": 4,
+      "text": "4- Limit your showers."
+    },
+    {
+      "id": 5,
+      "text": "5- Wash dishes efficiently."
+    },
+    {
+      "id": 6,
+      "text": "6- Water your lawn at the right time."
+    },
+    {
+      "id": 7,
+      "text": "7- Don’t let the bathroom faucet run."
+    },
+    {
+      "id": 8,
+      "text": "8- Install water-efficient toilets."
+    },
+    {
+      "id": 9,
+      "text": "9- Inspect your appliances."
+    },
+    {
+      "id": 10,
+      "text": "10- Add aerators to your faucets."
+    }
+  ],
+  "mobile": [
+    {
+      "id": 1,
+      "text": "1- Use Wi-Fi when you can."
+    },
+    {
+      "id": 2,
+      "text": "2- Limit your background data use."
+    },
+    {
+      "id": 3,
+      "text": "3- Cut the insurance."
+    },
+    {
+      "id": 4,
+      "text": "4- Sign up for automated payments or paperless billing."
+    },
+    {
+      "id": 5,
+      "text": "5- Take advantage of your employee discount."
+    },
+    {
+      "id": 6,
+      "text": "6- Buy no-contract phones."
+    },
+    {
+      "id": 7,
+      "text": "7- Keep your phone longer."
+    },
+    {
+      "id": 8,
+      "text": "8- Don’t do a payment plan for your phone."
+    },
+    {
+      "id": 9,
+      "text": "9- Cut out the stuff you don’t use."
+    },
+    {
+      "id": 10,
+      "text": "10- Ask for a better price."
+    }
+  ],
+  "internet": [
+    {
+      "id": 1,
+      "text": "1- Reduce your internet speed."
+    },
+    {
+      "id": 2,
+      "text": "2- Buy your own modem and router."
+    },
+    {
+      "id": 3,
+      "text": "3- Bundle your internet with TV service."
+    },
+    {
+      "id": 4,
+      "text": "4- Shop around and compare prices."
+    },
+    {
+      "id": 5,
+      "text": "5- Negotiate your monthly bill."
+    },
+    {
+      "id": 6,
+      "text": "6- Cancel your cell phone data plan."
+    },
+    {
+      "id": 7,
+      "text": "7- Ask about discounts and promotions."
+    },
+    {
+      "id": 8,
+      "text": "8- Look for subsidies."
+    },
+    {
+      "id": 9,
+      "text": "9- Get cheap, bare-bones internet service."
+    },
+    {
+      "id": 10,
+      "text": "10- Ask for a better price."
+    }
+  ]
+}
