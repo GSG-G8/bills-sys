@@ -33,10 +33,14 @@ const Home = () => {
     );
 
   if (!userBillTypes?.length) return <Loader />;
+
+  const types = userMonthlyBills.map((bill) => bill.name);
+  const amounts = userMonthlyBills.map((bill) => bill.amount);
+
   return (
     <>
       <h1> Home </h1>
-      <DoughnutChart userMonthlyBills={userMonthlyBills} />
+      <DoughnutChart types={types} amounts={amounts} />
       <BillTypes userBillTypes={userBillTypes} toPage="current" />
     </>
   );
