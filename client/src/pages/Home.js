@@ -1,36 +1,19 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { BillTypes, Loader, PieChart } from '../components';
-import getBillTypes from '../utils/getBillTypes';
+import { BillTypes, Loader, DoughnutChart } from '../components';
+import { getBillTypes, getMonthlyBills } from '../utils';
 
 const Home = () => {
   const [error, setError] = useState('');
   const [userBillTypes, setUserBillTypes] = useState([]);
-
-  const getMonthBills = async () => {
-    const months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    console.log('mmmm', months[new Date().getMonth()]);
-  };
+  const [userMonthlyBills, setUserMonthlyBills] = useState([]);
 
   useEffect(() => {
-    getMonthBills();
     (async () => {
       try {
         const res = await axios.get('/api/v1/bills/me');
         const { data: bills } = res;
+        setUserMonthlyBills(getMonthlyBills(bills));
         setUserBillTypes(getBillTypes(bills));
       } catch (err) {
         if (err.response) setError(err.response.data.message);
@@ -53,7 +36,7 @@ const Home = () => {
   return (
     <>
       <h1> Home </h1>
-      <PieChart userBillTypes={userBillTypes} />
+      <DoughnutChart userMonthlyBills={userMonthlyBills} />
       <BillTypes userBillTypes={userBillTypes} />
     </>
   );
