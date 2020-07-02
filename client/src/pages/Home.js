@@ -34,7 +34,7 @@ const Home = () => {
   return (
     <>
       <h1> Home </h1>
-      <BillTypes userBillTypes={userBillTypes} />
+      <BillTypes userBillTypes={userBillTypes} toPage="current" />
     </>
   );
 };
