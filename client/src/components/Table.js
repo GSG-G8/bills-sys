@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
-const Table = ({ bills = [] }) => {
+const Table = ({ bills }) => {
   const { t } = useTranslation();
   const schema = [
     {
@@ -54,7 +54,6 @@ Table.propTypes = {
       id: number.isRequired,
     })
   ).isRequired,
-  // type:
 };
 
 export default Table;
