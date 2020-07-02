@@ -1,34 +1,42 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { BillTypes, Loader, PieChart } from '../components';
+import getBillTypes from '../utils/getBillTypes';
 
 const Home = () => {
   const [error, setError] = useState('');
   const [userBillTypes, setUserBillTypes] = useState([]);
 
-  const getBills = async () => {
-    try {
-      const res = await axios.get('/api/v1/bills/me');
-      const { data: bills } = res;
-      const allTypes = [];
-      const tempTypes = {};
-
-      bills.forEach(({ type: { name }, type_id: id }) => {
-        if (!tempTypes[name]) allTypes.push({ name, id });
-        tempTypes[name] = 'exists';
-      }, {});
-      allTypes.sort((a, b) => (a.id > b.id ? 1 : -1));
-      setUserBillTypes(allTypes);
-    } catch (err) {
-      if (err.response) setError(err.response.data.message);
-      else setError('Something went error');
-    }
+  const getMonthBills = async () => {
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    console.log('mmmm', months[new Date().getMonth()]);
   };
 
-  const getMonthBills = async () => {};
   useEffect(() => {
-    getBills();
     getMonthBills();
+    (async () => {
+      try {
+        const res = await axios.get('/api/v1/bills/me');
+        const { data: bills } = res;
+        setUserBillTypes(getBillTypes(bills));
+      } catch (err) {
+        if (err.response) setError(err.response.data.message);
+        else setError('Something went error');
+      }
+    })();
   }, []);
   if (error)
     return (
