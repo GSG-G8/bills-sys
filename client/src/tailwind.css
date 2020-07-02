@@ -5,7 +5,13 @@ html * {
 }
 
 @tailwind components;
+
 .spin {
   animation: spin 1s linear infinite;
 }
+
+[dir="rtl"] .rtl\:arabic-ol {
+  list-style-type: arabic-indic;
+}
+
 @tailwind utilities;
