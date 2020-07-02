@@ -10,7 +10,7 @@ const Current = () => {
   const { t } = useTranslation();
   const { billType } = useParams();
   return (
-    <div className="mx-4 lg:mx-16 lg:mx-8 lg:my-8">
+    <div className="mx-4 lg:mx-16 lg:mx-8 lg:my-8 md:mx-10 md:mx-5 md:my-5">
       <ToggleContainer title={t('tipsToggleTitle')}>
         <Tips billType={billType} />
       </ToggleContainer>
