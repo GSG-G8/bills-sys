@@ -14,5 +14,11 @@
   "water": "الماء",
   "electricity": "الكهرباء",
   "internet": "الإنترنت",
-  "mobile": "الجوال"
+  "mobile": "الجوال",
+  "table": {
+    "type": "نوع الفاتورة",
+    "billing-period": "دورة الفاتورة",
+    "amount": "القيمة",
+    "details": "التفاصيل"
+  }
 }

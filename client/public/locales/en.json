@@ -14,5 +14,11 @@
   "water": "Water",
   "electricity": "Electricity",
   "internet": "Internet",
-  "mobile": "Mobile"
+  "mobile": "Mobile",
+  "table": {
+    "type": "Type",
+    "billing-period": "Billing Period",
+    "amount": "Amount",
+    "details": "Details"
+  }
 }

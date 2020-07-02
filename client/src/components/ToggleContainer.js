@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import toggleImg from '../assets/up-arrow-svgrepo-com.svg';
 
 const ToggleContainer = ({ children, title }) => {
-  const [isToggle, setIsToggle] = useState(false);
+  const [isToggle, setIsToggle] = useState(true);
   const toggle = () => setIsToggle(!isToggle);
 
   return (
