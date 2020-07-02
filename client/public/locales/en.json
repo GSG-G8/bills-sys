@@ -18,5 +18,11 @@
   "electricity": "Electricity",
   "internet": "Internet",
   "mobile": "Mobile",
+  "table": {
+    "type": "Type",
+    "billing-period": "Billing Period",
+    "amount": "Amount",
+    "details": "Details"
+  },
   "direction": "ltr"
 }
