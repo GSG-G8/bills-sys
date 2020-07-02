@@ -15,13 +15,13 @@ const Tips = ({ billType }) => {
   }, [billType, setTips, t]);
   return (
     <div>
-      <ul className="mx-2">
+      <ol type="1" className="mx-2 list-decimal rtl:arabic-ol">
         {tips.map(({ id, text }) => (
           <li key={id} className="p-2">
             {text}
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 };
