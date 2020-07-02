@@ -15,7 +15,7 @@ const Tips = ({ billType }) => {
   }, [billType, setTips, t]);
   return (
     <div>
-      <ul className="mx-8">
+      <ul className="mx-2">
         {tips.map(({ id, text }) => (
           <li key={id} className="p-2">
             {text}

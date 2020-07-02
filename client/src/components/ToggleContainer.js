@@ -8,11 +8,11 @@ const ToggleContainer = ({ children, title }) => {
 
   return (
     <div>
-      <div className="flex justify-between p-5 border-b my-3">
+      <div className="flex justify-between py-5 border-b my-3">
         <button
           type="button"
           onClick={toggle}
-          className="flex focus:outline-none mx-3  justify-between w-full items-center"
+          className="flex focus:outline-none mx-3 justify-between w-full items-center"
         >
           <span className="text-xl">{title}</span>
           <img
