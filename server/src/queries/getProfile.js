@@ -5,4 +5,5 @@ exports.getProfile = (id) =>
     where: {
       id,
     },
+    attributes: { exclude: ['password'] },
   });
