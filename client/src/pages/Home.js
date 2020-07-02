@@ -8,6 +8,29 @@ const Home = () => {
   const [userBillTypes, setUserBillTypes] = useState([]);
   const [userMonthlyBills, setUserMonthlyBills] = useState([]);
 
+  const getMonthBills = () => {
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+
+    return months[new Date().getMonth()];
+  };
+
+  // const billsAmount = () => {
+  //   console.log('ssss', getMonthlyBills())
+  // }
+
   useEffect(() => {
     (async () => {
       try {
@@ -36,13 +59,19 @@ const Home = () => {
 
   const types = userMonthlyBills.map((bill) => bill.name);
   const amounts = userMonthlyBills.map((bill) => bill.amount);
+  const userBills = userMonthlyBills
+    .map((bill) => bill.amount)
+    .reduce((a, b) => a + b);
 
   return (
-    <>
-      <h1> Home </h1>
+    <div className=" px-6 lg:px-24">
+      <h1 className="font-bold text-3xl"> Hello </h1>
+      <p>
+        Your total for the month of {getMonthBills()} was: ${userBills}.
+      </p>
       <DoughnutChart types={types} amounts={amounts} />
       <BillTypes userBillTypes={userBillTypes} toPage="current" />
-    </>
+    </div>
   );
 };
 

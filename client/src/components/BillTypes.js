@@ -7,7 +7,7 @@ import TypesColors from '../assets/typesIcons';
 const BillsTypes = ({ userBillTypes, toPage }) => {
   const { t } = useTranslation();
   return (
-    <div className="flex flex-wrap justify-between text-2xl text-mich-white px-6 lg:px-24">
+    <div className="flex flex-wrap justify-between text-2xl text-mich-white">
       {userBillTypes.map(({ name, id }) => {
         const Icon = TypesColors[name].component;
         return (
