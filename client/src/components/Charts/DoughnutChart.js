@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
 
 const DoughnutChart = ({ userMonthlyBills }) => {
-  const type = userMonthlyBills.map((bill) => bill.name);
+  const { t } = useTranslation();
+  const result = userMonthlyBills.map((bill) => bill.name);
+  const types = result.map((type) => t(type));
   const amount = userMonthlyBills.map((bill) => bill.amount);
   const data = {
-    labels: type,
+    labels: types,
     datasets: [
       {
         data: amount,

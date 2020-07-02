@@ -11,8 +11,12 @@
       "password": "Password"
     }
   },
+  "tips": "englishTips",
+  "tipsToggleTitle": "Tips to reduce your bills",
+  "compareTableTitle": "Comparison table",
   "water": "Water",
   "electricity": "Electricity",
   "internet": "Internet",
-  "mobile": "Mobile"
+  "mobile": "Mobile",
+  "direction": "ltr"
 }

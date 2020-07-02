@@ -8,15 +8,15 @@ const ToggleContainer = ({ children, title }) => {
 
   return (
     <div>
-      <div className="flex justify-between p-5 ">
+      <div className="flex justify-between py-5 border-b my-3">
         <button
           type="button"
           onClick={toggle}
-          className="flex focus:outline-none mx-3  justify-between w-full items-center"
+          className="flex focus:outline-none mx-3 justify-between w-full items-center"
         >
-          <span className="text-3xl">{title}</span>
+          <span className="text-xl">{title}</span>
           <img
-            className={`w-8 ${isToggle ? 'transform rotate-180' : ''}`}
+            className={`w-5 ${isToggle ? '' : 'transform rotate-180'}`}
             src={toggleImg}
             alt="toggleContainer"
           />

@@ -37,7 +37,7 @@ const Home = () => {
     <>
       <h1> Home </h1>
       <DoughnutChart userMonthlyBills={userMonthlyBills} />
-      <BillTypes userBillTypes={userBillTypes} />
+      <BillTypes userBillTypes={userBillTypes} toPage="current" />
     </>
   );
 };
