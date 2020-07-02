@@ -18,5 +18,20 @@
   "electricity": "Electricity",
   "internet": "Internet",
   "mobile": "Mobile",
-  "direction": "ltr"
+  "direction": "ltr",
+  "months": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
+  "hometitle": "Your total for the month of"
 }

@@ -1,12 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BillTypes, Loader, DoughnutChart } from '../components';
-import { getBillTypes, getMonthlyBills, getMonth } from '../utils';
+import { getBillTypes, getMonthlyBills } from '../utils';
 
 const Home = () => {
+  const { t } = useTranslation();
   const [error, setError] = useState('');
   const [userBillTypes, setUserBillTypes] = useState([]);
   const [userMonthlyBills, setUserMonthlyBills] = useState([]);
+
+  const months = t('months', { returnObjects: true });
 
   useEffect(() => {
     (async () => {
@@ -44,7 +48,7 @@ const Home = () => {
     <div className=" px-6 lg:px-24">
       <h1 className="font-bold text-3xl"> Hello </h1>
       <p>
-        Your total for the month of {getMonth()} was: ${userBills}.
+        {t('hometitle')} {months[new Date().getMonth()]}: ${userBills}.
       </p>
       <DoughnutChart types={types} amounts={amounts} />
       <BillTypes userBillTypes={userBillTypes} toPage="current" />
