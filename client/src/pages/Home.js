@@ -20,8 +20,6 @@ const Home = () => {
         const res = await axios.get('/api/v1/bills/me');
         const { data: bills } = res;
         setUserMonthlyBills(getMonthlyBills(bills));
-        // setUserBillTypes(getBillTypes(bills));
-
         setTypes(getMonthlyBills(bills).map(({ name }) => name));
         setAmounts(getMonthlyBills(bills).map(({ amount }) => amount));
         setSumBills(
