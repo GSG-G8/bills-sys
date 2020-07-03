@@ -59,16 +59,19 @@ const Home = () => {
   if (!userMonthlyBills?.length) return <Loader />;
 
   return (
-    <div className=" px-6 lg:px-24">
-      <h1 className="font-bold text-3xl">
+    <div className="mx-auto lg:w-4/5 w-11/12 md:pt-10 pt-4 pb-24 md:pb-0">
+      <h1 className="font-bold md:text-3xl text-2xl sm:mb-2">
         {' '}
         {t('greeting')} {userName}{' '}
       </h1>
-      <p>
-        {t('hometitle')} {months[new Date().getMonth()]}: ${sumBills}.
+      <p className="md:text-2xl">
+        {t('hometitle')} {months[new Date().getMonth()]}:{' '}
+        <span className="text-primary">${sumBills}</span>.
       </p>
-      <DoughnutChart types={types} amounts={amounts} />
-      <BillTypes userBillTypes={userMonthlyBills} toPage="current" />
+      <div className="md:flex md:justify-between md:align-middle md:mt-6 sm:mt-10 mt-4">
+        <DoughnutChart types={types} amounts={amounts} />
+        <BillTypes userBillTypes={userMonthlyBills} toPage="current" />
+      </div>
     </div>
   );
 };

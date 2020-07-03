@@ -6,7 +6,7 @@ import { ReactComponent as Mobile } from './smartphone-iphone.svg';
 const TypesColors = {
   water: {
     color: 'bg-kournikova',
-    hoverColor: 'bg-kournikova-lighter',
+    hoverColor: 'hover:bg-kournikova-lighter',
     component: Water,
   },
   electricity: {

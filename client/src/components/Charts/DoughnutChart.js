@@ -11,12 +11,16 @@ const DoughnutChart = ({ types, amounts }) => {
       {
         data: amounts,
         backgroundColor: ['#FFD44C', '#999BD2', '#B76569', '#1F7BCA'],
-        hoverBackgroundColor: ['#ffdd70', '#adafdb', '#c58487', '#4c95d5'],
+        hoverBackgroundColor: ['#ffc91a', '#8385c9', '#ad5256', '#1c6bb0'],
       },
     ],
   };
 
-  return <Doughnut data={data} />;
+  return (
+    <div className="md:w-12/25 md:pt-10 mb-6">
+      <Doughnut data={data} legend={false} />
+    </div>
+  );
 };
 
 DoughnutChart.propTypes = {
