@@ -1,5 +1,6 @@
 export { default as Layout, Header, NavBar } from './Layout';
-export { BarChart, LineChart, PieChart } from './Charts';
+export { BarChart, LineChart, DoughnutChart } from './Charts';
+export { default as BillsTable } from './BillsTable';
 export { default as Table } from './Table';
 export { default as BillTypes } from './BillTypes';
 export { default as LanguageToggle } from './LanguageToggle';
