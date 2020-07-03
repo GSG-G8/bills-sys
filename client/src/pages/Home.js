@@ -38,15 +38,15 @@ const Home = () => {
 
   if (!userBillTypes?.length) return <Loader />;
 
-  const types = userMonthlyBills.map((bill) => bill.name);
-  const amounts = userMonthlyBills.map((bill) => bill.amount);
+  const types = userMonthlyBills.map(({ name }) => name);
+  const amounts = userMonthlyBills.map(({ amount }) => amount);
   const userBills = userMonthlyBills
-    .map((bill) => bill.amount)
-    .reduce((a, b) => a + b);
+    .map(({ amount }) => amount)
+    .reduce((a, b) => a + b, 0);
 
   return (
     <div className=" px-6 lg:px-24">
-      <h1 className="font-bold text-3xl"> Hello </h1>
+      <h1 className="font-bold text-3xl"> {t('greeting')} </h1>
       <p>
         {t('hometitle')} {months[new Date().getMonth()]}: ${userBills}.
       </p>

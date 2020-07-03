@@ -16,11 +16,7 @@ const DoughnutChart = ({ types, amounts }) => {
     ],
   };
 
-  return (
-    <>
-      <Doughnut data={data} />
-    </>
-  );
+  return <Doughnut data={data} />;
 };
 
 DoughnutChart.propTypes = {

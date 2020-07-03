@@ -33,5 +33,6 @@
     "November",
     "December"
   ],
-  "hometitle": "Your total for the month of"
+  "hometitle": "Your total for the month of",
+  "greeting": "Hello"
 }
