@@ -2,13 +2,15 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BillTypes, Loader, DoughnutChart } from '../components';
-import { getBillTypes, getMonthlyBills } from '../utils';
+import getMonthlyBills from '../utils/getMonthlyBills';
 
 const Home = () => {
   const { t } = useTranslation();
   const [error, setError] = useState('');
-  const [userBillTypes, setUserBillTypes] = useState([]);
   const [userMonthlyBills, setUserMonthlyBills] = useState([]);
+  const [types, setTypes] = useState([]);
+  const [amounts, setAmounts] = useState([]);
+  const [sumBills, setSumBills] = useState(0);
 
   const months = t('months', { returnObjects: true });
 
@@ -18,7 +20,15 @@ const Home = () => {
         const res = await axios.get('/api/v1/bills/me');
         const { data: bills } = res;
         setUserMonthlyBills(getMonthlyBills(bills));
-        setUserBillTypes(getBillTypes(bills));
+        // setUserBillTypes(getBillTypes(bills));
+
+        setTypes(getMonthlyBills(bills).map(({ name }) => name));
+        setAmounts(getMonthlyBills(bills).map(({ amount }) => amount));
+        setSumBills(
+          getMonthlyBills(bills)
+            .map(({ amount }) => amount)
+            .reduce((a, b) => a + b, 0)
+        );
       } catch (err) {
         if (err.response) setError(err.response.data.message);
         else setError('Something went error');
@@ -36,22 +46,16 @@ const Home = () => {
       </div>
     );
 
-  if (!userBillTypes?.length) return <Loader />;
-
-  const types = userMonthlyBills.map(({ name }) => name);
-  const amounts = userMonthlyBills.map(({ amount }) => amount);
-  const userBills = userMonthlyBills
-    .map(({ amount }) => amount)
-    .reduce((a, b) => a + b, 0);
+  if (!userMonthlyBills?.length) return <Loader />;
 
   return (
     <div className=" px-6 lg:px-24">
       <h1 className="font-bold text-3xl"> {t('greeting')} </h1>
       <p>
-        {t('hometitle')} {months[new Date().getMonth()]}: ${userBills}.
+        {t('hometitle')} {months[new Date().getMonth()]}: ${sumBills}.
       </p>
       <DoughnutChart types={types} amounts={amounts} />
-      <BillTypes userBillTypes={userBillTypes} toPage="current" />
+      <BillTypes userBillTypes={userMonthlyBills} toPage="current" />
     </div>
   );
 };
