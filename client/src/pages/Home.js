@@ -11,8 +11,19 @@ const Home = () => {
   const [types, setTypes] = useState([]);
   const [amounts, setAmounts] = useState([]);
   const [sumBills, setSumBills] = useState(0);
+  const [userName, setUserName] = useState('');
 
   const months = t('months', { returnObjects: true });
+
+  const getUserName = async () => {
+    try {
+      const { data } = await axios.get('api/v1/profile');
+      setUserName(data.first_name);
+    } catch (err) {
+      if (err.response) setError(err.response.data.message);
+      else setError('Something went error');
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -32,6 +43,7 @@ const Home = () => {
         else setError('Something went error');
       }
     })();
+    getUserName();
   }, []);
   if (error)
     return (
@@ -48,7 +60,10 @@ const Home = () => {
 
   return (
     <div className=" px-6 lg:px-24">
-      <h1 className="font-bold text-3xl"> {t('greeting')} </h1>
+      <h1 className="font-bold text-3xl">
+        {' '}
+        {t('greeting')} {userName}{' '}
+      </h1>
       <p>
         {t('hometitle')} {months[new Date().getMonth()]}: ${sumBills}.
       </p>
