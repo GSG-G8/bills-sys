@@ -1,11 +1,10 @@
 const getMonthlyBills = (bills) => {
-  const allBills = [];
   const month = new Date().getMonth() + 1;
-  const userBills = bills.filter((bill) => bill.billing_month === month);
-  userBills.forEach(({ type_id: id, type: { name }, amount }) => {
-    allBills.push({ id, name, amount });
-  });
-  return allBills.sort((a, b) => a.id - b.id);
+  const userBills = bills
+    .filter((bill) => bill.billing_month === month)
+    .map(({ type_id: id, type: { name }, amount }) => ({ id, name, amount }))
+    .sort((a, b) => a.id - b.id);
+  return userBills;
 };
 
 export default getMonthlyBills;
