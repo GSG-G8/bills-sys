@@ -70,7 +70,6 @@ describe('test users route', () => {
   });
 
   describe('test logout', () => {
-    afterAll(() => sequelize.close());
     it('route /logout', async () => {
       expect.assertions(2);
       const result = await request(app)
@@ -82,6 +81,23 @@ describe('test users route', () => {
       expect(result.header['set-cookie']).toContainEqual(
         'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT'
       );
+    });
+  });
+
+  describe('test get profile route', () => {
+    it('route /profile', async () => {
+      expect.assertions(4);
+      const result = await request(app)
+        .get('/api/v1/profile')
+        .set('Accept', 'application/json')
+        .set('Cookie', [
+          'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTkzOTM2NzMyfQ.1zjgDwHRr-1KOFJQGTBGkmESCMo5NeJwW7hcjt9h6nU',
+        ])
+        .expect(200);
+      expect(result.body.first_name).toBe('Arturo');
+      expect(result.body.last_name).toBe('Carter');
+      expect(result.body.email).toBe('Conrad_Rosenbaum38@gmail.com');
+      expect(result.body.mobile_num).toBe('692-815-0979');
     });
   });
 });

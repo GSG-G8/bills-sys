@@ -18,6 +18,7 @@
   "electricity": "الكهرباء",
   "internet": "الإنترنت",
   "mobile": "الجوال",
+  "direction": "rtl",
   "months": [
     "يناير",
     "فبراير",
@@ -32,11 +33,12 @@
     "نوفمبر",
     "ديسمبر"
   ],
+  "hometitle": "مجموع فواتيرك لشهر",
+  "greeting": "مرحبا",
   "table": {
     "type": "نوع الفاتورة",
     "billing-period": "دورة الفاتورة",
     "amount": "القيمة",
     "details": "التفاصيل"
-  },
-  "direction": "rtl"
+  }
 }

@@ -18,6 +18,7 @@
   "electricity": "Electricity",
   "internet": "Internet",
   "mobile": "Mobile",
+  "direction": "ltr",
   "months": [
     "January",
     "February",
@@ -32,11 +33,12 @@
     "November",
     "December"
   ],
+  "hometitle": "Your total for the month of",
+  "greeting": "Hello",
   "table": {
     "type": "Type",
     "billing-period": "Billing Period",
     "amount": "Amount",
     "details": "Details"
-  },
-  "direction": "ltr"
+  }
 }
