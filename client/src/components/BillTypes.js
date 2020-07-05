@@ -7,14 +7,14 @@ import TypesColors from '../assets/typesIcons';
 const BillsTypes = ({ userBillTypes, toPage }) => {
   const { t } = useTranslation();
   return (
-    <div className="flex flex-wrap justify-between text-2xl text-mich-white px-6 lg:px-24">
+    <div className="flex flex-wrap justify-between text-2xl text-mich-white md:w-12/25">
       {userBillTypes.map(({ name, id }) => {
         const Icon = TypesColors[name].component;
         return (
           <Link
             key={id}
             to={`/${toPage}/${name}`}
-            className={`${TypesColors[name].color} ${TypesColors[name].hoverColor} px-3 py-1 rounded my-2 h-40 w-12/25 sm:w-8/25 md:w-23/100 flex flex-wrap justify-center`}
+            className={`${TypesColors[name].color} ${TypesColors[name].hoverColor} px-3 py-1 rounded my-2 h-40 w-12/25 flex flex-wrap justify-center`}
           >
             <div className="h-24 pt-2 flex">
               <Icon className="self-center" />
