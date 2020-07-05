@@ -14,6 +14,7 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
+    'promise/prefer-await-to-then': 'error',
     // disables the windows/unix linebreak checks for anyone who will have to use windows
     'linebreak-style': 0,
     'arrow-body-style': ['error', 'as-needed'],
@@ -32,5 +33,5 @@ module.exports = {
       },
     ],
   },
-  plugins: ['prettier', 'jest'],
+  plugins: ['prettier', 'jest', 'promise'],
 };

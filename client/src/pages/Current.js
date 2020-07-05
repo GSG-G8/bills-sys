@@ -1,28 +1,58 @@
 import React, { useState, useEffect } from 'react';
-import { Spinner } from '../components';
+import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
+import { ToggleContainer, Tips, Table, Loader, BarChart } from '../components';
+import * as stats from '../util';
 
-// `/api/v1/bills/${userId}/stats?typeId=${typeId}&&billingMonth=${month}&&billingYear=${year}`
+const dataset = [121, 90, 2, 4, 6, 7, 11, 21, 81, 105];
+const sortedData = stats.sortValues(dataset);
+// const trimmedMean = stats.trimmedMean(sortedData);
+const { centers, frequencies } = stats.frequencyGroupsGenerator(sortedData);
 
 const Current = () => {
-  const [bills, setBills] = useState([]);
-  const [error, setError] = useState();
+  const { t } = useTranslation();
+  const { billType } = useParams();
+  const [bills, setBills] = useState();
+  const getBills = async () => {
+    const { data } = await axios.get('/api/v1/bills/me');
+    setBills(data);
+  };
 
   useEffect(() => {
-    fetch(`/api/v1/bills/1/stats?typeId=1&&billingMonth=1&&billingYear=2020`)
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.statusCode === 200) setBills([]);
-        else setError(res.msg);
-      })
-      .catch(() => setError('Something went wrong'));
+    getBills();
   }, []);
-  if (!bills.length) return <Spinner className="w-8 h-8 m-auto spin" />;
+
+  if (!bills?.[0]) return <Loader />;
+  const billsOfPageType = bills.filter(
+    ({ type: { name } }) => name === billType
+  );
   return (
-    <h1>
-      The following components will be rendered here: Bar Chart - Tips - Bills
-      Table
-    </h1>
+    <>
+      <BarChart centers={centers} frequencies={frequencies} />
+      <div className="mx-4 lg:mx-16 lg:mx-8 lg:my-8 md:mx-10 md:mx-5 md:my-5">
+        <ToggleContainer title={t('Tips')}>
+          <Tips billType={billType} />
+        </ToggleContainer>
+        <ToggleContainer title={t('Compare Table')}>
+          <Table bills={billsOfPageType} />
+        </ToggleContainer>
+      </div>
+    </>
   );
 };
 
 export default Current;
+
+// const [bills, setBills] = useState([]);
+// const [error, setError] = useState();
+
+// useEffect(() => {
+//   fetch(`/api/v1/bills/1/stats?typeId=1&&billingMonth=1&&billingYear=2020`)
+//     .then((res) => res.json())
+//     .then((res) => {
+//       if (res.statusCode === 200) setBills([]);
+//       else setError(res.msg);
+//     })
+//     .catch(() => setError('Something went wrong'));
+// }, []);

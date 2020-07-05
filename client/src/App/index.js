@@ -1,21 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout } from '../components';
+import { useTranslation } from 'react-i18next';
+import { Header, Layout, Loader } from '../components';
+import { useAuth } from '../hooks';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
 
 const App = () => {
-  const [logged] = useState(() => true);
+  const { logged, setLogged, setUserId } = useAuth();
+  const { t } = useTranslation();
+  if (logged === 'loading') return <Loader />;
   return (
-    <div>
+    <div dir={t('direction')}>
       <Router>
-        <Layout>
-          <Switch>
-            {!logged && (
+        <Switch>
+          {!logged && (
+            <>
+              <Header />
               <Route>
-                <Login />
+                <Login setLogged={setLogged} setId={setUserId} />
               </Route>
-            )}
-            <Route path="/current">
+            </>
+          )}
+          <Layout>
+            <Route path="/current/:billType">
               <Current />
             </Route>
             <Route path="(/|/home)">
@@ -27,8 +34,8 @@ const App = () => {
             <Route path="/profile">
               <Profile />
             </Route>
-          </Switch>
-        </Layout>
+          </Layout>
+        </Switch>
       </Router>
     </div>
   );

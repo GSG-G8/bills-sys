@@ -1,0 +1,42 @@
+{
+  "logo": "Bills System",
+  "language": {
+    "ar": "AR",
+    "en": "EN"
+  },
+  "pages": {
+    "login": {
+      "buttonTxt": "تسجيل الدخول",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة السر"
+    }
+  },
+  "tips": "arabicTips",
+  "tipsToggleTitle": "ارشادات لتقليل الفاتورة",
+  "compareTableTitle": "جدول المقارنة",
+  "water": "الماء",
+  "electricity": "الكهرباء",
+  "internet": "الإنترنت",
+  "mobile": "الجوال",
+  "months": [
+    "يناير",
+    "فبراير",
+    "مارس",
+    "ابريل",
+    "مايو",
+    "يونيو",
+    "يوليو",
+    "اغطسطس",
+    "سبتمبر",
+    "اكتوبر",
+    "نوفمبر",
+    "ديسمبر"
+  ],
+  "table": {
+    "type": "نوع الفاتورة",
+    "billing-period": "دورة الفاتورة",
+    "amount": "القيمة",
+    "details": "التفاصيل"
+  },
+  "direction": "rtl"
+}

@@ -1,0 +1,42 @@
+{
+  "logo": "Bills System",
+  "language": {
+    "en": "EN",
+    "ar": "AR"
+  },
+  "pages": {
+    "login": {
+      "buttonTxt": "Log In",
+      "email": "Email",
+      "password": "Password"
+    }
+  },
+  "tips": "englishTips",
+  "tipsToggleTitle": "Tips to reduce your bills",
+  "compareTableTitle": "Comparison table",
+  "water": "Water",
+  "electricity": "Electricity",
+  "internet": "Internet",
+  "mobile": "Mobile",
+  "months": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
+  "table": {
+    "type": "Type",
+    "billing-period": "Billing Period",
+    "amount": "Amount",
+    "details": "Details"
+  },
+  "direction": "ltr"
+}
