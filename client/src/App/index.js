@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Header, Layout, Loader } from '../components';
 import { useAuth } from '../hooks';
-import { Current, Home, Login, PastBills, Profile } from '../pages';
+import { Current, Home, Login, PastBills, Profile, Bills } from '../pages';
 
 const App = () => {
   const { logged, setLogged, setUserId } = useAuth();
@@ -28,7 +28,10 @@ const App = () => {
             <Route path="(/|/home)">
               <Home />
             </Route>
-            <Route path="/past-bills">
+            <Route exact path="/past-bills">
+              <Bills />
+            </Route>
+            <Route exact path="/past-bills/:billType">
               <PastBills />
             </Route>
             <Route path="/profile">
