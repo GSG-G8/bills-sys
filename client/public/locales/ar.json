@@ -12,17 +12,33 @@
     }
   },
   "tips": "arabicTips",
-  "tipsToggleTitle": "ارشادات لتقليل الفاتورة",
-  "compareTableTitle": "جدول المقارنة",
+  "tips-toggle-title": "ارشادات لتقليل الفاتورة",
+  "compare-table-title": "جدول المقارنة",
   "water": "الماء",
   "electricity": "الكهرباء",
   "internet": "الإنترنت",
   "mobile": "الجوال",
+  "direction": "rtl",
+  "months": [
+    "يناير",
+    "فبراير",
+    "مارس",
+    "ابريل",
+    "مايو",
+    "يونيو",
+    "يوليو",
+    "اغطسطس",
+    "سبتمبر",
+    "اكتوبر",
+    "نوفمبر",
+    "ديسمبر"
+  ],
+  "hometitle": "مجموع فواتيرك لشهر",
+  "greeting": "مرحبا",
   "table": {
     "type": "نوع الفاتورة",
     "billing-period": "دورة الفاتورة",
     "amount": "القيمة",
     "details": "التفاصيل"
-  },
-  "direction": "rtl"
+  }
 }

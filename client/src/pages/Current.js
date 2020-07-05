@@ -2,7 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { ToggleContainer, Tips, Table, Loader } from '../components';
+import { ToggleContainer, Tips, Table, Loader, BarChart } from '../components';
+import * as stats from '../util';
+
+const dataset = [121, 90, 2, 4, 6, 7, 11, 21, 81, 105];
+const sortedData = stats.sortValues(dataset);
+// const trimmedMean = stats.trimmedMean(sortedData);
+const { centers, frequencies } = stats.frequencyGroupsGenerator(sortedData);
 
 const Current = () => {
   const { t } = useTranslation();
@@ -23,11 +29,12 @@ const Current = () => {
   );
   return (
     <>
+      <BarChart centers={centers} frequencies={frequencies} />
       <div className="mx-4 lg:mx-16 lg:mx-8 lg:my-8 md:mx-10 md:mx-5 md:my-5">
-        <ToggleContainer title={t('Tips')}>
+        <ToggleContainer title={t('tips-toggle-title')}>
           <Tips billType={billType} />
         </ToggleContainer>
-        <ToggleContainer title={t('Compare Table')}>
+        <ToggleContainer title={t('compare-table-title')}>
           <Table bills={billsOfPageType} />
         </ToggleContainer>
       </div>
