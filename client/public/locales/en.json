@@ -12,12 +12,13 @@
     }
   },
   "tips": "englishTips",
-  "tipsToggleTitle": "Tips to reduce your bills",
-  "compareTableTitle": "Comparison table",
+  "tips-toggle-title": "Tips to reduce your bills",
+  "compare-table-title": "Comparison table",
   "water": "Water",
   "electricity": "Electricity",
   "internet": "Internet",
   "mobile": "Mobile",
+  "direction": "ltr",
   "months": [
     "January",
     "February",
@@ -32,11 +33,12 @@
     "November",
     "December"
   ],
+  "hometitle": "Your total for the month of",
+  "greeting": "Hello",
   "table": {
     "type": "Type",
     "billing-period": "Billing Period",
     "amount": "Amount",
     "details": "Details"
-  },
-  "direction": "ltr"
+  }
 }

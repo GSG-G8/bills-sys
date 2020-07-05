@@ -10,7 +10,7 @@ const App = () => {
   const { t } = useTranslation();
   if (logged === 'loading') return <Loader />;
   return (
-    <div dir={t('direction')}>
+    <div dir={t('direction')} className="pb-24 md:pb-0">
       <Router>
         <Switch>
           {!logged && (
@@ -32,7 +32,7 @@ const App = () => {
               <PastBills />
             </Route>
             <Route path="/profile">
-              <Profile />
+              <Profile setLogged={setLogged} setUserId={setUserId} />
             </Route>
           </Layout>
         </Switch>
