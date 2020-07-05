@@ -18,6 +18,20 @@
   "electricity": "Electricity",
   "internet": "Internet",
   "mobile": "Mobile",
+  "months": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
   "table": {
     "type": "Type",
     "billing-period": "Billing Period",
