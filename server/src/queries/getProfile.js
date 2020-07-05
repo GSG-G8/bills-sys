@@ -1,7 +1,7 @@
 const { User } = require('../models');
 
 exports.getProfile = (id) =>
-  User.findAll({
+  User.findOne({
     where: {
       id,
     },

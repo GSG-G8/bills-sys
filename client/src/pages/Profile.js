@@ -9,7 +9,7 @@ const Profile = () => {
   const getProfile = async () => {
     try {
       const { data } = await axios.get('api/v1/profile');
-      setProfile(data[0]);
+      setProfile(data);
     } catch (err) {
       if (err.response) setError(err.response.data.message);
       else setError('Something went error');
