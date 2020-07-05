@@ -1,17 +1,19 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { BillTypes, Loader } from '../components';
-import getBillTypes from '../utils/getBillTypes';
+import { BillTypes, Loader, DoughnutChart } from '../components';
+import { getBillTypes, getMonthlyBills } from '../utils';
 
 const Home = () => {
   const [error, setError] = useState('');
   const [userBillTypes, setUserBillTypes] = useState([]);
+  const [userMonthlyBills, setUserMonthlyBills] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
         const res = await axios.get('/api/v1/bills/me');
         const { data: bills } = res;
+        setUserMonthlyBills(getMonthlyBills(bills));
         setUserBillTypes(getBillTypes(bills));
       } catch (err) {
         if (err.response) setError(err.response.data.message);
@@ -31,9 +33,14 @@ const Home = () => {
     );
 
   if (!userBillTypes?.length) return <Loader />;
+
+  const types = userMonthlyBills.map((bill) => bill.name);
+  const amounts = userMonthlyBills.map((bill) => bill.amount);
+
   return (
     <>
       <h1> Home </h1>
+      <DoughnutChart types={types} amounts={amounts} />
       <BillTypes userBillTypes={userBillTypes} toPage="current" />
     </>
   );
