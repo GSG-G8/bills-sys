@@ -31,10 +31,10 @@ const Current = () => {
     <>
       <BarChart centers={centers} frequencies={frequencies} />
       <div className="mx-4 lg:mx-16 lg:mx-8 lg:my-8 md:mx-10 md:mx-5 md:my-5">
-        <ToggleContainer title={t('tipsToggleTitle')}>
+        <ToggleContainer title={t('tips-toggle-title')}>
           <Tips billType={billType} />
         </ToggleContainer>
-        <ToggleContainer title={t('compareTableTitle')}>
+        <ToggleContainer title={t('compare-table-title')}>
           <Table bills={billsOfPageType} />
         </ToggleContainer>
       </div>

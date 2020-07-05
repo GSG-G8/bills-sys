@@ -12,8 +12,8 @@
     }
   },
   "tips": "arabicTips",
-  "tipsToggleTitle": "ارشادات لتقليل الفاتورة",
-  "compareTableTitle": "جدول المقارنة",
+  "tips-toggle-title": "ارشادات لتقليل الفاتورة",
+  "compare-table-title": "جدول المقارنة",
   "water": "الماء",
   "electricity": "الكهرباء",
   "internet": "الإنترنت",
