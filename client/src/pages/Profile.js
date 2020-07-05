@@ -21,10 +21,8 @@ const Profile = () => {
   if (error) return <p>{error}</p>;
   if (!profile) return <Loader />;
   return (
-    <div className="w-full mx-0 my-auto">
-      <div className="m-10">
-        <User />
-      </div>
+    <div className="m-auto text-center">
+      <User className="text-center m-auto mt-10" />
       <div className="m-4 font-bold">
         {profile.first_name} {profile.last_name}
       </div>
