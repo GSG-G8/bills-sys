@@ -28,11 +28,11 @@ const App = () => {
             <Route path="(/|/home)">
               <Home />
             </Route>
-            <Route exact path="/past-bills">
-              <Bills />
-            </Route>
             <Route exact path="/past-bills/:billType">
               <PastBills />
+            </Route>
+            <Route exact path="/past-bills">
+              <Bills />
             </Route>
             <Route path="/profile">
               <Profile />
