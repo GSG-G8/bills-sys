@@ -38,6 +38,5 @@
     "amount": "القيمة",
     "details": "التفاصيل"
   },
-  "direction": "rtl",
-  "header-direction": "ltr"
+  "direction": "rtl"
 }

@@ -38,6 +38,5 @@
     "amount": "Amount",
     "details": "Details"
   },
-  "direction": "ltr",
-  "header-direction": "ltr"
+  "direction": "ltr"
 }
