@@ -38,5 +38,6 @@
     "amount": "Amount",
     "details": "Details"
   },
-  "direction": "ltr"
+  "direction": "ltr",
+  "header-direction": "ltr"
 }
