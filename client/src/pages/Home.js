@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BillTypes, Loader, DoughnutChart } from '../components';
-import getMonthlyBills from '../utils/getMonthlyBills';
+import { getMonthlyBills } from '../util';
 
 const Home = () => {
   const { t } = useTranslation();
