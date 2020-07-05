@@ -11,8 +11,34 @@
       "password": "Password"
     }
   },
+  "tips": "englishTips",
+  "tipsToggleTitle": "Tips to reduce your bills",
+  "compareTableTitle": "Comparison table",
   "water": "Water",
   "electricity": "Electricity",
   "internet": "Internet",
-  "mobile": "Mobile"
+  "mobile": "Mobile",
+  "direction": "ltr",
+  "months": [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
+  "hometitle": "Your total for the month of",
+  "greeting": "Hello",
+  "table": {
+    "type": "Type",
+    "billing-period": "Billing Period",
+    "amount": "Amount",
+    "details": "Details"
+  }
 }

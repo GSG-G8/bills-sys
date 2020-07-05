@@ -1,0 +1,170 @@
+{
+  "electricity": [
+    {
+      "id": 1,
+      "text": "Use a programmable thermostat."
+    },
+    {
+      "id": 2,
+      "text": "Replace your air filter."
+    },
+    {
+      "id": 3,
+      "text": "Lower the temperature on the water heater."
+    },
+    {
+      "id": 4,
+      "text": "Balance Electricity use by using appliances strategically."
+    },
+    {
+      "id": 5,
+      "text": "Save Electricity by Washing clothes in cold water."
+    },
+    {
+      "id": 6,
+      "text": "Reduce Heat Waste by Checking doors and windows for leaks."
+    },
+    {
+      "id": 7,
+      "text": "Check that your appliances work properly."
+    },
+    {
+      "id": 8,
+      "text": "Consider a prepaid electric bill plan."
+    },
+    {
+      "id": 9,
+      "text": "Adjust your fridge and freezer temperature."
+    },
+    {
+      "id": 10,
+      "text": "1Swap out your light bulbs"
+    }
+  ],
+  "water": [
+    {
+      "id": 1,
+      "text": "Replace your showerhead."
+    },
+    {
+      "id": 2,
+      "text": "Fix leaky faucets."
+    },
+    {
+      "id": 3,
+      "text": "Run full loads of laundry."
+    },
+    {
+      "id": 4,
+      "text": "Limit your showers."
+    },
+    {
+      "id": 5,
+      "text": "Wash dishes efficiently."
+    },
+    {
+      "id": 6,
+      "text": "Water your lawn at the right time."
+    },
+    {
+      "id": 7,
+      "text": "Don’t let the bathroom faucet run."
+    },
+    {
+      "id": 8,
+      "text": "Install water-efficient toilets."
+    },
+    {
+      "id": 9,
+      "text": "Inspect your appliances."
+    },
+    {
+      "id": 10,
+      "text": "1Add aerators to your faucets."
+    }
+  ],
+  "mobile": [
+    {
+      "id": 1,
+      "text": "Use Wi-Fi when you can."
+    },
+    {
+      "id": 2,
+      "text": "Limit your background data use."
+    },
+    {
+      "id": 3,
+      "text": "Cut the insurance."
+    },
+    {
+      "id": 4,
+      "text": "Sign up for automated payments or paperless billing."
+    },
+    {
+      "id": 5,
+      "text": "Take advantage of your employee discount."
+    },
+    {
+      "id": 6,
+      "text": "Buy no-contract phones."
+    },
+    {
+      "id": 7,
+      "text": "Keep your phone longer."
+    },
+    {
+      "id": 8,
+      "text": "Don’t do a payment plan for your phone."
+    },
+    {
+      "id": 9,
+      "text": "Cut out the stuff you don’t use."
+    },
+    {
+      "id": 10,
+      "text": "1Ask for a better price."
+    }
+  ],
+  "internet": [
+    {
+      "id": 1,
+      "text": "Reduce your internet speed."
+    },
+    {
+      "id": 2,
+      "text": "Buy your own modem and router."
+    },
+    {
+      "id": 3,
+      "text": "Bundle your internet with TV service."
+    },
+    {
+      "id": 4,
+      "text": "Shop around and compare prices."
+    },
+    {
+      "id": 5,
+      "text": "Negotiate your monthly bill."
+    },
+    {
+      "id": 6,
+      "text": "Cancel your cell phone data plan."
+    },
+    {
+      "id": 7,
+      "text": "Ask about discounts and promotions."
+    },
+    {
+      "id": 8,
+      "text": "Look for subsidies."
+    },
+    {
+      "id": 9,
+      "text": "Get cheap, bare-bones internet service."
+    },
+    {
+      "id": 10,
+      "text": "1Ask for a better price."
+    }
+  ]
+}

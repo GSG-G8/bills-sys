@@ -1,22 +1,11 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
 
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
 const LineChart = ({ bills }) => {
+  const { t } = useTranslation();
+  const months = t('months', { returnObjects: true });
   const data = {
     labels: months,
     datasets: [
