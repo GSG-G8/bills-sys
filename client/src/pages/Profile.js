@@ -5,22 +5,28 @@ import { Loader } from '../components';
 
 const Profile = () => {
   const [profile, setProfile] = useState();
-
+  const [error, setError] = useState('');
   const getProfile = async () => {
-    const { data } = await axios.get('api/v1/profile');
-    setProfile(data[0]);
+    try {
+      const { data } = await axios.get('api/v1/profile');
+      setProfile(data[0]);
+    } catch (err) {
+      if (err.response) setError(err.response.data.message);
+      else setError('Something went error');
+    }
   };
   useEffect(() => {
     getProfile();
   }, []);
+  if (error) return <p>{error}</p>;
   if (!profile) return <Loader />;
   return (
-    <div className="lg:ml-20">
-      <div className="m-10 flex">
+    <div className="w-full mx-0 my-auto">
+      <div className="m-10">
         <User />
-        <div className="m-10 font-bold">
-          {profile.first_name} {profile.last_name}
-        </div>
+      </div>
+      <div className="m-4 font-bold">
+        {profile.first_name} {profile.last_name}
       </div>
       <div className="m-6">
         <h1>Mobile: {profile.mobile_num}</h1>
