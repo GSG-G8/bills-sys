@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import propTypes from 'prop-types';
+
 import { ReactComponent as User } from '../assets/user.svg';
 import { Loader } from '../components';
+import Logout from '../components/Logout';
 
-const Profile = () => {
+const Profile = ({ setLogged, setUserId }) => {
   const [profile, setProfile] = useState();
   const [error, setError] = useState('');
   const getProfile = async () => {
@@ -31,8 +34,14 @@ const Profile = () => {
         <h1>Email: {profile.email}</h1>
         <h1>Number of people in my house: {profile.family_count} persons</h1>
       </div>
+      <Logout setLogged={setLogged} setUserId={setUserId} />
     </div>
   );
+};
+
+Profile.propTypes = {
+  setLogged: propTypes.func.isRequired,
+  setUserId: propTypes.func.isRequired,
 };
 
 export default Profile;
