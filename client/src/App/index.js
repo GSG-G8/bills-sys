@@ -32,7 +32,7 @@ const App = () => {
               <PastBills />
             </Route>
             <Route path="/profile">
-              <Profile />
+              <Profile setLogged={setLogged} setUserId={setUserId} />
             </Route>
           </Layout>
         </Switch>
