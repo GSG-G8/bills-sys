@@ -18,7 +18,7 @@ const DoughnutChart = ({ types, amounts }) => {
 
   return (
     <div className="md:w-12/25 md:pt-10 mb-6">
-      <Doughnut data={data} legend={false} />
+      <Doughnut data={data} options={{ legend: false }} />
     </div>
   );
 };
