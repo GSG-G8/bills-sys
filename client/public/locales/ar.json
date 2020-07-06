@@ -14,6 +14,7 @@
     "current": {
       "chartTitle": " توزيع الفواتير حسب التكرار",
       "frequency": "التكرار",
+      "myBill": "فاتورة {{billType}} الخاصة بك لهذا الشهر هي {{currentBill}}$",
       "mean": "متوسط قيم فواتير {{billType}}  لهذا الشهر هو {{trimmedMean}}$",
       "highestTen": "أنت ضمن أعلى 10% استهلاك لهذا الشهر",
       "xAxisLabel": "الفواتير موزعة إلى فئات",

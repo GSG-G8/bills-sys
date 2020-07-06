@@ -7,6 +7,7 @@ import { ToggleContainer, Tips, Table, BarChart } from '../components';
 import * as stats from '../util';
 
 const Current = ({ userId }) => {
+  const [currentBill, setCurrentBill] = useState();
   const [withinHighestTen, setWithinHighestTen] = useState();
   const [groupFrequencies, setGroupFrequencies] = useState();
   const [groupCenters, setGroupCenters] = useState();
@@ -50,6 +51,7 @@ const Current = ({ userId }) => {
           stats.checkHighestTen(sortedData, currentBillAmount)
         );
         setChartColors(colorsSet);
+        setCurrentBill(currentBillAmount);
       } catch (err) {
         if (err.response) setError(err.response.data.message);
         else setError(t('error'));
@@ -62,19 +64,22 @@ const Current = ({ userId }) => {
   return (
     <>
       {groupCenters && groupFrequencies && chartColors && (
-        <BarChart
-          centers={groupCenters}
-          frequencies={groupFrequencies}
-          colors={chartColors}
-        />
-      )}
-      {withinHighestTen && (
         <div>
+          <BarChart
+            centers={groupCenters}
+            frequencies={groupFrequencies}
+            colors={chartColors}
+          />
+          <p className="text-center">
+            {t('pages.current.myBill', { billType: t(billType), currentBill })}
+          </p>
           <p className="text-center">
             {t('pages.current.mean', { billType: t(billType), trimmedMean })}
           </p>
-          <p className="text-center">{t('pages.current.highestTen')}</p>
         </div>
+      )}
+      {withinHighestTen && (
+        <p className="text-center">{t('pages.current.highestTen')}</p>
       )}
       <div className="mx-4 lg:mx-16 lg:mx-8 lg:my-8 md:mx-10 md:mx-5 md:my-5">
         <ToggleContainer title={t('tips-toggle-title')}>
