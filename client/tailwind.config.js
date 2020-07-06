@@ -3,6 +3,7 @@ const {
 } = require('tailwindcss/defaultTheme');
 
 module.exports = {
+  purge: ['./src/**/*.html', './src/**/*.js'],
   theme: {
     inset: {
       0: 0,
