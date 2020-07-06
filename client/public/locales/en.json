@@ -4,11 +4,20 @@
     "en": "EN",
     "ar": "AR"
   },
+  "error": "Something went wrong, try again later",
   "pages": {
     "login": {
       "buttonTxt": "Log In",
       "email": "Email",
       "password": "Password"
+    },
+    "current": {
+      "chartTitle": "Bills distribution according to frequency",
+      "frequency": "Frequency",
+      "mean": "The average value of {{billType}} bills for this month is {{trimmedMean}}$",
+      "highestTen": "You are within the highest 10% consumption for this month",
+      "xAxisLabel": "bills distributed into groups",
+      "yAxisLabel": "frequency of each group"
     }
   },
   "tips": "englishTips",

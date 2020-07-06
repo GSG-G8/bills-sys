@@ -62,7 +62,7 @@ describe('test requests related to bills', () => {
         .get('/api/v1/bills/1/stats?typeId=1&billingMonth=3&billingYear=2020')
         .set('Accept', 'application/json')
         .expect(200);
-      expect(result.body.data).not.toHaveLength(0);
+      expect(result.body).not.toHaveLength(0);
     });
   });
 });

@@ -13,8 +13,8 @@ const BillsTypes = ({ userBillTypes, toPage }) => {
         return (
           <Link
             key={id}
-            to={`/${toPage}/${name}`}
-            className={`${TypesColors[name].color} ${TypesColors[name].hoverColor} px-3 py-1 rounded my-2 h-40 w-12/25 flex flex-wrap justify-center`}
+            to={`/${toPage}/${name}/${id}`}
+            className={`${TypesColors[name].color} ${TypesColors[name].hoverColor} px-3 py-1 rounded my-2 h-40 w-12/25 sm:w-8/25 md:w-23/100 flex flex-wrap justify-center`}
           >
             <div className="h-24 pt-2 flex">
               <Icon className="self-center" />

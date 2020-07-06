@@ -6,7 +6,7 @@ import { useAuth } from '../hooks';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
 
 const App = () => {
-  const { logged, setLogged, setUserId } = useAuth();
+  const { logged, setLogged, userId, setUserId } = useAuth();
   const { t } = useTranslation();
   if (logged === 'loading') return <Loader />;
   return (
@@ -22,8 +22,8 @@ const App = () => {
             </>
           )}
           <Layout>
-            <Route path="/current/:billType">
-              <Current />
+            <Route path="/current/:billType/:billId">
+              <Current userId={userId} />
             </Route>
             <Route path="(/|/home)">
               <Home />

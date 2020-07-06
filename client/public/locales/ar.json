@@ -4,11 +4,20 @@
     "ar": "AR",
     "en": "EN"
   },
+  "error": "حدث خطأ, يرجى إعادة المحاولة لاحقاً",
   "pages": {
     "login": {
       "buttonTxt": "تسجيل الدخول",
       "email": "البريد الإلكتروني",
       "password": "كلمة السر"
+    },
+    "current": {
+      "chartTitle": " توزيع الفواتير حسب التكرار",
+      "frequency": "التكرار",
+      "mean": "متوسط قيم فواتير {{billType}}  لهذا الشهر هو {{trimmedMean}}$",
+      "highestTen": "أنت ضمن أعلى 10% استهلاك لهذا الشهر",
+      "xAxisLabel": "الفواتير موزعة إلى فئات",
+      "yAxisLabel": "تكرار كل فئة"
     }
   },
   "tips": "arabicTips",

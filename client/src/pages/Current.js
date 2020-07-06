@@ -1,58 +1,97 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import propTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { ToggleContainer, Tips, Table, Loader, BarChart } from '../components';
+import { ToggleContainer, Tips, Table, BarChart } from '../components';
 import * as stats from '../util';
 
-const dataset = [121, 90, 2, 4, 6, 7, 11, 21, 81, 105];
-const sortedData = stats.sortValues(dataset);
-// const trimmedMean = stats.trimmedMean(sortedData);
-const { centers, frequencies } = stats.frequencyGroupsGenerator(sortedData);
-
-const Current = () => {
-  const { t } = useTranslation();
-  const { billType } = useParams();
+const Current = ({ userId }) => {
+  const [withinHighestTen, setWithinHighestTen] = useState();
+  const [groupFrequencies, setGroupFrequencies] = useState();
+  const [groupCenters, setGroupCenters] = useState();
+  const [trimmedMean, setTrimmedMean] = useState();
+  const [chartColors, setChartColors] = useState();
   const [bills, setBills] = useState();
-  const getBills = async () => {
-    const { data } = await axios.get('/api/v1/bills/me');
-    setBills(data);
-  };
+  const [error, setError] = useState();
+  const { billType, billId } = useParams();
+  const { t } = useTranslation();
 
   useEffect(() => {
-    getBills();
-  }, []);
+    (async () => {
+      try {
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth() + 1;
+        const currentYear = currentDate.getFullYear();
+        const { data: allBills } = await axios.get('/api/v1/bills/me');
+        const { data: dataset } = await axios.get(
+          `/api/v1/bills/${userId}/stats?typeId=${billId}&&billingMonth=${currentMonth}&&billingYear=${currentYear}`
+        );
+        const billsOfPageType = allBills.filter(
+          ({ type: { name } }) => name === billType
+        );
+        const currentBillAmount = allBills.filter(
+          (bill) =>
+            bill.billing_month === currentMonth &&
+            bill.billing_year === currentYear &&
+            bill.type_id === Number(billId)
+        )?.[0]?.amount;
+        const sortedData = stats.sortValues(dataset);
+        const { centers, frequencies } = stats.frequencyGroupsGenerator(
+          sortedData
+        );
+        const mean = stats.trimmedMean(sortedData);
+        const colorsSet = stats.generateColorsSet(frequencies);
+        setBills(billsOfPageType);
+        setGroupCenters(centers);
+        setGroupFrequencies(frequencies);
+        setTrimmedMean(mean);
+        setWithinHighestTen(
+          stats.checkHighestTen(sortedData, currentBillAmount)
+        );
+        setChartColors(colorsSet);
+      } catch (err) {
+        if (err.response) setError(err.response.data.message);
+        else setError(t('error'));
+      }
+    })();
+  }, [userId, billId, billType, t]);
 
-  if (!bills?.[0]) return <Loader />;
-  const billsOfPageType = bills.filter(
-    ({ type: { name } }) => name === billType
-  );
+  if (error) return <p className="text-center">{error}</p>;
+
   return (
     <>
-      <BarChart centers={centers} frequencies={frequencies} />
+      {groupCenters && groupFrequencies && chartColors && (
+        <BarChart
+          centers={groupCenters}
+          frequencies={groupFrequencies}
+          colors={chartColors}
+        />
+      )}
+      {withinHighestTen && (
+        <div>
+          <p className="text-center">
+            {t('pages.current.mean', { billType: t(billType), trimmedMean })}
+          </p>
+          <p className="text-center">{t('pages.current.highestTen')}</p>
+        </div>
+      )}
       <div className="mx-4 lg:mx-16 lg:mx-8 lg:my-8 md:mx-10 md:mx-5 md:my-5">
         <ToggleContainer title={t('tips-toggle-title')}>
           <Tips billType={billType} />
         </ToggleContainer>
-        <ToggleContainer title={t('compare-table-title')}>
-          <Table bills={billsOfPageType} />
-        </ToggleContainer>
+        {bills && (
+          <ToggleContainer title={t('compare-table-title')}>
+            <Table bills={bills} />
+          </ToggleContainer>
+        )}
       </div>
     </>
   );
 };
 
+Current.propTypes = {
+  userId: propTypes.number.isRequired,
+};
+
 export default Current;
-
-// const [bills, setBills] = useState([]);
-// const [error, setError] = useState();
-
-// useEffect(() => {
-//   fetch(`/api/v1/bills/1/stats?typeId=1&&billingMonth=1&&billingYear=2020`)
-//     .then((res) => res.json())
-//     .then((res) => {
-//       if (res.statusCode === 200) setBills([]);
-//       else setError(res.msg);
-//     })
-//     .catch(() => setError('Something went wrong'));
-// }, []);
