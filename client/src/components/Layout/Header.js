@@ -1,22 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import LanguageToggle from '../LanguageToggle';
+import logo from '../../assets/logo.png';
 
-const Header = () => {
-  const { t } = useTranslation();
-
-  return (
-    <div className="bg-primary py-4 ">
-      <div className="flex justify-between mx-auto lg:w-4/5 w-11/12">
-        <Link to="/home">
-          <span className="text-white font-semibold md:text-2xl font-kaushan tracking-widest">
-            {t('logo')}
-          </span>
-        </Link>
-        <LanguageToggle />
-      </div>
+const Header = () => (
+  <div className="bg-primary py-2">
+    <div className="flex justify-between mx-auto lg:w-4/5 w-11/12">
+      <Link to="/home">
+        <img src={logo} alt="Bills System" className="w-40 sm:w-auto" />
+      </Link>
+      <LanguageToggle />
     </div>
-  );
-};
+  </div>
+);
 export default Header;
