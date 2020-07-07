@@ -1,19 +1,14 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
+import { Loader } from '../components';
 import BillTypes from '../components/BillTypes';
-import getBillsTypes from '../util/getBillsTypes';
 import { DataContext } from '../context';
 
 const Bills = () => {
-  const [data] = useContext(DataContext);
-  const [userBillTypes, setUserBillTypes] = useState([]);
-
-  useEffect(() => {
-    setUserBillTypes(getBillsTypes(data));
-  }, [data]);
-
+  const { types } = useContext(DataContext);
+  if (!types?.length) return <Loader />;
   return (
     <div className="flex flex-col items-center mt-16">
-      <BillTypes userBillTypes={userBillTypes} toPage="past-bills" />
+      <BillTypes userBillTypes={types} toPage="past-bills" />
     </div>
   );
 };
