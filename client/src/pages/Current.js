@@ -8,7 +8,6 @@ import { DataContext } from '../context';
 import * as stats from '../util';
 
 const Current = ({ userId }) => {
-  const [billsOfPageType, setBillsOfPageType] = useState();
   const [groupCenters, setGroupCenters] = useState();
   const [groupFrequencies, setGroupFrequencies] = useState();
   const [chartColors, setChartColors] = useState();
@@ -21,8 +20,6 @@ const Current = ({ userId }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    setBillsOfPageType(bills.filter(({ type: { name } }) => name === billType));
-
     (async () => {
       try {
         const currentDate = new Date();
@@ -33,11 +30,15 @@ const Current = ({ userId }) => {
         );
 
         const currentBillAmount = bills.filter(
-          (bill) =>
-            bill.billing_month === currentMonth &&
-            bill.billing_year === currentYear &&
-            bill.type_id === Number(billId)
-        )?.[0]?.amount;
+          ({
+            billing_month: billingMonth,
+            billing_year: billingYear,
+            type_id: typeId,
+          }) =>
+            billingMonth === currentMonth &&
+            billingYear === currentYear &&
+            typeId === Number(billId)
+        )[0].amount;
         const sortedData = stats.sortValues(data);
         const { centers, frequencies } = stats.frequencyGroupsGenerator(
           sortedData
@@ -58,6 +59,10 @@ const Current = ({ userId }) => {
       }
     })();
   }, [userId, billId, billType, t, bills]);
+
+  const billsOfPageType = bills.filter(
+    ({ type: { name } }) => name === billType
+  );
 
   return (
     <>
