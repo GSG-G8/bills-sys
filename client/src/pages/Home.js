@@ -15,14 +15,16 @@ const Home = () => {
   const months = t('months', { returnObjects: true });
 
   useEffect(() => {
-    setUserMonthlyBills(getMonthlyBills(bills));
-    setTypes(getMonthlyBills(bills).map(({ name }) => name));
-    setAmounts(getMonthlyBills(bills).map(({ amount }) => amount));
-    setSumBills(
-      getMonthlyBills(bills)
-        .map(({ amount }) => amount)
-        .reduce((a, b) => a + b, 0)
-    );
+    if (bills?.length) {
+      setUserMonthlyBills(getMonthlyBills(bills));
+      setTypes(getMonthlyBills(bills).map(({ name }) => name));
+      setAmounts(getMonthlyBills(bills).map(({ amount }) => amount));
+      setSumBills(
+        getMonthlyBills(bills)
+          .map(({ amount }) => amount)
+          .reduce((a, b) => a + b, 0)
+      );
+    }
   }, [bills]);
 
   if (error)
