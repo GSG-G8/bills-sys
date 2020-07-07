@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { ReactComponent as LoginIcon } from '../assets/login.svg';
 
 const validateForm = (email, password) => {
   const errors = {};
@@ -48,12 +49,13 @@ const Login = ({ setLogged, setId }) => {
 
   return (
     <form
-      className="flex flex-col items-center p-4 mt-16"
+      className="flex flex-col items-center p-4 mt-10"
       onSubmit={handleFormSubmit}
     >
+      <LoginIcon className="h-32" />
       <input
         name="email"
-        className="border-b-2 border-gray-700 mb-4 mt-20 w-64 pl-1 outline-none leading-5 transform md:w-1/3 lg:w-1/4 focus:border-primary-dark focus:placeholder-primary-dark focus:scale-105 transition duration-500 ease-in-out"
+        className="border-b-2 border-gray-700 mb-4 mt-10 w-64 pl-1 outline-none leading-5 transform md:w-1/3 lg:w-1/4 focus:border-primary-dark focus:placeholder-primary-dark focus:scale-105 transition duration-500 ease-in-out"
         placeholder={t('pages.login.email')}
         onChange={(e) => setEmail(e.target.value)}
       />
