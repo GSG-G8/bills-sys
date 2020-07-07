@@ -10,7 +10,7 @@ import useUserData from '../hooks/useUserData';
 const App = () => {
   const { logged, setLogged, userId, setUserId } = useAuth();
   const { t } = useTranslation();
-  const userData = useUserData();
+  const userData = useUserData(logged);
   if (logged === 'loading') return <Loader />;
   return (
     <div dir={t('direction')} className="pb-24 md:pb-0">

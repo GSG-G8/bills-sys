@@ -1,94 +1,106 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import propTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { ToggleContainer, Tips, Table, BarChart } from '../components';
+import { DataContext } from '../context';
 import * as stats from '../util';
 
 const Current = ({ userId }) => {
-  const [currentBill, setCurrentBill] = useState();
-  const [withinHighestTen, setWithinHighestTen] = useState();
-  const [groupFrequencies, setGroupFrequencies] = useState();
+  const [billsOfPageType, setBillsOfPageType] = useState();
   const [groupCenters, setGroupCenters] = useState();
-  const [trimmedMean, setTrimmedMean] = useState();
+  const [groupFrequencies, setGroupFrequencies] = useState();
   const [chartColors, setChartColors] = useState();
-  const [bills, setBills] = useState();
-  const [error, setError] = useState();
+  const [currentBill, setCurrentBill] = useState();
+  const [trimmedMean, setTrimmedMean] = useState();
+  const [withinHighestTen, setWithinHighestTen] = useState();
+  const [chartError, setChartError] = useState();
+  const { bills, error } = useContext(DataContext);
   const { billType, billId } = useParams();
   const { t } = useTranslation();
 
   useEffect(() => {
+    setBillsOfPageType(bills.filter(({ type: { name } }) => name === billType));
+
     (async () => {
       try {
         const currentDate = new Date();
         const currentMonth = currentDate.getMonth() + 1;
         const currentYear = currentDate.getFullYear();
-        const { data: allBills } = await axios.get('/api/v1/bills/me');
-        const { data: dataset } = await axios.get(
+        const { data } = await axios.get(
           `/api/v1/bills/${userId}/stats?typeId=${billId}&&billingMonth=${currentMonth}&&billingYear=${currentYear}`
         );
-        const billsOfPageType = allBills.filter(
-          ({ type: { name } }) => name === billType
-        );
-        const currentBillAmount = allBills.filter(
+
+        const currentBillAmount = bills.filter(
           (bill) =>
             bill.billing_month === currentMonth &&
             bill.billing_year === currentYear &&
             bill.type_id === Number(billId)
         )?.[0]?.amount;
-        const sortedData = stats.sortValues(dataset);
+        const sortedData = stats.sortValues(data);
         const { centers, frequencies } = stats.frequencyGroupsGenerator(
           sortedData
         );
         const mean = stats.trimmedMean(sortedData);
         const colorsSet = stats.generateColorsSet(frequencies);
-        setBills(billsOfPageType);
         setGroupCenters(centers);
         setGroupFrequencies(frequencies);
+        setChartColors(colorsSet);
+        setCurrentBill(currentBillAmount);
         setTrimmedMean(mean);
         setWithinHighestTen(
           stats.checkHighestTen(sortedData, currentBillAmount)
         );
-        setChartColors(colorsSet);
-        setCurrentBill(currentBillAmount);
       } catch (err) {
-        if (err.response) setError(err.response.data.message);
-        else setError(t('error'));
+        if (err.response) setChartError(err.response.data.message);
+        else setChartError(t('error'));
       }
     })();
-  }, [userId, billId, billType, t]);
-
-  if (error) return <p className="text-center">{error}</p>;
+  }, [userId, billId, billType, t, bills]);
 
   return (
     <>
-      {groupCenters && groupFrequencies && chartColors && (
-        <div>
-          <BarChart
-            centers={groupCenters}
-            frequencies={groupFrequencies}
-            colors={chartColors}
-          />
-          <p className="text-center">
-            {t('pages.current.myBill', { billType: t(billType), currentBill })}
-          </p>
-          <p className="text-center">
-            {t('pages.current.mean', { billType: t(billType), trimmedMean })}
-          </p>
-        </div>
+      {chartError ? (
+        <p className="text-center">{chartError}</p>
+      ) : (
+        groupCenters &&
+        groupFrequencies &&
+        chartColors && (
+          <div>
+            <BarChart
+              centers={groupCenters}
+              frequencies={groupFrequencies}
+              colors={chartColors}
+            />
+            <p className="text-center">
+              {t('pages.current.myBill', {
+                billType: t(billType),
+                currentBill,
+              })}
+            </p>
+            <p className="text-center">
+              {t('pages.current.mean', { billType: t(billType), trimmedMean })}
+            </p>
+            {withinHighestTen && (
+              <p className="text-center">{t('pages.current.highestTen')}</p>
+            )}
+          </div>
+        )
       )}
-      {withinHighestTen && (
-        <p className="text-center">{t('pages.current.highestTen')}</p>
-      )}
+
       <div className="mx-4 lg:mx-16 lg:mx-8 lg:my-8 md:mx-10 md:mx-5 md:my-5">
         <ToggleContainer title={t('tips-toggle-title')}>
           <Tips billType={billType} />
         </ToggleContainer>
-        {bills && (
-          <ToggleContainer title={t('compare-table-title')}>
-            <Table bills={bills} />
-          </ToggleContainer>
+        {error ? (
+          <p className="text-center">{error}</p>
+        ) : (
+          billsOfPageType && (
+            <ToggleContainer title={t('compare-table-title')}>
+              <Table bills={billsOfPageType} />
+            </ToggleContainer>
+          )
         )}
       </div>
     </>

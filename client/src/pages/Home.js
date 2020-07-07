@@ -11,18 +11,19 @@ const Home = () => {
   const [types, setTypes] = useState([]);
   const [amounts, setAmounts] = useState([]);
   const [sumBills, setSumBills] = useState(0);
-
   const months = t('months', { returnObjects: true });
 
   useEffect(() => {
-    setUserMonthlyBills(getMonthlyBills(bills));
-    setTypes(getMonthlyBills(bills).map(({ name }) => name));
-    setAmounts(getMonthlyBills(bills).map(({ amount }) => amount));
-    setSumBills(
-      getMonthlyBills(bills)
-        .map(({ amount }) => amount)
-        .reduce((a, b) => a + b, 0)
-    );
+    if (bills?.length) {
+      setUserMonthlyBills(getMonthlyBills(bills));
+      setTypes(getMonthlyBills(bills).map(({ name }) => name));
+      setAmounts(getMonthlyBills(bills).map(({ amount }) => amount));
+      setSumBills(
+        getMonthlyBills(bills)
+          .map(({ amount }) => amount)
+          .reduce((a, b) => a + b, 0)
+      );
+    }
   }, [bills]);
 
   if (error)
@@ -36,7 +37,7 @@ const Home = () => {
       </div>
     );
 
-  if (!userMonthlyBills?.length) return <Loader />;
+  if (!userMonthlyBills.length) return <Loader />;
 
   return (
     <div className="mx-auto lg:w-4/5 w-11/12 md:pt-10 pt-4">
