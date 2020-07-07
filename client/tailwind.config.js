@@ -28,6 +28,5 @@ module.exports = {
       magenta: { default: '#B76569', lighter: '#c58487', dark: '#ad5256' },
     },
     extend: { width: { '12/25': '48%', '8/25': '32%', '23/100': '23%' } },
-    fontFamily: { kaushan: ['Kaushan Script', 'cursive'] },
   },
 };
