@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Table = ({ bills }) => {
   const { t } = useTranslation();
-  const [sortedBills, setSortedBills] = useState([]);
-  useEffect(() => {
-    setSortedBills(bills.sort((a, b) => a.billing_month - b.billing_month));
-  }, [bills]);
+  const sortedBills = bills.sort((a, b) => a.billing_month - b.billing_month);
   const schema = [
     {
       displayName: t('table.billing-period'),
