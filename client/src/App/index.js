@@ -13,7 +13,7 @@ const App = () => {
   const userData = useUserData();
   if (logged === 'loading') return <Loader />;
   return (
-    <div dir={t('direction')} className="pb-24 md:pb-0">
+    <div dir={t('direction')} className="pb-24 md:pb-0 text-black">
       <Router>
         <Switch>
           {!logged && (

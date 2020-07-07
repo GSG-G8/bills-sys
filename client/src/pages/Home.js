@@ -15,14 +15,16 @@ const Home = () => {
   const months = t('months', { returnObjects: true });
 
   useEffect(() => {
-    setUserMonthlyBills(getMonthlyBills(bills));
-    setTypes(getMonthlyBills(bills).map(({ name }) => name));
-    setAmounts(getMonthlyBills(bills).map(({ amount }) => amount));
-    setSumBills(
-      getMonthlyBills(bills)
-        .map(({ amount }) => amount)
-        .reduce((a, b) => a + b, 0)
-    );
+    if (bills?.length) {
+      setUserMonthlyBills(getMonthlyBills(bills));
+      setTypes(getMonthlyBills(bills).map(({ name }) => name));
+      setAmounts(getMonthlyBills(bills).map(({ amount }) => amount));
+      setSumBills(
+        getMonthlyBills(bills)
+          .map(({ amount }) => amount)
+          .reduce((a, b) => a + b, 0)
+      );
+    }
   }, [bills]);
 
   if (error)
@@ -46,7 +48,7 @@ const Home = () => {
       </h1>
       <p className="md:text-2xl">
         {t('hometitle')} {months[new Date().getMonth()]}:{' '}
-        <span className="text-primary">${sumBills}</span>.
+        <span className="text-primary">{sumBills}$</span>.
       </p>
       <div className="md:flex md:justify-between md:align-middle md:mt-6 sm:mt-10 mt-4">
         <DoughnutChart types={types} amounts={amounts} />

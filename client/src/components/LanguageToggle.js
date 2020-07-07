@@ -16,7 +16,7 @@ const Toggle = () => {
       onChange={({ target: { value } }) => {
         setLang(value);
       }}
-      className="bg-transparent hover:bg-white font-bold outline-none rounded"
+      className="bg-transparent font-bold outline-none rounded text-white hover:bg-primary-lighter p-1"
     >
       <option value="ar">{t('language.ar')}</option>
       <option value="en">{t('language.en')}</option>
