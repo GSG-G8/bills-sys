@@ -35,10 +35,10 @@ const App = () => {
               <Route path="/past-bills">
                 <PastBills />
               </Route>
+              <Route path="/profile">
+                <Profile setLogged={setLogged} setUserId={setUserId} />
+              </Route>
             </DataContext.Provider>
-            <Route path="/profile">
-              <Profile setLogged={setLogged} setUserId={setUserId} />
-            </Route>
           </Layout>
         </Switch>
       </Router>
