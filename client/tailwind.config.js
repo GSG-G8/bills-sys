@@ -3,6 +3,7 @@ const {
 } = require('tailwindcss/defaultTheme');
 
 module.exports = {
+  purge: ['./src/**/*.html', './src/**/*.js'],
   theme: {
     inset: {
       0: 0,
@@ -12,7 +13,7 @@ module.exports = {
     colors: {
       white,
       gray,
-      black,
+      black: '#242424',
       red,
       transparent,
       primary: {

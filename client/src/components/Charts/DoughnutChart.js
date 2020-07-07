@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
+import 'chartjs-plugin-datalabels';
 import { useTranslation } from 'react-i18next';
 
 const DoughnutChart = ({ types, amounts }) => {
@@ -17,8 +18,37 @@ const DoughnutChart = ({ types, amounts }) => {
   };
 
   return (
-    <div className="md:w-12/25 md:pt-10 mb-6">
-      <Doughnut data={data} options={{ legend: false }} />
+    <div dir="ltr" className="md:w-12/25 md:pt-6 mb-6">
+      <Doughnut
+        data={data}
+        width={80}
+        height={48}
+        options={{
+          legend: {
+            display: true,
+            position: 'left',
+            labels: {
+              fontColor: '#242424',
+              fontFamily: 'Lato, sans-serif',
+            },
+          },
+          plugins: {
+            datalabels: {
+              display: true,
+              color: 'white',
+              font: {
+                weight: 'bold',
+                family: 'Lato, sans-serif',
+                size: '14',
+              },
+              padding: 40,
+              formatter(value) {
+                return `${value}$`;
+              },
+            },
+          },
+        }}
+      />
     </div>
   );
 };
