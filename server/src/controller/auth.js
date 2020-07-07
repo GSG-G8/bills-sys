@@ -1,8 +1,7 @@
 require('env2')('./.env');
 const Boom = require('@hapi/boom');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-
+const { sign } = require('../util/jwt');
 const { checkEmail } = require('../queries');
 const loginSchema = require('./validation/loginSchema');
 
@@ -24,7 +23,7 @@ const login = async (req, res, next) => {
       if (result === false) {
         throw Boom.badRequest('Please double check your password or email');
       } else {
-        const token = jwt.sign({ id: dataValues.id }, process.env.SECRET_KEY);
+        const token = await sign({ id: dataValues.id });
         res.cookie('token', token).status(200);
         res.json({
           statusCode: 200,
