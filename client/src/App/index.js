@@ -4,10 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { Header, Layout, Loader } from '../components';
 import { useAuth } from '../hooks';
 import { Current, Home, Login, PastBills, Profile } from '../pages';
+import { DataContext } from '../context';
+import useUserData from '../hooks/useUserData';
 
 const App = () => {
   const { logged, setLogged, setUserId } = useAuth();
   const { t } = useTranslation();
+  const userData = useUserData();
   if (logged === 'loading') return <Loader />;
   return (
     <div dir={t('direction')} className="pb-24 md:pb-0">
@@ -22,15 +25,17 @@ const App = () => {
             </>
           )}
           <Layout>
-            <Route path="/current/:billType">
-              <Current />
-            </Route>
-            <Route path="(/|/home)">
-              <Home />
-            </Route>
-            <Route path="/past-bills">
-              <PastBills />
-            </Route>
+            <DataContext.Provider value={userData}>
+              <Route path="/current/:billType">
+                <Current />
+              </Route>
+              <Route path="(/|/home)">
+                <Home />
+              </Route>
+              <Route path="/past-bills">
+                <PastBills />
+              </Route>
+            </DataContext.Provider>
             <Route path="/profile">
               <Profile setLogged={setLogged} setUserId={setUserId} />
             </Route>
