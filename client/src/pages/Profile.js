@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 import propTypes from 'prop-types';
+
+import { DataContext } from '../context';
 
 import { ReactComponent as User } from '../assets/user.svg';
 import { Loader } from '../components';
 import Logout from '../components/Logout';
 
 const Profile = ({ setLogged, setUserId }) => {
-  const [profile, setProfile] = useState();
-  const [error, setError] = useState('');
-  const getProfile = async () => {
-    try {
-      const { data } = await axios.get('api/v1/profile');
-      setProfile(data);
-    } catch (err) {
-      if (err.response) setError(err.response.data.message);
-      else setError('Something went error');
-    }
-  };
-  useEffect(() => {
-    getProfile();
-  }, []);
+  const { error, profile } = useContext(DataContext);
   if (error) return <p>{error}</p>;
   if (!profile) return <Loader />;
   return (

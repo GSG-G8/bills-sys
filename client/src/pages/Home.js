@@ -47,7 +47,7 @@ const Home = () => {
       </h1>
       <p className="md:text-2xl">
         {t('hometitle')} {months[new Date().getMonth()]}:{' '}
-        <span className="text-primary">${sumBills}</span>.
+        <span className="text-primary">{sumBills}$</span>.
       </p>
       <div className="md:flex md:justify-between md:align-middle md:mt-6 sm:mt-10 mt-4">
         <DoughnutChart types={types} amounts={amounts} />
