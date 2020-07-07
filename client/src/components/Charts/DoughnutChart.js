@@ -22,7 +22,7 @@ const DoughnutChart = ({ types, amounts }) => {
       <Doughnut
         data={data}
         width={80}
-        height={55}
+        height={48}
         options={{
           legend: {
             display: true,
