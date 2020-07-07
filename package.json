@@ -10,7 +10,7 @@
     "lint-fix": "cd client && npm run lint-fix && cd ../server && npm run lint-fix",
     "test": "cd server && cross-env NODE_ENV=test npm t",
     "start": "cross-env NODE_ENV=production node ./server/src",
-    "heroku-postbuild": "NODE_ENV=production cd client && npm install && npm run build",
+    "heroku-postbuild": "NODE_ENV=production GENERATE_SOURCEMAP=false cd client && npm run build",
     "install": "npm run init",
     "kill": "fuser -k 5000/tcp",
     "kill-run": "npm run kill && npm run server",
