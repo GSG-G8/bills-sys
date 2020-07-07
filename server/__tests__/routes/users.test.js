@@ -86,7 +86,7 @@ describe('test users route', () => {
 
   describe('test get profile route', () => {
     it('route /profile', async () => {
-      expect.assertions(0);
+      expect.assertions(4);
       const result = await request(app)
         .get('/api/v1/profile')
         .set('Accept', 'application/json')

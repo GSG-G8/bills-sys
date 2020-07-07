@@ -8,7 +8,7 @@ exports.sign = (payload) =>
     });
   });
 
-exports.verfy = (token) =>
+exports.verify = (token) =>
   new Promise((resolve, reject) => {
     jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
       if (err) reject(err);
