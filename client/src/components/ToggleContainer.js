@@ -8,7 +8,7 @@ const ToggleContainer = ({ children, title }) => {
 
   return (
     <div>
-      <div className="flex justify-between py-5 border-b my-3">
+      <div className="flex justify-between py-5 border-b hover:border-primary-dark my-3">
         <button
           type="button"
           onClick={toggle}
