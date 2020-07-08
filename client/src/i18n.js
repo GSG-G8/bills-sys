@@ -16,6 +16,7 @@ i18n
       loadPath: '/locales/{{lng}}.json',
       allowMultiLoading: true,
     },
+    load: 'languageOnly',
     fallbackLng: 'en',
     react: {
       useSuspense: true,
