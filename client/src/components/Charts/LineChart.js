@@ -13,8 +13,8 @@ const LineChart = ({ bills }) => {
         label: 'Past Bills $',
         fill: false,
         lineTension: 0,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
+        backgroundColor: 'rgba(100,192,192,0.4)',
+        borderColor: 'rgb(60,179,113)',
         borderDashOffset: 0.0,
         borderJoinStyle: 'miter',
         pointBorderColor: 'rgba(75,192,192,1)',
@@ -54,7 +54,6 @@ const LineChart = ({ bills }) => {
 
   return (
     <div>
-      <h2>Line Chart</h2>
       <Line data={data} options={options} />
     </div>
   );

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { getBillsTypes } from '../util';
 
 const useUserData = (logged) => {
   const [error, setError] = useState('');
@@ -17,7 +18,7 @@ const useUserData = (logged) => {
             { data: profileData },
           ] = await Promise.all([billsPromise, profilePromise]);
           setBills(billsData);
-          setTypes(billsData.map(({ name }) => name));
+          setTypes(getBillsTypes(billsData));
           setProfile(profileData);
         } catch (err) {
           if (err.response) setError(err.response.data.message);
