@@ -1,21 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { ToggleContainer, Table, Loader, LineChart } from '../components';
+import { DataContext } from '../context';
 
 const PastBills = () => {
   const { t } = useTranslation();
+  const { bills } = useContext(DataContext);
   const { billType } = useParams();
-  const [bills, setBills] = useState();
-  const getBills = async () => {
-    const { data } = await axios.get('/api/v1/bills/me');
-    setBills(data);
-  };
-
-  useEffect(() => {
-    getBills();
-  }, []);
 
   if (!bills?.[0]) return <Loader />;
   const billsOfPageType = bills.filter(
