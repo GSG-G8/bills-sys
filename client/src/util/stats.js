@@ -4,6 +4,11 @@ export const sortValues = (arr) => {
   return values;
 };
 
+// this will check if a value lies within the highest  10% of the dataset
+// values must be sorted ascendingly
+export const checkHighestTen = (values, value) =>
+  value > values[0.9 * values.length - 1];
+
 // this will trim the outliers values from both the start and the end of the data array
 const trimmer = (bound, data) => {
   const values = [...data];
@@ -34,7 +39,7 @@ export const trimmedMean = (values) => {
     trimmedValues[trimmedValues.length - 1] *= Math.abs(1 - trimCount);
   }
   const valuesSum = trimmedValues.reduce((a, b) => a + b);
-  return valuesSum / remainingValuesCount;
+  return Math.round(valuesSum / remainingValuesCount);
 };
 
 // this will find the frequency of each group "how many elements lies within a specific group"
@@ -63,4 +68,26 @@ export const frequencyGroupsGenerator = (values) => {
     lowerBound = upperBound + 1;
   }
   return groups;
+};
+
+// for the chart component we have five groups, each has a column
+// columns will be colored with gradient from green to red
+// where the highest frequency will have the green color
+export const generateColorsSet = (frequencies) => {
+  const colorsSet = [
+    '#66caaf',
+    '#4dc1a1',
+    '#33b994',
+    '#1ab086',
+    '#00a779',
+    '#ff0000',
+    '#e60000',
+    '#cc0000',
+    '#b30000',
+    '#990000',
+  ];
+  const colors = [];
+  const j = frequencies.indexOf(Math.max(...frequencies));
+  for (let i = 4 - j; i < 4 - j + 5; i += 1) colors.push(colorsSet[i]);
+  return colors;
 };

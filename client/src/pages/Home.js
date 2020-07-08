@@ -11,7 +11,6 @@ const Home = () => {
   const [types, setTypes] = useState([]);
   const [amounts, setAmounts] = useState([]);
   const [sumBills, setSumBills] = useState(0);
-
   const months = t('months', { returnObjects: true });
 
   useEffect(() => {
@@ -38,7 +37,7 @@ const Home = () => {
       </div>
     );
 
-  if (!userMonthlyBills?.length) return <Loader />;
+  if (!userMonthlyBills.length) return <Loader />;
 
   return (
     <div className="mx-auto lg:w-4/5 w-11/12 md:pt-10 pt-4">

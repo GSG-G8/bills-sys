@@ -8,9 +8,9 @@ import { DataContext } from '../context';
 import useUserData from '../hooks/useUserData';
 
 const App = () => {
-  const { logged, setLogged, setUserId } = useAuth();
+  const { logged, setLogged, userId, setUserId } = useAuth();
   const { t } = useTranslation();
-  const userData = useUserData();
+  const userData = useUserData(logged);
   if (logged === 'loading') return <Loader />;
   return (
     <div dir={t('direction')} className="pb-24 md:pb-0 text-black">
@@ -26,8 +26,8 @@ const App = () => {
           )}
           <Layout>
             <DataContext.Provider value={userData}>
-              <Route path="/current/:billType">
-                <Current />
+              <Route path="/current/:billType/:billId">
+                <Current userId={userId} />
               </Route>
               <Route path="(/|/home)">
                 <Home />
