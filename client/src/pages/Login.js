@@ -24,11 +24,11 @@ const Login = ({ setLogged, setId }) => {
 
   const handleLogin = async () => {
     try {
-      const { userId } = await axios.post('/api/v1/login', {
+      const { data } = await axios.post('/api/v1/login', {
         email,
         password,
       });
-      setId(userId);
+      setId(data.userId);
       setLogged(true);
     } catch (err) {
       let error;
