@@ -1,8 +1,28 @@
-import React from 'react';
-import { LineChart } from '../components';
+import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
+import { ToggleContainer, Table, Loader, LineChart } from '../components';
+import { DataContext } from '../context';
 
-const bills = [120, 60, 40, 50, 80, 25, 55, 100, 120, 20, 30, 70];
+const PastBills = () => {
+  const { t } = useTranslation();
+  const { bills } = useContext(DataContext);
+  const { billType } = useParams();
 
-const PastBills = () => <LineChart bills={bills} />;
+  if (!bills?.[0]) return <Loader />;
+  const billsOfPageType = bills.filter(
+    ({ type: { name } }) => name === billType
+  );
+  return (
+    <>
+      <div className="mx-4 lg:mx-16 lg:my-8 md:mx-10 md:my-5">
+        <LineChart bills={bills.map(({ amount }) => amount)} />
+        <ToggleContainer title={t('Compare Table')}>
+          <Table bills={billsOfPageType} />
+        </ToggleContainer>
+      </div>
+    </>
+  );
+};
 
 export default PastBills;

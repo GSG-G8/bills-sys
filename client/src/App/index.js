@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Header, Layout, Loader } from '../components';
 import { useAuth } from '../hooks';
-import { Current, Home, Login, PastBills, Profile } from '../pages';
+import { Current, Home, Login, PastBills, Profile, Bills } from '../pages';
 import { DataContext } from '../context';
 import useUserData from '../hooks/useUserData';
 
@@ -26,14 +26,17 @@ const App = () => {
           )}
           <Layout>
             <DataContext.Provider value={userData}>
-              <Route path="/current/:billType/:billId">
+              <Route path="/current/:billType">
                 <Current userId={userId} />
               </Route>
               <Route path="(/|/home)">
                 <Home />
               </Route>
-              <Route path="/past-bills">
+              <Route exact path="/past-bills/:billType">
                 <PastBills />
+              </Route>
+              <Route exact path="/past-bills">
+                <Bills />
               </Route>
               <Route path="/profile">
                 <Profile setLogged={setLogged} setUserId={setUserId} />

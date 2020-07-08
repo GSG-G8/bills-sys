@@ -15,50 +15,52 @@ const Current = ({ userId }) => {
   const [trimmedMean, setTrimmedMean] = useState();
   const [withinHighestTen, setWithinHighestTen] = useState();
   const [chartError, setChartError] = useState();
-  const { bills, error } = useContext(DataContext);
-  const { billType, billId } = useParams();
+  const { bills, error, types } = useContext(DataContext);
+  const { billType } = useParams();
   const { t } = useTranslation();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const currentDate = new Date();
-        const currentMonth = currentDate.getMonth() + 1;
-        const currentYear = currentDate.getFullYear();
-        const { data } = await axios.get(
-          `/api/v1/bills/${userId}/stats?typeId=${billId}&&billingMonth=${currentMonth}&&billingYear=${currentYear}`
-        );
+    if (types.length)
+      (async () => {
+        try {
+          const currentDate = new Date();
+          const currentMonth = currentDate.getMonth() + 1;
+          const currentYear = currentDate.getFullYear();
+          const { id: billId } = types.find(({ name }) => name === billType);
+          const { data } = await axios.get(
+            `/api/v1/bills/${userId}/stats?typeId=${billId}&&billingMonth=${currentMonth}&&billingYear=${currentYear}`
+          );
 
-        const currentBillAmount = bills.filter(
-          ({
-            billing_month: billingMonth,
-            billing_year: billingYear,
-            type_id: typeId,
-          }) =>
-            billingMonth === currentMonth &&
-            billingYear === currentYear &&
-            typeId === Number(billId)
-        )[0].amount;
-        const sortedData = stats.sortValues(data);
-        const { centers, frequencies } = stats.frequencyGroupsGenerator(
-          sortedData
-        );
-        const mean = stats.trimmedMean(sortedData);
-        const colorsSet = stats.generateColorsSet(frequencies);
-        setGroupCenters(centers);
-        setGroupFrequencies(frequencies);
-        setChartColors(colorsSet);
-        setCurrentBill(currentBillAmount);
-        setTrimmedMean(mean);
-        setWithinHighestTen(
-          stats.checkHighestTen(sortedData, currentBillAmount)
-        );
-      } catch (err) {
-        if (err.response) setChartError(err.response.data.message);
-        else setChartError(t('error'));
-      }
-    })();
-  }, [userId, billId, billType, t, bills]);
+          const currentBillAmount = bills.filter(
+            ({
+              billing_month: billingMonth,
+              billing_year: billingYear,
+              type_id: typeId,
+            }) =>
+              billingMonth === currentMonth &&
+              billingYear === currentYear &&
+              typeId === Number(billId)
+          )[0].amount;
+          const sortedData = stats.sortValues(data);
+          const { centers, frequencies } = stats.frequencyGroupsGenerator(
+            sortedData
+          );
+          const mean = stats.trimmedMean(sortedData);
+          const colorsSet = stats.generateColorsSet(frequencies);
+          setGroupCenters(centers);
+          setGroupFrequencies(frequencies);
+          setChartColors(colorsSet);
+          setCurrentBill(currentBillAmount);
+          setTrimmedMean(mean);
+          setWithinHighestTen(
+            stats.checkHighestTen(sortedData, currentBillAmount)
+          );
+        } catch (err) {
+          if (err.response) setChartError(err.response.data.message);
+          else setChartError(t('error'));
+        }
+      })();
+  }, [userId, billType, t, bills, types]);
 
   const billsOfPageType = bills.filter(
     ({ type: { name } }) => name === billType
@@ -94,7 +96,7 @@ const Current = ({ userId }) => {
         )
       )}
 
-      <div className="mx-4 lg:mx-16 lg:mx-8 lg:my-8 md:mx-10 md:mx-5 md:my-5">
+      <div className="mx-4 lg:mx-16 lg:my-8 md:mx-10 md:my-5">
         <ToggleContainer title={t('tips-toggle-title')}>
           <Tips billType={billType} />
         </ToggleContainer>

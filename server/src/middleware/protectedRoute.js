@@ -1,14 +1,15 @@
-const jwt = require('jsonwebtoken');
 const Boom = require('@hapi/boom');
+const { verify } = require('../util/jwt');
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
   const { token } = req.cookies;
   if (!token) res.json({ message: 'You have to sign in' });
   else {
-    jwt.verify(token, process.env.SECRET_KEY, (error, decoded) => {
-      if (error) throw Boom.unauthorized('Invalid token');
-      req.user = decoded;
+    try {
+      req.user = await verify(token);
       next();
-    });
+    } catch (err) {
+      throw Boom.unauthorized('Invalid token');
+    }
   }
 };
