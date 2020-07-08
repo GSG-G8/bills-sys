@@ -54,7 +54,7 @@ const BarChart = ({ centers, frequencies, colors }) => {
   };
 
   return (
-    <div className="p-4 m-auto h-half-screen lg:w-2/3">
+    <div className="p-4 h-half-screen lg:w-2/3">
       <Bar data={data} options={options} />
     </div>
   );

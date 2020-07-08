@@ -74,21 +74,29 @@ const Current = ({ userId }) => {
         groupCenters &&
         groupFrequencies &&
         chartColors && (
-          <div>
+          <div className="lg:flex lg:justify-between">
             <BarChart
               centers={groupCenters}
               frequencies={groupFrequencies}
               colors={chartColors}
             />
-            <p className="text-center">
-              {t('pages.current.myBill', {
-                billType: t(billType),
-                currentBill,
-              })}
-            </p>
-            <p className="text-center">
-              {t('pages.current.mean', { billType: t(billType), trimmedMean })}
-            </p>
+            <div className="lg:h-full lg:self-center lg:p-6">
+              <p className="text-center lg:text-left mb-2">
+                {t('pages.current.myBill', {
+                  billType: t(billType),
+                  currentBill,
+                })}
+                {'.'}
+              </p>
+              <p className="text-center lg:text-left">
+                {t('pages.current.mean', {
+                  billType: t(billType),
+                  trimmedMean,
+                })}
+                {'.'}
+              </p>
+            </div>
+
             {withinHighestTen && (
               <p className="text-center">{t('pages.current.highestTen')}</p>
             )}

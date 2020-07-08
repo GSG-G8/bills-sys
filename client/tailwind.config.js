@@ -37,6 +37,10 @@ module.exports = {
       height: {
         'half-screen': '50vh',
       },
+      boxShadow: {
+        navbar:
+          '0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 -1px 5px 0 rgba(0, 0, 0, 0.1)',
+      },
     },
   },
 };

@@ -40,7 +40,7 @@ const Home = () => {
   if (!userMonthlyBills.length) return <Loader />;
 
   return (
-    <div className="mx-auto lg:w-4/5 w-11/12 md:pt-10 pt-4">
+    <>
       <h1 className="font-bold md:text-3xl text-2xl sm:mb-2">
         {' '}
         {t('greeting')} {profile.first_name}{' '}
@@ -53,7 +53,7 @@ const Home = () => {
         <DoughnutChart types={types} amounts={amounts} />
         <BillTypes userBillTypes={userMonthlyBills} toPage="current" />
       </div>
-    </div>
+    </>
   );
 };
 
