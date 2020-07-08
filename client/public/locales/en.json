@@ -17,7 +17,7 @@
       "myBill": "Your {{billType}} bill for this month is {{currentBill}}$",
       "mean": "The average value of {{billType}} bills for this month is {{trimmedMean}}$",
       "highestTen": "You are within the highest 10% consumption for this month",
-      "xAxisLabel": "bills distributed into groups",
+      "xAxisLabel": "number of people whose bills are around",
       "yAxisLabel": "frequency of each group"
     }
   },

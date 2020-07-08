@@ -17,13 +17,13 @@
       "myBill": "فاتورة {{billType}} الخاصة بك لهذا الشهر هي {{currentBill}}$",
       "mean": "متوسط قيم فواتير {{billType}}  لهذا الشهر هو {{trimmedMean}}$",
       "highestTen": "أنت ضمن أعلى 10% استهلاك لهذا الشهر",
-      "xAxisLabel": "الفواتير موزعة إلى فئات",
+      "xAxisLabel": "عددالأشخاص الذين قيمة فواتيرهم حول",
       "yAxisLabel": "تكرار كل فئة"
     }
   },
   "tips": "arabicTips",
   "tips-toggle-title": "ارشادات لتقليل الفاتورة",
-  "compare-table-title": "قارن مع افراد بنفس حالتك الاجتماعية و عدد الاقراد",
+  "compare-table-title": "قارن مع افراد بنفس حالتك الاجتماعية و عدد الافراد",
   "water": "الماء",
   "electricity": "الكهرباء",
   "internet": "الإنترنت",

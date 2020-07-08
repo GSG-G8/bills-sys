@@ -59,7 +59,7 @@ const Current = ({ userId }) => {
           );
           const mean = stats.trimmedMean(sortedData);
           const colorsSet = stats.generateColorsSet(frequencies);
-          setGroupCenters(centers);
+          setGroupCenters(centers.map((x) => `${x}$`));
           setGroupFrequencies(frequencies);
           setChartColors(colorsSet);
           setCurrentBill(currentBillAmount);
