@@ -38,7 +38,7 @@
     },
     {
       "id": 10,
-      "text": "1Swap out your light bulbs"
+      "text": "Swap out your light bulbs"
     }
   ],
   "water": [
@@ -80,7 +80,7 @@
     },
     {
       "id": 10,
-      "text": "1Add aerators to your faucets."
+      "text": "Add aerators to your faucets."
     }
   ],
   "mobile": [
@@ -122,7 +122,7 @@
     },
     {
       "id": 10,
-      "text": "1Ask for a better price."
+      "text": "Ask for a better price."
     }
   ],
   "internet": [
@@ -164,7 +164,7 @@
     },
     {
       "id": 10,
-      "text": "1Ask for a better price."
+      "text": "Ask for a better price."
     }
   ]
 }

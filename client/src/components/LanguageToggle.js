@@ -5,7 +5,6 @@ const Toggle = () => {
   const { t, i18n } = useTranslation();
 
   const [lang, setLang] = useState(i18n.language);
-
   useEffect(() => {
     i18n.changeLanguage(lang);
   }, [i18n, lang]);
@@ -18,8 +17,8 @@ const Toggle = () => {
       }}
       className="bg-transparent font-bold outline-none rounded text-white hover:bg-primary-lighter p-1"
     >
-      <option value="ar">{t('language.ar')}</option>
       <option value="en">{t('language.en')}</option>
+      <option value="ar">{t('language.ar')}</option>
     </select>
   );
 };
