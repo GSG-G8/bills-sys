@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 const Toggle = () => {
   const { t, i18n } = useTranslation();
 
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = useState(i18n.language);
 
   useEffect(() => {
     i18n.changeLanguage(lang);
