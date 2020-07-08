@@ -15,7 +15,7 @@ const PastBills = () => {
   );
   return (
     <>
-      <div className="mx-4 lg:mx-16 lg:mx-8 lg:my-8 md:mx-10 md:mx-5 md:my-5">
+      <div className="mx-4 lg:mx-16 lg:my-8 md:mx-10 md:my-5">
         <LineChart bills={bills.map(({ amount }) => amount)} />
         <ToggleContainer title={t('Compare Table')}>
           <Table bills={billsOfPageType} />

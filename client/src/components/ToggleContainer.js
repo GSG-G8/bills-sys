@@ -8,20 +8,18 @@ const ToggleContainer = ({ children, title }) => {
 
   return (
     <div>
-      <div className="flex justify-between py-5 border-b hover:border-primary-dark my-3">
-        <button
-          type="button"
-          onClick={toggle}
-          className="flex focus:outline-none mx-3 justify-between w-full items-center"
-        >
-          <span className="text-xl">{title}</span>
-          <img
-            className={`w-5 ${isToggle ? '' : 'transform rotate-180'}`}
-            src={toggleImg}
-            alt="toggleContainer"
-          />
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={toggle}
+        className="flex justify-between py-5 border-b hover:border-primary-dark my-3 focus:outline-none mx-3  w-full items-center"
+      >
+        <span className="text-xl">{title}</span>
+        <img
+          className={`w-5 ${isToggle ? '' : 'transform rotate-180'}`}
+          src={toggleImg}
+          alt="toggleContainer"
+        />
+      </button>
       {isToggle && children}
     </div>
   );
