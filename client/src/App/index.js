@@ -26,7 +26,7 @@ const App = () => {
           )}
           <Layout>
             <DataContext.Provider value={userData}>
-              <Route path="/current/:billType/:billId">
+              <Route path="/current/:billType">
                 <Current userId={userId} />
               </Route>
               <Route path="(/|/home)">
