@@ -1,3 +1,4 @@
+const Boom = require('@hapi/boom');
 const { verify } = require('../util/jwt');
 
 module.exports = async (req, res, next) => {
@@ -8,7 +9,7 @@ module.exports = async (req, res, next) => {
       req.user = await verify(token);
       next();
     } catch (err) {
-      next(err);
+      throw Boom.unauthorized('Invalid token');
     }
   }
 };
