@@ -15,6 +15,8 @@ const Current = ({ userId }) => {
   const [trimmedMean, setTrimmedMean] = useState();
   const [withinHighestTen, setWithinHighestTen] = useState();
   const [chartError, setChartError] = useState();
+  const [otherUsersBills, setOtherUsersBills] = useState();
+
   const { bills, error, types } = useContext(DataContext);
   const { billType } = useParams();
   const { t } = useTranslation();
@@ -26,11 +28,21 @@ const Current = ({ userId }) => {
           const currentDate = new Date();
           const currentMonth = currentDate.getMonth() + 1;
           const currentYear = currentDate.getFullYear();
-          const { id: billId } = types.find(({ name }) => name === billType);
-          const { data } = await axios.get(
-            `/api/v1/bills/${userId}/stats?typeId=${billId}&&billingMonth=${currentMonth}&&billingYear=${currentYear}`
+          const { id: billTypeId, name } = types.find(
+            ({ name: typeName }) => typeName === billType
           );
-
+          const { data } = await axios.get(
+            `/api/v1/bills/${userId}/stats?typeId=${billTypeId}&&billingMonth=${currentMonth}&&billingYear=${currentYear}`
+          );
+          setOtherUsersBills(
+            data.map((amount, i) => ({
+              id: i,
+              amount,
+              billing_month: currentMonth,
+              billing_year: currentYear,
+              type: { name },
+            }))
+          );
           const currentBillAmount = bills.filter(
             ({
               billing_month: billingMonth,
@@ -39,7 +51,7 @@ const Current = ({ userId }) => {
             }) =>
               billingMonth === currentMonth &&
               billingYear === currentYear &&
-              typeId === Number(billId)
+              typeId === Number(typeId)
           )[0].amount;
           const sortedData = stats.sortValues(data);
           const { centers, frequencies } = stats.frequencyGroupsGenerator(
@@ -61,10 +73,6 @@ const Current = ({ userId }) => {
         }
       })();
   }, [userId, billType, t, bills, types]);
-
-  const billsOfPageType = bills.filter(
-    ({ type: { name } }) => name === billType
-  );
 
   return (
     <>
@@ -111,9 +119,9 @@ const Current = ({ userId }) => {
         {error ? (
           <p className="text-center">{error}</p>
         ) : (
-          billsOfPageType && (
+          otherUsersBills && (
             <ToggleContainer title={t('compare-table-title')}>
-              <Table bills={billsOfPageType} />
+              <Table bills={otherUsersBills} />
             </ToggleContainer>
           )
         )}
