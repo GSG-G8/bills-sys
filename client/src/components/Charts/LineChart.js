@@ -10,7 +10,7 @@ const LineChart = ({ bills }) => {
     labels: months,
     datasets: [
       {
-        label: `${t('past-bills')} $`,
+        label: t('past-bills'),
         fill: false,
         lineTension: 0,
         backgroundColor: '#00A779',
@@ -19,7 +19,7 @@ const LineChart = ({ bills }) => {
         borderJoinStyle: 'miter',
         pointBorderColor: '#00A779',
         pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
+        pointBorderWidth: 5,
         pointHoverRadius: 2,
         pointHoverBackgroundColor: '#B76569',
         pointHoverBorderColor: '#B76569',
@@ -52,11 +52,7 @@ const LineChart = ({ bills }) => {
     },
   };
 
-  return (
-    <div>
-      <Line data={data} options={options} height={300} />
-    </div>
-  );
+  return <Line legend={false} data={data} options={options} height={300} />;
 };
 LineChart.propTypes = {
   bills: propTypes.arrayOf(propTypes.number).isRequired,

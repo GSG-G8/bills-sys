@@ -14,18 +14,19 @@ const PastBills = () => {
     ({ type: { name } }) => name === billType
   );
   return (
-    <div className="">
+    <>
       <h1 className="font-bold md:text-3xl text-2xl sm:mb-2">
         {t('past-bills')}
       </h1>
-      <LineChart bills={bills.map(({ amount }) => amount)} />
-      <div className="mx-4 lg:mx-16 lg:my-8 md:mx-10 md:my-5">
-      <ToggleContainer title={t('Compare Table')}>
-        <Table bills={billsOfPageType} />
-      </ToggleContainer>
+      <div className="h-64 w-full mt-5">
+        <LineChart bills={bills.map(({ amount }) => amount)} />
       </div>
-      
-    </div>
+      <div className="mx-4 lg:mx-16 lg:my-8 md:mx-10 md:my-5">
+        <ToggleContainer title={t('past-bills')}>
+          <Table bills={billsOfPageType} />
+        </ToggleContainer>
+      </div>
+    </>
   );
 };
 
