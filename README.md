@@ -47,7 +47,8 @@ Now the app is in your device and it's work perfectly.
 ### Data-Base Schema:
 
 This is the schema of our database
-![image](ADD SCHEMA LINK)
+![schema](https://user-images.githubusercontent.com/56350350/87008787-ef453200-c1cc-11ea-97d5-f32b9c401843.png)
+
 
 ### Technologies:
 
