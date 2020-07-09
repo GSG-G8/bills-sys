@@ -40,7 +40,7 @@ const BarChart = ({ centers, frequencies, colors }) => {
           scaleLabel: {
             display: true,
             labelString: t('pages.current.xAxisLabel'),
-            fontSize: 18,
+            fontSize: 16,
             fontColor: 'black',
           },
         },
@@ -64,6 +64,12 @@ const BarChart = ({ centers, frequencies, colors }) => {
       <Bar data={data} options={options} />
     </div>
   );
+};
+
+BarChart.propTypes = {
+  centers: propTypes.arrayOf(propTypes.number).isRequired,
+  frequencies: propTypes.arrayOf(propTypes.number).isRequired,
+  colors: propTypes.arrayOf(propTypes.string).isRequired,
 };
 
 export default BarChart;
