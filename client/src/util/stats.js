@@ -53,11 +53,6 @@ const findFrequency = (data, interval) =>
 export const frequencyGroupsGenerator = (values) => {
   // interval length must be an integer
   const intervalLength = Math.ceil((values[values.length - 1] - values[0]) / 5);
-  // const groups = {
-  //   centers: [],
-  //   frequencies: [],
-  //   interval: [],
-  // };
   const groups = [];
   let lowerBound = values[0];
   for (let i = 0; i < 5; i += 1) {
