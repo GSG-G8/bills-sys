@@ -11,7 +11,7 @@ const ToggleContainer = ({ children, title }) => {
       <button
         type="button"
         onClick={toggle}
-        className="flex justify-between py-5 border-b hover:border-primary-dark my-3 focus:outline-none mx-3  w-full items-center"
+        className="flex justify-between py-5 border-b hover:border-primary-dark my-3 focus:outline-none w-full items-center"
       >
         <span className="text-xl">{title}</span>
         <img
