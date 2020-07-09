@@ -20,33 +20,39 @@ const BarChart = ({ centers, frequencies, colors }) => {
   const options = {
     title: {
       display: true,
+      fontSize: 16,
+      fontColor: 'black',
       text: t('pages.current.chartTitle'),
     },
     maintainAspectRatio: false,
+    legend: {
+      display: false,
+    },
+    plugins: {
+      datalabels: {
+        color: 'black',
+        fontSize: 20,
+      },
+    },
     scales: {
       xAxes: [
         {
-          gridLines: {
-            offsetGridLines: true,
-          },
           scaleLabel: {
             display: true,
             labelString: t('pages.current.xAxisLabel'),
             fontSize: 16,
+            fontColor: 'black',
           },
         },
       ],
+
       yAxes: [
         {
+          display: false,
           ticks: {
             min: 0,
-            max: Math.max(...frequencies) + 5,
+            max: Math.max(...frequencies),
             stepSize: 5,
-          },
-          scaleLabel: {
-            display: true,
-            labelString: t('pages.current.yAxisLabel'),
-            fontSize: 16,
           },
         },
       ],

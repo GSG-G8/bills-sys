@@ -3,7 +3,13 @@ import axios from 'axios';
 import propTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { ToggleContainer, Tips, Table, BarChart } from '../components';
+import {
+  ToggleContainer,
+  Tips,
+  Table,
+  BarChart,
+  ChartDescription,
+} from '../components';
 import { DataContext } from '../context';
 import * as stats from '../util';
 
@@ -51,15 +57,21 @@ const Current = ({ userId }) => {
             }) =>
               billingMonth === currentMonth &&
               billingYear === currentYear &&
-              typeId === Number(typeId)
+              typeId === billTypeId
           )[0].amount;
           const sortedData = stats.sortValues(data);
-          const { centers, frequencies } = stats.frequencyGroupsGenerator(
-            sortedData
-          );
+          const groups = stats.frequencyGroupsGenerator(sortedData);
+          const frequencies = groups.map(({ frequency }) => frequency);
+          const centers = groups.map(({ center }) => center);
           const mean = stats.trimmedMean(sortedData);
           const colorsSet = stats.generateColorsSet(frequencies);
-          setGroupCenters(centers);
+          const userGroup = groups.filter(
+            ({ interval }) =>
+              currentBillAmount >= interval[0] &&
+              currentBillAmount <= interval[1]
+          )[0].frequency;
+          colorsSet[frequencies.indexOf(userGroup)] = '#187bcd';
+          setGroupCenters(centers.map((x) => `${x}$`));
           setGroupFrequencies(frequencies);
           setChartColors(colorsSet);
           setCurrentBill(currentBillAmount);
@@ -88,18 +100,41 @@ const Current = ({ userId }) => {
               frequencies={groupFrequencies}
               colors={chartColors}
             />
-            <p className="text-center">
-              {t('pages.current.myBill', {
-                billType: t(billType),
-                currentBill,
-              })}
-            </p>
-            <p className="text-center">
-              {t('pages.current.mean', { billType: t(billType), trimmedMean })}
-            </p>
-            {withinHighestTen && (
-              <p className="text-center">{t('pages.current.highestTen')}</p>
-            )}
+            <div>
+              <div className="px-4 md:px-20 flex justify-between">
+                <div className="self-center">
+                  <ChartDescription />
+                </div>
+                <div>
+                  <p className="p-1 my-1 bg-primary">
+                    {t('pages.current.greenBar')}
+                  </p>
+                  <p className="p-1 my-1 bg-blue">
+                    {t('pages.current.blueBar')}
+                  </p>
+                  <p className="p-1 my-1 bg-red-600">
+                    {t('pages.current.redBar')}
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p className="text-center">
+                  {t('pages.current.myBill', {
+                    billType: t(billType),
+                    currentBill,
+                  })}
+                </p>
+                <p className="text-center">
+                  {t('pages.current.mean', {
+                    billType: t(billType),
+                    trimmedMean,
+                  })}
+                </p>
+                {withinHighestTen && (
+                  <p className="text-center">{t('pages.current.highestTen')}</p>
+                )}
+              </div>
+            </div>
           </div>
         )
       )}

@@ -12,13 +12,17 @@
       "password": "Password"
     },
     "current": {
+      "chartExplanation": "This chart displays all of bills of other individuals who share your marital status and number of family members, distributed into groups - ranges -  and how many people whose bills amount lies within a certain range. Ex, how many people with bill amount around 50$ ?",
       "chartTitle": "Bills distribution according to frequency",
       "frequency": "Frequency",
       "myBill": "Your {{billType}} bill for this month is {{currentBill}}$",
       "mean": "The average value of {{billType}} bills for this month is {{trimmedMean}}$",
       "highestTen": "You are within the highest 10% consumption for this month",
-      "xAxisLabel": "bills distributed into groups",
-      "yAxisLabel": "frequency of each group"
+      "xAxisLabel": "number of people whose bills are around",
+      "yAxisLabel": "frequency of each group",
+      "greenBar": "Normal Consumption",
+      "blueBar": "Where You Stand",
+      "redBar": "Heigh Consumption"
     }
   },
   "tips": "englishTips",
