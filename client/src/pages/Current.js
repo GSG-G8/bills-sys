@@ -51,14 +51,20 @@ const Current = ({ userId }) => {
             }) =>
               billingMonth === currentMonth &&
               billingYear === currentYear &&
-              typeId === Number(typeId)
+              typeId === billTypeId
           )[0].amount;
           const sortedData = stats.sortValues(data);
-          const { centers, frequencies } = stats.frequencyGroupsGenerator(
-            sortedData
-          );
+          const groups = stats.frequencyGroupsGenerator(sortedData);
+          const frequencies = groups.map(({ frequency }) => frequency);
+          const centers = groups.map(({ center }) => center);
           const mean = stats.trimmedMean(sortedData);
           const colorsSet = stats.generateColorsSet(frequencies);
+          const userGroup = groups.filter(
+            ({ interval }) =>
+              currentBillAmount >= interval[0] &&
+              currentBillAmount <= interval[1]
+          )[0].frequency;
+          colorsSet[frequencies.indexOf(userGroup)] = '#187bcd';
           setGroupCenters(centers.map((x) => `${x}$`));
           setGroupFrequencies(frequencies);
           setChartColors(colorsSet);
