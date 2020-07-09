@@ -1,6 +1,6 @@
 # Bills System
 
-A platform to manage and track your bills and give you a clear picture of your consumptions comparing with other people and give you some tips to reduce your consumptions
+Solution for collecting pills (electricity, water, communications, and telephones, etc) and providing insight on your consumption pattern(something like a chart) comparing you with similar households/individuals and helping you reduce consumption. 
 
 ## Live Demo :
 
