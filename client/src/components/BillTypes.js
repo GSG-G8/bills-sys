@@ -19,7 +19,9 @@ const BillsTypes = ({ userBillTypes, toPage }) => {
             <div className="lg:pt-2 flex">
               <Icon className="self-center h-20 w-16 lg:w-20" />
             </div>
-            <p className="w-full text-center capitalize lg:p-3 md:text-2xl text-xl">{t(name)}</p>
+            <p className="w-full text-center capitalize lg:p-3 md:text-2xl text-xl">
+              {t(name)}
+            </p>
           </Link>
         );
       })}
