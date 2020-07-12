@@ -13,7 +13,7 @@ const Bills = () => {
       <h1 className="font-bold md:text-3xl text-2xl sm:mb-2">
         {t('past-bills')}
       </h1>
-      <div className="flex flex-col items-center mt-8 md:mt-10">
+      <div className="flex flex-wrap justify-between text-2xl text-mich-white mt-10">
         <BillTypes userBillTypes={types} toPage="past-bills" />
       </div>
     </>

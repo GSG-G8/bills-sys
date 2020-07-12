@@ -50,9 +50,10 @@ const LineChart = ({ bills }) => {
         },
       },
     },
+    legend: false,
   };
 
-  return <Line legend={false} data={data} options={options} height={300} />;
+  return <Line data={data} options={options} height={300} />;
 };
 LineChart.propTypes = {
   bills: propTypes.arrayOf(propTypes.number).isRequired,

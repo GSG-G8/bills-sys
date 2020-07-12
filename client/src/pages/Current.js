@@ -100,46 +100,55 @@ const Current = ({ userId }) => {
               frequencies={groupFrequencies}
               colors={chartColors}
             />
-            <div>
-              <div className="px-4 md:px-20 flex justify-between">
-                <div className="self-center">
-                  <ChartDescription />
-                </div>
-                <div>
-                  <p className="p-1 my-1 bg-primary">
-                    {t('pages.current.greenBar')}
-                  </p>
-                  <p className="p-1 my-1 bg-blue">
-                    {t('pages.current.blueBar')}
-                  </p>
-                  <p className="p-1 my-1 bg-red-600">
-                    {t('pages.current.redBar')}
-                  </p>
+            <div className="lg:flex-col flex-col justify-around flex sm:flex-row">
+              <div className="border-4 border-primary-lighter p-2 sm:mb-0 mb-6 lg:mb-0 sm:w-10/12 sm:mr-10 lg:mr-0 md:w-12/25 lg:w-auto">
+                <div className="flex justify-between bg-gray-200 p-2">
+                  <div className="self-center">
+                    <ChartDescription />
+                  </div>
+
+                  <div className="w-4/5">
+                    <div className="flex justify-between">
+                      <p>{t('pages.current.greenBar')}</p>
+                      <div className="bg-primary w-1/4 h-4 self-center" />
+                    </div>
+                    <div className="flex justify-between">
+                      <p>{t('pages.current.blueBar')}</p>
+                      <div className="bg-blue w-1/4 h-4 self-center" />
+                    </div>
+                    <div className="flex justify-between">
+                      <p>{t('pages.current.redBar')}</p>
+                      <div className="bg-red-600 w-1/4 h-4 self-center" />
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div>
-                <p className="text-center">
-                  {t('pages.current.myBill', {
-                    billType: t(billType),
-                    currentBill,
-                  })}
-                </p>
-                <p className="text-center">
-                  {t('pages.current.mean', {
-                    billType: t(billType),
-                    trimmedMean,
-                  })}
-                </p>
-                {withinHighestTen && (
-                  <p className="text-center">{t('pages.current.highestTen')}</p>
-                )}
+
+              <div className="border-4 border-primary-lighter p-2">
+                <div className=" bg-gray-200 p-2">
+                  <p className="text-left mb-3">
+                    {t('pages.current.myBill', {
+                      billType: t(billType),
+                      currentBill,
+                    })}
+                  </p>
+                  <p className="text-left">
+                    {t('pages.current.mean', {
+                      billType: t(billType),
+                      trimmedMean,
+                    })}
+                  </p>
+                  {withinHighestTen && (
+                    <p className="text-left">{t('pages.current.highestTen')}</p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         )
       )}
 
-      <div className="mx-4 lg:mx-16 lg:my-8 md:mx-10 md:my-5">
+      <div className="lg:my-8 md:my-5 md:mb-20">
         <ToggleContainer title={t('tips-toggle-title')}>
           <Tips billType={billType} />
         </ToggleContainer>

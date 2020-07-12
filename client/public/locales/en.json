@@ -22,7 +22,8 @@
       "yAxisLabel": "frequency of each group",
       "greenBar": "Normal Consumption",
       "blueBar": "Where You Stand",
-      "redBar": "Heigh Consumption"
+      "redBar": "Heigh Consumption",
+      "explanation": "Need some explanation?"
     }
   },
   "past-bills": "Past Bills",

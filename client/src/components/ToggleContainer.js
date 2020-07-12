@@ -13,7 +13,7 @@ const ToggleContainer = ({ children, title }) => {
         onClick={toggle}
         className="flex justify-between py-5 border-b hover:border-primary-dark my-3 focus:outline-none w-full items-center"
       >
-        <span className="text-xl">{title}</span>
+        <span className="text-xl mr-4">{title}</span>
         <img
           className={`w-5 ${isToggle ? '' : 'transform rotate-180'}`}
           src={toggleImg}

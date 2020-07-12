@@ -60,14 +60,14 @@ const BarChart = ({ centers, frequencies, colors }) => {
   };
 
   return (
-    <div className="p-4 h-half-screen lg:w-2/3">
+    <div className="pr-4 h-half-screen lg:w-2/3 mb-10 lg:mb-0">
       <Bar data={data} options={options} />
     </div>
   );
 };
 
 BarChart.propTypes = {
-  centers: propTypes.arrayOf(propTypes.number).isRequired,
+  centers: propTypes.arrayOf(propTypes.string).isRequired,
   frequencies: propTypes.arrayOf(propTypes.number).isRequired,
   colors: propTypes.arrayOf(propTypes.string).isRequired,
 };
