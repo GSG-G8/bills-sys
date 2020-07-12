@@ -12,7 +12,7 @@ const Profile = ({ setLogged, setUserId }) => {
   if (error) return <p>{error}</p>;
   if (!profile) return <Loader />;
   return (
-    <div className="m-auto text-center">
+    <div className="m-auto lg:text-center">
       <User className="text-center m-auto mt-10" />
       <div className="m-4 font-bold">
         {profile.first_name} {profile.last_name}
